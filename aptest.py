@@ -11,7 +11,7 @@ import time
 
 from math import sin, cos, pi
 
-RATE_HZ = 60
+RATE_HZ = 60.0
 TIME_STEP = 1.0 / RATE_HZ
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -23,9 +23,9 @@ connected = False
 frame_count = 0
 frame_time = time.time()
 print_frame_count = 1000
-time_now = 0
-radius = 20
-oscilation = 10
+time_now = 0.0
+radius = 20.0
+oscilation = 10.0
 
 while True:
 
@@ -81,11 +81,12 @@ while True:
   # forced vehicle movement for testing
   
   time_now += TIME_STEP
-  gyro = (0,0,0)
-  accel = (0,0,0)
-  velo = (0,0,0)
-  alpha = 2 * pi * ((time_now % oscilation) / oscilation)
-  pos = (R * cos(alpha), R * sin(alpha), 10)
+  gyro = (0.0,0.0,0.0)
+  accel = (0.0,0.0,0.0)
+  velo = (0.0,0.0,0.0)
+  euler = (0.0, -0.12, 2.0 * pi - 2.0 * pi*((time_now % oscilation) / oscilation))
+  alpha = 2.0 * pi * ((time_now % oscilation) / oscilation)
+  pos = (radius * cos(alpha), radius * sin(alpha), 10.0)
 
   # build JSON format
   IMU_fmt = {
@@ -108,5 +109,5 @@ while True:
   if frame_count % print_frame_count == 0:
     now = time.time()
     total_time = now - frame_time
-    print("%.2f fps T=%.3f dt=%.3f" % (print_frame_count/total_time, phys_time, total_time))
+    print("%.2f fps T=%.3f dt=%.3f" % (print_frame_count/total_time, time_now, total_time))
     frame_time = now
