@@ -1,0 +1,87 @@
+{
+  "rotorhub": {
+    "lever_length": 30.16,
+    "rod_length": 64.63951649265607
+  },
+  "servos": [
+    {
+      "channel": "aileron",
+      "lerp": {
+        "angle_high_deg": 14.5,
+        "angle_low_deg": 4.5,
+        "pwm_high": 1421,
+        "pwm_low": 1521
+      },
+      "lever_length": 17.9,
+      "position": {
+        "x": 12.07,
+        "y": -20.91,
+        "z": 105.87
+      },
+      "rod_length": 40.397861587803646,
+      "rotation_deg": {
+        "z": 30.0
+      },
+      "angle_trim_deg": 4.5
+    },
+    {
+      "channel": "collective",
+      "lerp": {
+        "angle_high_deg": 14.5,
+        "angle_low_deg": 4.5,
+        "pwm_high": 1574,
+        "pwm_low": 1674
+        },
+        "lever_length": 17.9,
+        "position": {
+          "x": 12.07,
+          "y": 20.91,
+          "z": 105.87
+        },
+        "rod_length": 40.397861587803646,
+        "rotation_deg": {
+          "z": 150
+        },
+        "angle_trim_deg": 4.5
+      },
+      {
+        "channel": "elevator",
+        "lerp": {
+          "angle_high_deg": 14.5,
+          "angle_low_deg": 4.5,
+          "pwm_high": 1481,
+          "pwm_low": 1581
+        },
+        "lever_length": 17.9,
+        "position": {
+          "x": -24.15,
+          "y": 0.0,
+          "z": 105.87
+        },
+        "rod_length": 40.398225663104284,
+        "rotation_deg": {
+          "z": -90.0
+        },
+        "angle_trim_deg": 4.5
+      }
+    ],
+    "solver": {
+      "max_iterations": 10,
+      "tolerance": 0.01,
+      "verbose": null
+    }, 
+    "swashplate": {
+      "back": 38.76, 
+      "front": 19.38, 
+      "lever_length": 22.61,
+      "position": {
+        "z": 67.9
+      }, 
+      "width": 67.13
+    }, 
+    "tail": {
+      "pitch_gain": -0.0779, 
+      "pitch_trim": 6.19, 
+      "pwm_trim": 1513
+    }
+}

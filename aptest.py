@@ -82,11 +82,11 @@ while True:
   
   time_now += TIME_STEP
   gyro = (0.0,0.0,0.0)
-  accel = (0.0,0.0,0.0)
+  accel = (0.0,0.0,-9.81)
   velo = (0.0,0.0,0.0)
-  euler = (0.0, -0.12, 2.0 * pi - 2.0 * pi*((time_now % oscilation) / oscilation))
+  euler = (0.0, 0.0, 0.0)#(0.0, -0.12, 2.0 * pi - 2.0 * pi*((time_now % oscilation) / oscilation))
   alpha = 2.0 * pi * ((time_now % oscilation) / oscilation)
-  pos = (radius * cos(alpha), radius * sin(alpha), 10.0)
+  pos = (0.0,0.0,0.0)#(radius * cos(alpha), radius * sin(alpha), 10.0)
 
   # build JSON format
   IMU_fmt = {
