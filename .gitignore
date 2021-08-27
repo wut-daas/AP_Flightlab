@@ -3,6 +3,13 @@ eeprom.bin
 mav.tlog
 mav.tlog.raw
 
+# Logs from fcmClient and fcmServer
+*.log
+results/
+
+# Testing scripts
+testangles.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
