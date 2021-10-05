@@ -17,22 +17,30 @@ import numpy as np
 
 from helicopter import Helicopter
 
-FT = 0.3048
+G = -9.80665 #normal gravity
+FT = 0.3048 #ft2meter
+DEG = 0.0174532925 #deg2rad
 last_print = 0 #print in console
 last_print2 = 0 #print to file
 
 ##
 #xb = 79.540
-xb = 60.64954972257144
+xb = 50 #60.64954972257144
 #xa = 69.104
-xa = 60.64795164131181
+xa = 50 #60.64795164131181
 #xc = 51.316
-xc = 30#39.93111249885035
+xc = 25 #39.93111249885035
 #xp = 81.074
-xp = 70.42098240571202
+xp = 62 #70.42098240571202
 windx = 0.0
 windy = 0.0
 windz = 0.0
+
+mode = 'init'
+xb = 0
+xa = 0
+xc = -2
+xp = 7
 
 parser = argparse.ArgumentParser(description="AP-FL Connector")
 parser.add_argument("--ip", default='172.22.2.112', help="fcmserver ip")
@@ -89,7 +97,7 @@ with open(timestr, 'w') as outfile:
     control_decoded = struct.unpack(parse_format_AP,control)
 
     if magic != control_decoded[0]:
-      print("Incorrect protocol magic %u should be %u" % (control[0], magic))
+      print("Incorrect protocol magic %u should be %u" % (control_decoded[0], magic))
       continue
 
     frame_rate_hz = control_decoded[1]
@@ -129,7 +137,7 @@ with open(timestr, 'w') as outfile:
       int(pwm[0]),
       int(pwm[2]),
       int(pwm[1])
-    ]) #according to Marek aileron, elevator, collective is motor 1, 3, 2 TODO check it
+    ]) #according to Marek aileron, elevator, collective is motor 1, 3, 2
     pitch = np.rad2deg(heli.calc_pitch(control_pwm))
     angles = (pitch[0], pitch[1], pitch[2], heli.calc_tail(pwm[3])) #coll, cyc pitch +nose up, cyc roll +right, pedal +E
 
@@ -141,6 +149,17 @@ with open(timestr, 'w') as outfile:
     #Send control to FL
 
     #TODO struct for Archer
+
+    if mode == 'init':
+      coerce = struct.pack('', )
+      if angles[0] <= 0:
+        mode = 'acro'
+    elif mode == 'acro':
+      coerce = struct.pack('', )
+      if angles[0] > 1:
+        mode = 'flight'
+    else:
+      coerce = struct.pack('', angles[1], )
     
     #constat values for FL are hardcoded and explained in fcmtest.py
     coerce = struct.pack('<ii18d',  #little endian
@@ -174,12 +193,17 @@ with open(timestr, 'w') as outfile:
     euler = state_decoded[5:8] #rad
     vel = ([FT * x for x in state_decoded[8:11]]) #m/s NED
 
+    #add gravity vector to accel
+    accel[0] = accel[0] - np.sin(euler[1]) * G
+    accel[1] = accel[1] + np.cos(euler[1]) * np.sin(euler[0]) * G
+    accel[2] = accel[2] + np.cos(euler[1]) * np.cos(euler[0]) * G
+
     ##
-    #gyro = (0.0,0.0,0.0)
-    #accel = (0.0,0.0,0.0)
-    #vel = (0.0,0.0,0.0)
-    #euler = (0.0,0.0,0.0)
-    #pos = (0.0,0.0,0.0)
+    #gyro = (0,0,0)
+    #accel = (0,0,-9.81)
+    #vel = (0,0,0)
+    #euler = (0,0,0)
+    #pos = (0,0,0)
     
     # build JSON format and send to AP
     IMU_fmt = {
@@ -197,7 +221,7 @@ with open(timestr, 'w') as outfile:
 
     sock_AP.sendto(bytes(JSON_string,"ascii"), address_AP)
 
-    #Saving to CSV file #TODO pwm[5] for xd control
+    #Saving to CSV file #TODO pwm[4] for xd control
     if frame_count % 20 == 0:
       outfile.write(f'{tim},{frame_count},{angles[1]},{angles[2]},{angles[0]},{angles[3]},{xd},'\
         f'{windx},{windy},{windz},'\
@@ -207,6 +231,6 @@ with open(timestr, 'w') as outfile:
         f'{vel[0]},{vel[1]},{vel[2]}\n')
       last_print2 = state[81]
 
-    if frame_count % 200 == 0:
-      print(angles)
+    if frame_count % 400 == 0:
+      print(JSON_string)
       last_print = state[81]
