@@ -37,10 +37,11 @@ windy = 0.0
 windz = 0.0
 
 mode = 'init'
-xb = 0
-xa = 0
-xc = -2
-xp = 7
+xb = 0.0 #-0.0658 in hover
+xa = 0.0 # 0.02
+xc = 0.0 #6.53
+xp = 0.0 #6.3
+direct = 1.0
 
 parser = argparse.ArgumentParser(description="AP-FL Connector")
 parser.add_argument("--ip", default='172.22.2.112', help="fcmserver ip")
@@ -151,23 +152,25 @@ with open(timestr, 'w') as outfile:
     #TODO struct for Archer
 
     if mode == 'init':
-      coerce = struct.pack('', )
+      coerce = struct.pack('8d', xb, xa, xc, xp, direct, 0.0, 0.0, 0.0)
       if angles[0] <= 0:
         mode = 'acro'
+        print('MODE ACRO')
     elif mode == 'acro':
-      coerce = struct.pack('', )
+      coerce = struct.pack('8d', xb, xa, xc, xp, direct, 0.0, 0.0, 0.0)
       if angles[0] > 1:
         mode = 'flight'
+        print('MODE FLIGHT')
     else:
-      coerce = struct.pack('', angles[1], )
+      coerce = struct.pack('8d', angles[1], angles[2], angles[0], angles[3], direct, windx, windy, windz)
     
     #constat values for FL are hardcoded and explained in fcmtest.py
-    coerce = struct.pack('<ii18d',  #little endian
-                          1, 0,
-                          xb, xa, xc, xp, 110.0, 0.0, 2.0, 0.0, 0.0, #long (nose), lat, coll, pedal
-                          0.0, 0.0, 0.0, 0.0, 0.0, -1.0, windx, windy, windz)
+    #coerce = struct.pack('<ii18d',  #little endian
+    #                      1, 0,
+    #                     xb, xa, xc, xp, 110.0, 0.0, 2.0, 0.0, 0.0, #long (nose), lat, coll, pedal
+    #                      0.0, 0.0, 0.0, 0.0, 0.0, -1.0, windx, windy, windz)
 
-    assert len(coerce) == 152  #expected packet length in sw4_simulink
+    #assert len(coerce) == 152  #expected packet length in sw4_simulink
     
     sock_FL.sendto(coerce, (args.ip, 7100) )
 
@@ -186,12 +189,21 @@ with open(timestr, 'w') as outfile:
 
     state_decoded = struct.unpack(parse_format_FL,state)
 
-    gyro = state_decoded[20:23] #body axis pqr roll pitch yaw +right +up +E rad/s
-    accel = ([FT * x for x in state_decoded[14:17]]) #body axis m/sec2 "NED" +forward + right +down
-    tim = state_decoded[81] #sec
-    pos = ([FT * x for x in state_decoded[2:5]]) #NED m
-    euler = state_decoded[5:8] #rad
-    vel = ([FT * x for x in state_decoded[8:11]]) #m/s NED
+    #gyro = state_decoded[20:23] #body axis pqr roll pitch yaw +right +up +E rad/s
+    #accel = ([FT * x for x in state_decoded[14:17]]) #body axis m/sec2 "NED" +forward + right +down
+    #tim = state_decoded[81] #sec
+    #pos = ([FT * x for x in state_decoded[2:5]]) #NED m
+    #euler = state_decoded[5:8] #rad
+    #vel = ([FT * x for x in state_decoded[8:11]]) #m/s NED
+
+#FIXME tutaj gyro i acc powinny byc body prawda? a nie inertial
+
+    gyro = state_decoded[18:21] #body axis pqr roll pitch yaw +right +up +E rad/s
+    accel = ([FT * x for x in state_decoded[12:15]]) #body axis m/sec2 "NED" +forward + right +down
+    tim = state_decoded[53] #sec
+    pos = ([FT * x for x in state_decoded[0:3]]) #NED m
+    euler = state_decoded[3:6] #rad
+    vel = ([FT * x for x in state_decoded[6:9]]) #m/s NED
 
     #add gravity vector to accel
     accel[0] = accel[0] - np.sin(euler[1]) * G
@@ -222,15 +234,15 @@ with open(timestr, 'w') as outfile:
     sock_AP.sendto(bytes(JSON_string,"ascii"), address_AP)
 
     #Saving to CSV file #TODO pwm[4] for xd control
-    if frame_count % 20 == 0:
+    if frame_count % 40 == 0:
       outfile.write(f'{tim},{frame_count},{angles[1]},{angles[2]},{angles[0]},{angles[3]},{xd},'\
         f'{windx},{windy},{windz},'\
         f'{pwm[0]},{pwm[1]},{pwm[2]},{pwm[3]},{xd},'\
         f'{gyro[0]},{gyro[1]},{gyro[2]},{accel[0]},{accel[1]},{accel[2]},'\
         f'{pos[0]},{pos[1]},{pos[2]},{euler[0]},{euler[1]},{euler[2]},'\
         f'{vel[0]},{vel[1]},{vel[2]}\n')
-      last_print2 = state[81]
+      last_print2 = state_decoded[53] #FIXME bylo bez decoded!
 
-    if frame_count % 400 == 0:
+    if frame_count % 500 == 0:
       print(JSON_string)
-      last_print = state[81]
+      last_print = state_decoded[53] #FIXME bylo bez decoded!
