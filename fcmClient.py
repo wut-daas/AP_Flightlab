@@ -25,13 +25,13 @@ last_print2 = 0 #print to file
 
 ##
 #xb = 79.540
-xb = 50 #60.64954972257144
+#xb = 50 #60.64954972257144
 #xa = 69.104
-xa = 50 #60.64795164131181
+#xa = 50 #60.64795164131181
 #xc = 51.316
-xc = 25 #39.93111249885035
+#xc = 25 #39.93111249885035
 #xp = 81.074
-xp = 62 #70.42098240571202
+#xp = 62 #70.42098240571202
 windx = 0.0
 windy = 0.0
 windz = 0.0
@@ -58,7 +58,8 @@ sock_FL = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock_FL.bind(('', 7101))
 sock_FL.settimeout(0.1)
 
-parse_format_FL = 'ii80d' #format of FL out
+#parse_format_FL = 'ii80d' #format of FL out sw4
+parse_format_FL = 'ii54d' #format of FL out Archer
 parse_format_AP = 'HHI16H' #format of AP out
 magic = 18458
 
@@ -109,10 +110,11 @@ with open(timestr, 'w') as outfile:
     if frame_count < last_SITL_frame:
       ## As for now break the program
       try:
-        sock_FL.sendto(struct.pack('<ii18d', 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), (args.ip, 7100) )
+        sock_FL.sendto(struct.pack('<ii16d', 0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0), (args.ip, 7100) )
       finally:
         raise NameError('Err in frame count')
       # Controller has reset, reset physics also
+      #FIXME
       sock_FL.sendto(struct.pack('<ii18d', 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), (args.ip, 7100) )
       print('Controller reset')   
     ## For now lest have this is turned of
@@ -152,17 +154,17 @@ with open(timestr, 'w') as outfile:
     #TODO struct for Archer
 
     if mode == 'init':
-      coerce = struct.pack('8d', xb, xa, xc, xp, direct, 0.0, 0.0, 0.0)
+      coerce = struct.pack('ii16d', 1, 0, xb, xa, xc, xp, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
       if angles[0] <= 0:
         mode = 'acro'
         print('MODE ACRO')
     elif mode == 'acro':
-      coerce = struct.pack('8d', xb, xa, xc, xp, direct, 0.0, 0.0, 0.0)
-      if angles[0] > 1:
+      coerce = struct.pack('ii16d', 1, 0, xb, xa, xc, xp, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
+      if angles[0] > 0.5:
         mode = 'flight'
         print('MODE FLIGHT')
     else:
-      coerce = struct.pack('8d', angles[1], angles[2], angles[0], angles[3], direct, windx, windy, windz)
+      coerce = struct.pack('ii16d', 1, 0, angles[1], angles[2], angles[0], angles[3], direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
     
     #constat values for FL are hardcoded and explained in fcmtest.py
     #coerce = struct.pack('<ii18d',  #little endian
@@ -198,12 +200,12 @@ with open(timestr, 'w') as outfile:
 
 #FIXME tutaj gyro i acc powinny byc body prawda? a nie inertial
 
-    gyro = state_decoded[18:21] #body axis pqr roll pitch yaw +right +up +E rad/s
-    accel = ([FT * x for x in state_decoded[12:15]]) #body axis m/sec2 "NED" +forward + right +down
-    tim = state_decoded[53] #sec
-    pos = ([FT * x for x in state_decoded[0:3]]) #NED m
-    euler = state_decoded[3:6] #rad
-    vel = ([FT * x for x in state_decoded[6:9]]) #m/s NED
+    gyro = state_decoded[20:23] #body axis pqr roll pitch yaw +right +up +E rad/s
+    accel = ([FT * x for x in state_decoded[14:17]]) #body axis m/sec2 "NED" +forward + right +down
+    tim = state_decoded[55] #sec
+    pos = ([FT * x for x in state_decoded[2:5]]) #NED m
+    euler = state_decoded[5:8] #rad
+    vel = ([FT * x for x in state_decoded[8:11]]) #m/s NED
 
     #add gravity vector to accel
     accel[0] = accel[0] - np.sin(euler[1]) * G
@@ -234,15 +236,15 @@ with open(timestr, 'w') as outfile:
     sock_AP.sendto(bytes(JSON_string,"ascii"), address_AP)
 
     #Saving to CSV file #TODO pwm[4] for xd control
-    if frame_count % 40 == 0:
+    if frame_count % 50 == 0:
       outfile.write(f'{tim},{frame_count},{angles[1]},{angles[2]},{angles[0]},{angles[3]},{xd},'\
         f'{windx},{windy},{windz},'\
         f'{pwm[0]},{pwm[1]},{pwm[2]},{pwm[3]},{xd},'\
         f'{gyro[0]},{gyro[1]},{gyro[2]},{accel[0]},{accel[1]},{accel[2]},'\
         f'{pos[0]},{pos[1]},{pos[2]},{euler[0]},{euler[1]},{euler[2]},'\
         f'{vel[0]},{vel[1]},{vel[2]}\n')
-      last_print2 = state_decoded[53] #FIXME bylo bez decoded!
+      last_print2 = state_decoded[55] #FIXME bylo bez decoded!
 
     if frame_count % 500 == 0:
       print(JSON_string)
-      last_print = state_decoded[53] #FIXME bylo bez decoded!
+      last_print = state_decoded[55] #FIXME bylo bez decoded!
