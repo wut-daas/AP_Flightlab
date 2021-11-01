@@ -3,7 +3,11 @@ eeprom.bin
 mav.tlog
 mav.tlog.raw
 
+# File for M Zasuwa
+fcmClient (copy).py
+
 # Logs from fcmClient and fcmServer
+*.csv
 *.log
 results/
 

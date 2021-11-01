@@ -23,6 +23,8 @@ DEG = 0.0174532925 #deg2rad
 last_print = 0 #print in console
 last_print2 = 0 #print to file
 
+clamp = lambda n, minn, maxn: max(min(maxn, n), minn)
+
 ##
 #xb = 79.540
 #xb = 50 #60.64954972257144
@@ -37,11 +39,17 @@ windy = 0.0
 windz = 0.0
 
 mode = 'init'
-xb = 0.0 #-0.0658 in hover
-xa = 0.0 # 0.02
-xc = 0.0 #6.53
-xp = 0.0 #6.3
-direct = 1.0
+#xbtrim = 0.01 * DEG #-0.0658 in hover
+#xatrim = 0.01 * DEG # 0.02
+#xctrim = -10 * DEG #6.53
+#xptrim = 0.01 * DEG #6.3
+
+xbtrim = 50
+xatrim = 50
+xctrim = 40
+xptrim = 50
+
+direct = 0.0
 
 parser = argparse.ArgumentParser(description="AP-FL Connector")
 parser.add_argument("--ip", default='172.22.2.112', help="fcmserver ip")
@@ -81,7 +89,8 @@ with open(timestr, 'w') as outfile:
           'xb,xa,xc,xp,xd,'\
           'windx,windy,windz,'\
           'pwm1,pwm2,pwm3,pwm4,pwm5,'\
-          'p,q,r,accx,accy,accz,x,y,z,roll,pitch,yaw,vx,vy,vz\n' # 30 columns
+          'p,q,r,accx,accy,accz,x,y,z,roll,pitch,yaw,vx,vy,vz,'\
+          'theta1,theta2,b1s1,a1s1\n' # 30 columns
   outfile.write(line)
   while True:
 
@@ -153,18 +162,28 @@ with open(timestr, 'w') as outfile:
 
     #TODO struct for Archer
 
+    #FIXME change degree to percent
+    xc = 7.142857142857143 * angles[0] + 14.285714285714286 #coll
+    xc = clamp(xc, 0.0, 100.0)
+    xb = 6.25 * angles[1] + 50.0 #long
+    xb = clamp(xb, 0.0, 100.0)
+    xa = 10.0 * angles[2] + 50.0 #lat
+    xa = clamp(xa, 0.0, 100.0)
+    xp = 2.0 * angles[3] + 40.0 #ped
+    xp = clamp(xp, 0.0, 100.0)
+
     if mode == 'init':
-      coerce = struct.pack('ii16d', 1, 0, xb, xa, xc, xp, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
+      coerce = struct.pack('ii16d', 1, 0, xbtrim, xatrim, xctrim, xptrim, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
       if angles[0] <= 0:
         mode = 'acro'
         print('MODE ACRO')
     elif mode == 'acro':
-      coerce = struct.pack('ii16d', 1, 0, xb, xa, xc, xp, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
+      coerce = struct.pack('ii16d', 1, 0, xbtrim, xatrim, xctrim, xptrim, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
       if angles[0] > 0.5:
         mode = 'flight'
         print('MODE FLIGHT')
     else:
-      coerce = struct.pack('ii16d', 1, 0, angles[1], angles[2], angles[0], angles[3], direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
+      coerce = struct.pack('ii16d', 1, 0, xb, xa, xc, xd, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
     
     #constat values for FL are hardcoded and explained in fcmtest.py
     #coerce = struct.pack('<ii18d',  #little endian
@@ -206,6 +225,7 @@ with open(timestr, 'w') as outfile:
     pos = ([FT * x for x in state_decoded[2:5]]) #NED m
     euler = state_decoded[5:8] #rad
     vel = ([FT * x for x in state_decoded[8:11]]) #m/s NED
+    deflect = state_decoded[43:47]
 
     #add gravity vector to accel
     accel[0] = accel[0] - np.sin(euler[1]) * G
@@ -236,15 +256,15 @@ with open(timestr, 'w') as outfile:
     sock_AP.sendto(bytes(JSON_string,"ascii"), address_AP)
 
     #Saving to CSV file #TODO pwm[4] for xd control
-    if frame_count % 50 == 0:
+    if frame_count % 20 == 0 or frame_count <= 10:
       outfile.write(f'{tim},{frame_count},{angles[1]},{angles[2]},{angles[0]},{angles[3]},{xd},'\
         f'{windx},{windy},{windz},'\
         f'{pwm[0]},{pwm[1]},{pwm[2]},{pwm[3]},{xd},'\
         f'{gyro[0]},{gyro[1]},{gyro[2]},{accel[0]},{accel[1]},{accel[2]},'\
         f'{pos[0]},{pos[1]},{pos[2]},{euler[0]},{euler[1]},{euler[2]},'\
-        f'{vel[0]},{vel[1]},{vel[2]}\n')
-      last_print2 = state_decoded[55] #FIXME bylo bez decoded!
+        f'{vel[0]},{vel[1]},{vel[2]},{deflect[0]},{deflect[1]},{deflect[2]},{deflect[3]},\n')
+      #last_print2 = state_decoded[55] #FIXME bylo bez decoded!
 
     if frame_count % 500 == 0:
       print(JSON_string)
-      last_print = state_decoded[55] #FIXME bylo bez decoded!
+      #last_print = state_decoded[55] #FIXME bylo bez decoded!
