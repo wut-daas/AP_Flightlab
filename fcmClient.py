@@ -47,7 +47,7 @@ mode = 'init'
 xbtrim = 50
 xatrim = 50
 xctrim = 40
-xptrim = 50
+xptrim = 46
 
 direct = 0.0
 
@@ -265,6 +265,6 @@ with open(timestr, 'w') as outfile:
         f'{vel[0]},{vel[1]},{vel[2]},{deflect[0]},{deflect[1]},{deflect[2]},{deflect[3]},\n')
       #last_print2 = state_decoded[55] #FIXME bylo bez decoded!
 
-    if frame_count % 500 == 0:
+    if frame_count % 5000 == 0:
       print(JSON_string)
       #last_print = state_decoded[55] #FIXME bylo bez decoded!
