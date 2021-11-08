@@ -183,7 +183,7 @@ with open(timestr, 'w') as outfile:
         mode = 'flight'
         print('MODE FLIGHT')
     else:
-      coerce = struct.pack('ii16d', 1, 0, xb, xa, xc, xd, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
+      coerce = struct.pack('ii16d', 1, 0, xb, xa, xc, xp, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
     
     #constat values for FL are hardcoded and explained in fcmtest.py
     #coerce = struct.pack('<ii18d',  #little endian
