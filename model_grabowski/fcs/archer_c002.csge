@@ -1,0 +1,380 @@
+<?xml version='1.0'?>
+<csge format='2.0'>
+<page>
+<annotations>
+</annotations>
+<elements>
+<element type='INPUT' name='XaTrim' coords='32 32 103 64'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='INPUT' name='Xa' coords='32 80 103 112'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='SUM' name='SUM001' coords='168 32 200 64'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='OUTPUT' name='skokpoprz' coords='472 32 568 64'>
+<field name='no' value='1'/>
+</element>
+<element type='INPUT' name='XbTrim' coords='32 144 103 176'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='INPUT' name='Xb' coords='32 192 103 224'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='SUM' name='SUM003' coords='168 144 200 176'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='OUTPUT' name='skokpodl' coords='472 144 583 176'>
+<field name='no' value='1'/>
+</element>
+<element type='INPUT' name='XcTrim' coords='32 264 103 296'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='INPUT' name='Xc' coords='32 312 103 344'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='SUM' name='SUM005' coords='168 264 200 296'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='OUTPUT' name='skokogwirnika' coords='432 264 575 296'>
+<field name='no' value='1'/>
+</element>
+<element type='INPUT' name='XpTrim' coords='32 376 103 408'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='INPUT' name='Xp' coords='32 424 103 456'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='SUM' name='SUM010' coords='168 376 200 408'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='OUTPUT' name='skokogsmigla' coords='432 376 560 408'>
+<field name='no' value='1'/>
+</element>
+</elements>
+<connectors>
+</connectors>
+<superblocks>
+<superblock name='Lateral' coords='272 16 336 80'>
+<page>
+<annotations>
+<label pos='337 136'>[0 100] procent -&gt; [-5 5] deg</label>
+<label pos='425 55'></label>
+<label pos='455 59'>D2R</label>
+<label pos='230 57'>XAGAIN</label>
+<label pos='320 49'>XATAB</label>
+<label pos='605 121'>Servos inertia</label>
+</annotations>
+<elements>
+<element type='BIAS' name='BIAS001' coords='64 160 144 208'>
+<field name='ni' value='1'/>
+<field name='bias' value='0'/>
+</element>
+<element type='SUM' name='SUM001' coords='152 72 184 104'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='-1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='DGAIN' name='XAgain' coords='208 64 256 112'>
+<field name='n' value='1'/>
+<field name='k' value='1.0'/>
+</element>
+<element type='TABL1D' name='XATAB' coords='288 64 368 112'>
+<field name='nind' value='2'/>
+<field name='indpvar' value='[0 100]'/>
+<field name='n' value='1'/>
+<field name='table' value='[5 -5]'/>
+<field name='extrapf' value='0'/>
+</element>
+<element type='DGAIN' name='D2R' coords='408 64 487 112'>
+<field name='n' value='1'/>
+<field name='k' value='0.01745'/>
+</element>
+<element type='TFCOEF' name='TFC001' coords='560 64 656 112'>
+<field name='nq' value='0'/>
+<field name='np' value='1'/>
+<field name='q' value='[1]'/>
+<field name='p' value='[0.008 1]'/>
+</element>
+</elements>
+<connectors>
+<input name='T001' label='XATOT' coords='32 72 96 104'/>
+<output name='T002' label='skokpoprz' coords='743 72 856 104'/>
+</connectors>
+<superblocks>
+</superblocks>
+<connections>
+<connection src='T001' tgt='SUM001' points='97 88  152 88'/>
+<connection src='BIAS001' tgt='SUM001' points='144 184  168 184  168 104'/>
+<connection src='SUM001' tgt='XAgain' points='184 88  208 88'/>
+<connection src='XAgain' tgt='XATAB' points='256 88  288 88'/>
+<connection src='XATAB' tgt='D2R' points='368 88  408 88'/>
+<connection src='D2R' tgt='TFC001' points='487 88  560 88'/>
+<connection src='TFC001' tgt='T002' points='656 88  743 88'/>
+</connections>
+</page>
+</superblock>
+<superblock name='Longitudinal' coords='256 128 352 192'>
+<page>
+<annotations>
+<label pos='345 136'>[0 100] procent -&gt; [8 -8] deg</label>
+<label pos='433 55'></label>
+<label pos='455 43'>D2R</label>
+<label pos='238 57'>XBGAIN</label>
+<label pos='336 49'>XBTAB</label>
+<label pos='613 129'>Servos inertia</label>
+</annotations>
+<elements>
+<element type='BIAS' name='BIAS001' coords='72 160 152 208'>
+<field name='ni' value='1'/>
+<field name='bias' value='0'/>
+</element>
+<element type='SUM' name='SUM001' coords='160 72 192 104'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='-1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='DGAIN' name='XAgain' coords='216 64 264 112'>
+<field name='n' value='1'/>
+<field name='k' value='1.0'/>
+</element>
+<element type='TABL1D' name='XBTAB' coords='296 64 376 112'>
+<field name='nind' value='2'/>
+<field name='indpvar' value='[0 100]'/>
+<field name='n' value='1'/>
+<field name='table' value='[8 -8]'/>
+<field name='extrapf' value='0'/>
+</element>
+<element type='DGAIN' name='D2R' coords='424 64 503 112'>
+<field name='n' value='1'/>
+<field name='k' value='0.01745'/>
+</element>
+<element type='TFCOEF' name='TFC001' coords='568 64 664 112'>
+<field name='nq' value='0'/>
+<field name='np' value='1'/>
+<field name='q' value='[1]'/>
+<field name='p' value='[0.008 1]'/>
+</element>
+</elements>
+<connectors>
+<input name='T001' label='XBTOT' coords='40 72 104 104'/>
+<output name='T002' label='skokpodl' coords='715 72 789 104'/>
+</connectors>
+<superblocks>
+</superblocks>
+<connections>
+<connection src='T001' tgt='SUM001' points='105 88  160 88'/>
+<connection src='BIAS001' tgt='SUM001' points='152 184  176 184  176 104'/>
+<connection src='SUM001' tgt='XAgain' points='192 88  216 88'/>
+<connection src='XAgain' tgt='XBTAB' points='264 88  296 88'/>
+<connection src='XBTAB' tgt='D2R' points='376 88  424 88'/>
+<connection src='D2R' tgt='TFC001' points='503 88  568 88'/>
+<connection src='TFC001' tgt='T002' points='664 88  715 88'/>
+</connections>
+</page>
+</superblock>
+<superblock name='Collective' coords='272 248 336 312'>
+<page>
+<annotations>
+<label pos='329 128'>[0 100] procent -&gt; [-2 12] deg</label>
+<label pos='409 55'></label>
+<label pos='214 57'>XCGAIN</label>
+<label pos='304 49'>XCCTAB</label>
+<label pos='433 55'></label>
+<label pos='455 43'>D2R</label>
+<label pos='613 129'>Servos inertia</label>
+</annotations>
+<elements>
+<element type='BIAS' name='BIAS001' coords='48 160 128 208'>
+<field name='ni' value='1'/>
+<field name='bias' value='0'/>
+</element>
+<element type='SUM' name='SUM001' coords='136 72 168 104'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='-1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='DGAIN' name='XAgain' coords='192 64 240 112'>
+<field name='n' value='1'/>
+<field name='k' value='1.0'/>
+</element>
+<element type='TABL1D' name='XATAB' coords='272 64 352 112'>
+<field name='nind' value='2'/>
+<field name='indpvar' value='[0 100]'/>
+<field name='n' value='1'/>
+<field name='table' value='[-2 20]'/>
+<field name='extrapf' value='0'/>
+</element>
+<element type='DGAIN' name='D2R' coords='424 64 503 112'>
+<field name='n' value='1'/>
+<field name='k' value='0.01745'/>
+</element>
+<element type='TFCOEF' name='TFC001' coords='568 64 664 112'>
+<field name='nq' value='0'/>
+<field name='np' value='1'/>
+<field name='q' value='[1]'/>
+<field name='p' value='[0.008 1]'/>
+</element>
+</elements>
+<connectors>
+<input name='T001' label='XCTOT' coords='16 72 80 104'/>
+<output name='T002' label='Theta1out' coords='736 72 832 104'/>
+</connectors>
+<superblocks>
+</superblocks>
+<connections>
+<connection src='T001' tgt='SUM001' points='81 88  136 88'/>
+<connection src='BIAS001' tgt='SUM001' points='128 184  152 184  152 104'/>
+<connection src='SUM001' tgt='XAgain' points='168 88  192 88'/>
+<connection src='XAgain' tgt='XATAB' points='240 88  272 88'/>
+<connection src='XATAB' tgt='D2R' points='352 88  424 88'/>
+<connection src='D2R' tgt='TFC001' points='503 88  568 88'/>
+<connection src='TFC001' tgt='T002' points='664 88  736 88'/>
+</connections>
+</page>
+</superblock>
+<superblock name='Pedal' coords='272 360 336 424'>
+<page>
+<annotations>
+<label pos='345 152'>[0 100] procent -&gt; [30 -20] deg</label>
+<label pos='433 71'></label>
+<label pos='238 73'>XPGAIN</label>
+<label pos='328 65'>XPTAB</label>
+<label pos='481 71'></label>
+<label pos='495 75'>D2R</label>
+<label pos='653 145'>Servos inertia</label>
+</annotations>
+<elements>
+<element type='BIAS' name='BIAS001' coords='72 176 152 224'>
+<field name='ni' value='1'/>
+<field name='bias' value='0'/>
+</element>
+<element type='SUM' name='SUM001' coords='160 88 192 120'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='-1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='DGAIN' name='XAgain' coords='216 80 264 128'>
+<field name='n' value='1'/>
+<field name='k' value='1.0'/>
+</element>
+<element type='TABL1D' name='XATAB' coords='296 80 376 128'>
+<field name='nind' value='2'/>
+<field name='indpvar' value='[0 100]'/>
+<field name='n' value='1'/>
+<field name='table' value='[30 -20]'/>
+<field name='extrapf' value='0'/>
+</element>
+<element type='DGAIN' name='D2R' coords='472 80 551 128'>
+<field name='n' value='1'/>
+<field name='k' value='0.01745'/>
+</element>
+<element type='TFCOEF' name='TFC001' coords='608 80 704 128'>
+<field name='nq' value='0'/>
+<field name='np' value='1'/>
+<field name='q' value='[1]'/>
+<field name='p' value='[0.012 1]'/>
+</element>
+</elements>
+<connectors>
+<input name='T001' label='XPTOT' coords='40 88 104 120'/>
+<output name='T002' label='Theta2out' coords='792 88 888 120'/>
+</connectors>
+<superblocks>
+</superblocks>
+<connections>
+<connection src='T001' tgt='SUM001' points='105 104  160 104'/>
+<connection src='BIAS001' tgt='SUM001' points='152 200  176 200  176 120'/>
+<connection src='SUM001' tgt='XAgain' points='192 104  216 104'/>
+<connection src='XAgain' tgt='XATAB' points='264 104  296 104'/>
+<connection src='XATAB' tgt='D2R' points='376 104  472 104'/>
+<connection src='D2R' tgt='TFC001' points='551 104  608 104'/>
+<connection src='TFC001' tgt='T002' points='704 104  792 104'/>
+</connections>
+</page>
+</superblock>
+</superblocks>
+<connections>
+<connection src='XaTrim' tgt='SUM001' points='103 48  168 48'/>
+<connection src='Xa' tgt='SUM001' points='103 96  184 96  184 64'/>
+<connection src='SUM001' tgt='Lateral' tgtcon='T001' points='200 48  272 48'/>
+<connection src='XbTrim' tgt='SUM003' points='103 160  168 160'/>
+<connection src='Xb' tgt='SUM003' points='103 208  184 208  184 176'/>
+<connection src='SUM003' tgt='Longitudinal' tgtcon='T001' points='200 160  256 160'/>
+<connection src='XcTrim' tgt='SUM005' points='103 280  168 280'/>
+<connection src='Xc' tgt='SUM005' points='103 328  184 328  184 296'/>
+<connection src='SUM005' tgt='Collective' tgtcon='T001' points='200 280  272 280'/>
+<connection src='Collective' srccon='T002' tgt='skokogwirnika' points='336 280  432 280'/>
+<connection src='XpTrim' tgt='SUM010' points='103 392  168 392'/>
+<connection src='Xp' tgt='SUM010' points='103 440  184 440  184 408'/>
+<connection src='SUM010' tgt='Pedal' tgtcon='T001' points='200 392  272 392'/>
+<connection src='Pedal' srccon='T002' tgt='skokogsmigla' points='336 392  430 392'/>
+<connection src='Lateral' srccon='T002' tgt='skokpoprz' points='336 48  472 48'/>
+<connection src='Longitudinal' srccon='T002' tgt='skokpodl' points='352 160  472 160'/>
+</connections>
+</page>
+<interface>
+<definitions key='outputs'>
+<definition lhs='world_data_b1s1' rhs='world_model_control_skokpodl_y' desc='Ctrl, Lng cyclic angle [rad]'/>
+<definition lhs='world_data_a1s1' rhs='world_model_control_skokpoprz_y' desc='Ctrl, Lat cyclic angle[rad]'/>
+<definition lhs='world_data_theta1' rhs='world_model_control_skokogwirnika_y' desc='Ctr., main rotoor collective angle [rad]'/>
+<definition lhs='world_data_theta2' rhs='world_model_control_skokogsmigla_y' desc='Ctrl., Tail rotor collective angle [rad]'/>
+</definitions>
+<definitions key='extInputs'>
+<definition lhs='world_model_control_xbtrim_u' rhs='world_model_control_data_xbtrm' desc='XB Trim [percent]'/>
+<definition lhs='world_model_control_xatrim_u' rhs='world_model_control_data_xatrm' desc='Xa Trim [percent]'/>
+<definition lhs='world_model_control_xptrim_u' rhs='world_model_control_data_xptrm' desc='XP Trim [percent]'/>
+<definition lhs='world_model_control_xctrim_u' rhs='world_model_control_data_xctrm' desc='XC Trim [percent]'/>
+<definition lhs='world_model_control_xa_u' rhs='world_model_control_data_xa' desc='XA perturbation [percent]'/>
+<definition lhs='world_model_control_xb_u' rhs='world_model_control_data_xb' desc='XB perturbation [percent]'/>
+<definition lhs='world_model_control_xp_u' rhs='world_model_control_data_xp' desc='XP perturbation [percent]'/>
+<definition lhs='world_model_control_xc_u' rhs='world_model_control_data_xc' desc='XC perturbation [percent]'/>
+</definitions>
+<definitions key='extOutputs'>
+<definition lhs='world_model_control_cpg_xaout_b1s1' rhs='world_model_control_skokpodl_y' desc='Ctrl., Lng cyclic angle [rad]'/>
+<definition lhs='world_model_control_cpg_xaout_a1s1' rhs='world_model_control_skokpoprz_y' desc='Ctrl., Lat cyclic angle [rad]'/>
+<definition lhs='world_model_control_cpg_xaout_theta1' rhs='world_model_control_skokogwirnika_y' desc='Ctr., Main rotor collective angle [rad]'/>
+<definition lhs='world_model_control_cpg_xaout_theta2' rhs='world_model_control_skokogsmigla_y' desc='Ctr., tail rotor collective angle [rad]'/>
+</definitions>
+<definitions key='initialization'>
+<definition lhs='world_model_control_data_xb' rhs='0' desc='xb pertubration [percent]'/>
+<definition lhs='world_model_control_data_xa' rhs='0' desc='xa perturbation [percent]'/>
+<definition lhs='world_model_control_data_xp' rhs='0' desc='xp perturbation [percent]'/>
+<definition lhs='world_model_control_data_xc' rhs='0' desc='xc perturbation [percent]'/>
+<definition lhs='world_model_control_data_userin' rhs='[0 0 0 0 0 0 0 0 0 0]' desc='User defined inputs'/>
+</definitions>
+</interface>
+</csge>

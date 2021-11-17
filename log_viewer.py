@@ -40,7 +40,7 @@ parser.set_defaults(save=False)
 #args = parser.parse_args()
 args, unknown = parser.parse_known_args()
 
-df = pd.read_csv(args.path)
+df = pd.read_csv(args.path, index_col=False)
 print("Loaded file " + args.path)
 
 if args.save:
@@ -89,9 +89,9 @@ fig.set_figheight(15)
 fig.set_figwidth(15)
 fig.suptitle('Euler zmiana [rad/s]')
 axs[0].plot(df.t, df.q)
-axs[0].set(ylabel='Pochylenie zmiana +right')
+axs[0].set(ylabel='Pochylenie zmiana +nose up')
 axs[1].plot(df.t, df.p)
-axs[1].set(ylabel='Przechylenie zmiana +nose up')
+axs[1].set(ylabel='Przechylenie zmiana +right')
 axs[2].plot(df.t, df.r)
 axs[2].set(ylabel='Odchylenie zmiana 0°=N +E')
 
@@ -162,7 +162,7 @@ for ax in axs.flat:
 if args.save:
     plt.savefig(save_path + '/control.png')
 
-fig, axs = plt.subplots(4)
+'''fig, axs = plt.subplots(4)
 fig.set_figheight(10)
 fig.set_figwidth(10)
 fig.suptitle('Sygnały sterowania [pwm]')
@@ -179,6 +179,21 @@ axs[3].plot(df.t, df.pwm4)
 axs[3].set(ylabel='Tail', xlabel='Czas [s]')
 
 if args.save:
-    plt.savefig(save_path + '/pwm.png')
+    plt.savefig(save_path + '/pwm.png')'''
+
+fig, axs = plt.subplots(2, 2)
+fig.set_figheight(15)
+fig.set_figwidth(15)
+axs[0, 0].plot(df.t, df.b1s1 * DEG)
+axs[0, 0].set_title('Cyk Poch')
+axs[0, 1].plot(df.t, df.a1s1 * DEG, 'tab:orange')
+axs[0, 1].set_title('Cyk Przech')
+axs[1, 0].plot(df.t, df.theta1 * DEG, 'tab:green')
+axs[1, 0].set_title('Coll')
+axs[1, 1].plot(df.t, df.theta2 * DEG, 'tab:red')
+axs[1, 1].set_title('Ped')
+
+for ax in axs.flat:
+    ax.set(xlabel='Czas [s]', ylabel='Kąty łopat [deg]')
 
 # %%

@@ -1,0 +1,55 @@
+//Conversion of the units
+
+pushg(WORLD_WUT);
+group UNITCONV;
+pushg(WORLD_WUT_UNITCONV);
+
+//  angle conversions ---------------------------------------------------------
+
+rad2deg  = 180./acos(-1.);
+deg2rad  = acos(-1.)/180.;
+
+//  length conversions --------------------------------------------------------
+
+ft2m = 0.3048;
+m2ft = 1./0.3048;
+
+//  angular velocity conversions ----------------------------------------------
+
+radpers2hz  = 1./(2*acos(-1.));
+radpers2rpm = 30./acos(-1.);
+
+//  velocity conversions ------------------------------------------------------
+
+ftpers2kn = 0.3048*3.6/1.852;
+kn2ftpers = 1.852/(3.6*0.3048);
+kn2mpers = 1.852/3.6;
+kn2kmperh = 1.852;
+mpers2kn = 3.6/1.852;
+mpers2ftpermin = 60./(0.3048);
+ftpermin2mpers = 0.00508;
+
+//  mass and inertia conversion -----------------------------------------------
+
+lbm2kg = 0.45359237;
+kg2lbm = 2.20462260;
+slugsqft2kgsqm = 1.35581795;
+kgsqm2slugsqft = 0.73756215;
+slug2lbm = 32.174049;
+lbm2slug = 1./32.174049;
+
+//  force and moment conversions ----------------------------------------------
+
+lbf2N    = 4.4482216;
+N2lbf    = 1./4.4482216;
+lbfft2Nm = 1.35581795;
+Nm2lbfft = 1./1.35581795;
+
+//  power conversions ---------------------------------------------------------
+
+watt2hp = 1./745.699872;
+kW2hp   = 1000./745.699872;
+hp2watt = 745.699872;
+hp2kW   = 745.699872/1000.;
+
+//EOF

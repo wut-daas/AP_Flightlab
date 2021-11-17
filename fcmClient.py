@@ -172,6 +172,9 @@ with open(timestr, 'w') as outfile:
     xp = 2.0 * angles[3] + 40.0 #ped
     xp = clamp(xp, 0.0, 100.0)
 
+    ## ! ## FIXME
+    xa = 100.0 - xa
+
     if mode == 'init':
       coerce = struct.pack('ii16d', 1, 0, xbtrim, xatrim, xctrim, xptrim, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
       if angles[0] <= 0:

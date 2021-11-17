@@ -1,0 +1,2836 @@
+#@WIZDAT model/0.2
+%serial.node 176
+*.created {16 Jan 2018}
+*.history {{conversion: 04 May 2018} {conversion: 15 Nov 2018} {conversion: 15 Oct 2019}}
+*.id archer_00_procent
+*.lastModified {01 Nov 2021}
+*.node {node0 node1 node2 node3 node4 node5 node6 node7 node8 node9 node10 node11 node12 node13 node14 node15 node16 node17 node18 node19 node20 node21 node22 node23 node24 node25 node26 node27 node28 node29 node30 node31 node32 node33 node34 node35 node36 node37 node38 node39 node40 node41 node42 node43 node44 node45 node46 node47 node48 node49 node50 node51 node52 node53 node54 node55 node56 node57 node58 node59 node60 node61 node62 node63 node64 node65 node66 node67 node68 node69 node70 node71 node72 node73 node74 node75 node76 node77 node78 node79 node80 node81 node82 node83 node84 node85 node86 node87 node88 node89 node90 node91 node92 node93 node94 node95 node97 node98 node99 node100 node101 node102 node103 node104 node105 node106 node107 node108 node109 node110 node111 node112 node113 node114 node115 node116 node117 node118 node119 node120 node121 node122 node123 node124 node125 node126 node127 node128 node129 node130 node131 node132 node133 node134 node135 node136 node137 node138 node139 node140 node141 node142 node143 node144 node145 node146 node147 node148 node149 node150 node151 node152 node153 node154 node155 node156 node157 node158 node159 node160 node161 node162 node163 node164 node165 node166 node167 node168 node169 node170 node171 node172 node173 node174 node175 node176}
+*.root node0
+*.searchPaths {{$FL_DIR/flme/data} {$FL_LOCAL_DB}}
+*.templateID FLIGHTLAB
+*.templateSerial 2019-01-04-luther-0.3464828670706986
+node0.class module
+node0.completed 1
+node0.label {Rotorcraft Model}
+node0.memo {}
+node0.name rotorcraft
+node0.selected 1
+node0.subnodes {node1 node2 node10 node25 node26 node27 node28 node29 node30 node61 node73 node80 node81 node90}
+node0.template rotorcraft
+node1.class module
+node1.completed 0
+node1.fields {EPS MAXITER NAZ NAZ2}
+node1.fields.EPS.mark 0
+node1.fields.EPS.value 0.01
+node1.fields.MAXITER.mark 0
+node1.fields.MAXITER.value 5
+node1.fields.NAZ.mark 1
+node1.fields.NAZ.value 180
+node1.fields.NAZ2.mark 1
+node1.fields.NAZ2.value 180
+node1.label {Solution Parameters}
+node1.memo {}
+node1.name solutionpar
+node1.options {DTOPTION MULTIDT ISHHTSOLVE ISNLAESOLVEOP}
+node1.options.DTOPTION.mark 0
+node1.options.DTOPTION.value 0
+node1.options.ISHHTSOLVE.mark 0
+node1.options.ISHHTSOLVE.value 0
+node1.options.ISNLAESOLVEOP.mark 0
+node1.options.ISNLAESOLVEOP.value 0
+node1.options.MULTIDT.mark 1
+node1.options.MULTIDT.value 0
+node1.selected 1
+node1.subnodes {}
+node1.template solutionpar
+node10.class alt
+node10.completed 1
+node10.currentSelection berotor
+node10.label Rotor1
+node10.memo {}
+node10.name rotor1
+node10.selected 1
+node10.selections {berotor ferotor diskrotor ductfan}
+node10.selections.berotor.subnodes node11
+node10.subnodes node11
+node10.template rotor1
+node100.class table
+node100.completed 0
+node100.filename kappa2d.tab
+node100.label {Inflow correction (2D table)}
+node100.memo {}
+node100.name kappatab2d
+node100.path .
+node100.selected 1
+node100.subnodes {}
+node100.template kappatab2d
+node101.class table
+node101.completed 0
+node101.filename deltalvpm.tab
+node101.label {Delta L-matrix}
+node101.memo {}
+node101.name vpmdeltal
+node101.path .
+node101.selected 1
+node101.subnodes {}
+node101.template vpmdeltal
+node102.class module
+node102.completed 0
+node102.fields {RTRINTFRTRINDEX RTRINTFSURFINDEX RTRINTFAUXBODYINDEX RTRINTFSLUNGLOADINDEX RTRINTFMOREWINGINDEX NSIMPS WDECAY0 WDECAY DSIGUL ETA0 ETA1}
+node102.fields.DSIGUL.mark 0
+node102.fields.DSIGUL.value 0.05
+node102.fields.ETA0.mark 0
+node102.fields.ETA0.value 0.1
+node102.fields.ETA1.mark 0
+node102.fields.ETA1.value 0.2
+node102.fields.NSIMPS.mark 0
+node102.fields.NSIMPS.value 8
+node102.fields.RTRINTFAUXBODYINDEX.mark 0
+node102.fields.RTRINTFAUXBODYINDEX.value 1
+node102.fields.RTRINTFMOREWINGINDEX.mark 0
+node102.fields.RTRINTFMOREWINGINDEX.value 1
+node102.fields.RTRINTFRTRINDEX.mark 1
+node102.fields.RTRINTFRTRINDEX.value 2
+node102.fields.RTRINTFSLUNGLOADINDEX.mark 0
+node102.fields.RTRINTFSLUNGLOADINDEX.value 1
+node102.fields.RTRINTFSURFINDEX.mark 1
+node102.fields.RTRINTFSURFINDEX.value {1 2}
+node102.fields.WDECAY.mark 0
+node102.fields.WDECAY.value 2
+node102.fields.WDECAY0.mark 0
+node102.fields.WDECAY0.value 6
+node102.label {3-State Interference}
+node102.memo {}
+node102.name rtr3stateintf
+node102.options {RTRINTFXYZ RTRINTFRTR RTRINTFSURF RTRINTFFUSE RTRINTFFUSEPANEL RTRINTFWING RTRINTFSHPDK RTRINTFGRND RTRINTFAUXBODY RTRINTFSLUNGLOAD RTRINTFMOREWING WAKECONTRACT VELDECAY WCHIOPTION}
+node102.options.RTRINTFAUXBODY.mark 0
+node102.options.RTRINTFAUXBODY.value 0
+node102.options.RTRINTFFUSE.mark 1
+node102.options.RTRINTFFUSE.value 3
+node102.options.RTRINTFFUSEPANEL.mark 0
+node102.options.RTRINTFFUSEPANEL.value 0
+node102.options.RTRINTFGRND.mark 0
+node102.options.RTRINTFGRND.value 0
+node102.options.RTRINTFMOREWING.mark 1
+node102.options.RTRINTFMOREWING.value 0
+node102.options.RTRINTFRTR.mark 1
+node102.options.RTRINTFRTR.value 1
+node102.options.RTRINTFSHPDK.mark 0
+node102.options.RTRINTFSHPDK.value 0
+node102.options.RTRINTFSLUNGLOAD.mark 0
+node102.options.RTRINTFSLUNGLOAD.value 0
+node102.options.RTRINTFSURF.mark 1
+node102.options.RTRINTFSURF.value 0
+node102.options.RTRINTFWING.mark 1
+node102.options.RTRINTFWING.value 0
+node102.options.RTRINTFXYZ.mark 0
+node102.options.RTRINTFXYZ.value 0
+node102.options.VELDECAY.mark 0
+node102.options.VELDECAY.value 1
+node102.options.WAKECONTRACT.mark 0
+node102.options.WAKECONTRACT.value 0
+node102.options.WCHIOPTION.mark 0
+node102.options.WCHIOPTION.value 0
+node102.selected 1
+node102.subnodes {node103 node104 node105}
+node102.template rtr3stateintf
+node103.class table
+node103.completed 0
+node103.filename intftabxyz.tab
+node103.label {Flow-field Points}
+node103.memo {}
+node103.name intfxyz
+node103.path .
+node103.selected 1
+node103.subnodes {}
+node103.template intftabxyz
+node104.class table
+node104.completed 0
+node104.filename rwake.tab
+node104.label {Rotor wake contraction ratio}
+node104.memo {}
+node104.name rwake
+node104.path .
+node104.selected 1
+node104.subnodes {}
+node104.template rwaketab
+node105.class table
+node105.completed 0
+node105.filename wchieff.tab
+node105.label {Effective rotor wake skew}
+node105.memo {}
+node105.name wchieff
+node105.path .
+node105.selected 1
+node105.subnodes {}
+node105.template wchiefftab
+node106.class module
+node106.completed 0
+node106.fields {EULERHUB ROTORLOC NBLADES BTL TILTAXIS OMEGANOM RMR PHASE}
+node106.fields.BTL.mark 1
+node106.fields.BTL.value 0.97
+node106.fields.EULERHUB.mark 1
+node106.fields.EULERHUB.value {0  0  90.0 deg}
+node106.fields.NBLADES.mark 1
+node106.fields.NBLADES.value 2
+node106.fields.OMEGANOM.mark 1
+node106.fields.OMEGANOM.value {7200 rpm}
+node106.fields.PHASE.mark 1
+node106.fields.PHASE.value {0 deg}
+node106.fields.RMR.mark 1
+node106.fields.RMR.value {140.4 mm}
+node106.fields.ROTORLOC.mark 1
+node106.fields.ROTORLOC.value {1039.5 -98.05 -128.91 mm}
+node106.fields.TILTAXIS.mark 1
+node106.fields.TILTAXIS.value 2
+node106.label {Blade Element}
+node106.memo {
+04 May 2018 Conversion: note: Option <LOADPATH> not found; using default value <0>
+15 Oct 2019 Conversion: note: Option <EMOTOR> not found; using default value <0>}
+node106.name berotor
+node106.options {CLOCKWISE LOADPATH EMOTOR ICINGEFF}
+node106.options.CLOCKWISE.mark 1
+node106.options.CLOCKWISE.value 1
+node106.options.EMOTOR.mark 0
+node106.options.EMOTOR.value 0
+node106.options.ICINGEFF.mark 0
+node106.options.ICINGEFF.value 0
+node106.options.LOADPATH.mark 1
+node106.options.LOADPATH.value 0
+node106.selected 1
+node106.subnodes {node107 node116 node117 node118 node119}
+node106.template berotor
+node107.class alt
+node107.completed 1
+node107.currentSelection bearticulated
+node107.label {Blade Structure}
+node107.memo {}
+node107.name bestructure
+node107.selected 1
+node107.selections {bearticulated behingeless beteetering begimbal}
+node107.selections.bearticulated.subnodes node108
+node107.subnodes node108
+node107.template bestructure
+node108.class module
+node108.completed 0
+node108.fields {NSEGM TRANSYLEN CONEANG CONEOF FLAPHOF FEATHOF DELTA3 FLAPKK FLAPCC FLAPANG0 LAGHOF LAGKK LAGCC LAGANG0 MASTLEN DAMPDELTA0 DAMPDELTA2 DAMPDELTA3 BLDMR DLDMR ALDMR THETAGEO THETAGEO2 CLDMR RLDMR FLAPSTOPMODEL LAGSTOPMODEL}
+node108.fields.ALDMR.mark 0
+node108.fields.ALDMR.value {0.0189 ft}
+node108.fields.BLDMR.mark 0
+node108.fields.BLDMR.value {0.2702 ft}
+node108.fields.CLDMR.mark 0
+node108.fields.CLDMR.value {1.0033 ft}
+node108.fields.CONEANG.mark 0
+node108.fields.CONEANG.value {0.0 deg}
+node108.fields.CONEOF.mark 0
+node108.fields.CONEOF.value {0.0 ft}
+node108.fields.DAMPDELTA0.mark 0
+node108.fields.DAMPDELTA0.value {7.0 deg}
+node108.fields.DAMPDELTA2.mark 0
+node108.fields.DAMPDELTA2.value {90.0 deg}
+node108.fields.DAMPDELTA3.mark 0
+node108.fields.DAMPDELTA3.value {90.0 deg}
+node108.fields.DELTA3.mark 0
+node108.fields.DELTA3.value {0 deg}
+node108.fields.DLDMR.mark 0
+node108.fields.DLDMR.value {0.8342 ft}
+node108.fields.FEATHOF.mark 1
+node108.fields.FEATHOF.value {8 mm}
+node108.fields.FLAPANG0.mark 0
+node108.fields.FLAPANG0.value {0 deg}
+node108.fields.FLAPCC.mark 0
+node108.fields.FLAPCC.value {0 ft-lbf-sec/rad}
+node108.fields.FLAPHOF.mark 0
+node108.fields.FLAPHOF.value {1.25 ft}
+node108.fields.FLAPKK.mark 0
+node108.fields.FLAPKK.value {0 ft-lbf/rad}
+node108.fields.FLAPSTOPMODEL.mark 0
+node108.fields.FLAPSTOPMODEL.value {1 }
+node108.fields.LAGANG0.mark 0
+node108.fields.LAGANG0.value {0.0 deg}
+node108.fields.LAGCC.mark 0
+node108.fields.LAGCC.value {20000.0 ft-lbf-sec/rad}
+node108.fields.LAGHOF.mark 0
+node108.fields.LAGHOF.value {1.25 ft}
+node108.fields.LAGKK.mark 0
+node108.fields.LAGKK.value {0 ft-lbf/rad}
+node108.fields.LAGSTOPMODEL.mark 0
+node108.fields.LAGSTOPMODEL.value {1 }
+node108.fields.MASTLEN.mark 0
+node108.fields.MASTLEN.value {0.0 ft}
+node108.fields.NSEGM.mark 0
+node108.fields.NSEGM.value 6
+node108.fields.RLDMR.mark 0
+node108.fields.RLDMR.value {0.5748 ft}
+node108.fields.THETAGEO.mark 0
+node108.fields.THETAGEO.value {17.481 deg}
+node108.fields.THETAGEO2.mark 0
+node108.fields.THETAGEO2.value {90.0 deg}
+node108.fields.TRANSYLEN.mark 0
+node108.fields.TRANSYLEN.value {0.0 ft}
+node108.label Articulated
+node108.memo {}
+node108.name bearticulated
+node108.options {ISBEELASTIC SCPOPTION ISFLAPHINGE ISLAGHINGE LAGDAMPER FLAPSTOPOPTION LAGSTOPOPTION ISIBC}
+node108.options.FLAPSTOPOPTION.mark 0
+node108.options.FLAPSTOPOPTION.value 0
+node108.options.ISBEELASTIC.mark 0
+node108.options.ISBEELASTIC.value 0
+node108.options.ISFLAPHINGE.mark 1
+node108.options.ISFLAPHINGE.value 0
+node108.options.ISIBC.mark 0
+node108.options.ISIBC.value 0
+node108.options.ISLAGHINGE.mark 0
+node108.options.ISLAGHINGE.value 0
+node108.options.LAGDAMPER.mark 0
+node108.options.LAGDAMPER.value 0
+node108.options.LAGSTOPOPTION.mark 0
+node108.options.LAGSTOPOPTION.value 0
+node108.options.SCPOPTION.mark 1
+node108.options.SCPOPTION.value 0
+node108.selected 1
+node108.subnodes {node109 node110 node111 node112 node113 node114 node115}
+node108.template bearticulated
+node109.class table
+node109.completed 1
+node109.filename bladeprop_tail_rotor.tab
+node109.label {Blade property}
+node109.memo {}
+node109.name bladeprop
+node109.path tables
+node109.selected 1
+node109.subnodes {}
+node109.template bladeprop
+node11.class module
+node11.completed 0
+node11.fields {EULERHUB ROTORLOC NBLADES BTL TILTAXIS OMEGANOM RMR PHASE}
+node11.fields.BTL.mark 1
+node11.fields.BTL.value 0.97
+node11.fields.EULERHUB.mark 0
+node11.fields.EULERHUB.value {0.0  180.0  0.0 deg}
+node11.fields.NBLADES.mark 1
+node11.fields.NBLADES.value 2
+node11.fields.OMEGANOM.mark 1
+node11.fields.OMEGANOM.value {1000 rpm}
+node11.fields.PHASE.mark 1
+node11.fields.PHASE.value {0 deg}
+node11.fields.RMR.mark 1
+node11.fields.RMR.value {888 mm}
+node11.fields.ROTORLOC.mark 1
+node11.fields.ROTORLOC.value {0 0 0 mm}
+node11.fields.TILTAXIS.mark 1
+node11.fields.TILTAXIS.value 2
+node11.label {Blade Element}
+node11.memo {
+04 May 2018 Conversion: note: Option <LOADPATH> not found; using default value <0>
+15 Oct 2019 Conversion: note: Option <EMOTOR> not found; using default value <0>}
+node11.name berotor
+node11.options {CLOCKWISE LOADPATH EMOTOR ICINGEFF}
+node11.options.CLOCKWISE.mark 1
+node11.options.CLOCKWISE.value 1
+node11.options.EMOTOR.mark 0
+node11.options.EMOTOR.value 0
+node11.options.ICINGEFF.mark 0
+node11.options.ICINGEFF.value 0
+node11.options.LOADPATH.mark 1
+node11.options.LOADPATH.value 0
+node11.selected 1
+node11.subnodes {node12 node21 node22 node23 node24}
+node11.template berotor
+node110.class table
+node110.completed 0
+node110.filename tr_aeronodes.tab
+node110.label {Structural nodes}
+node110.memo {}
+node110.name xnode
+node110.path ./tables/
+node110.selected 1
+node110.subnodes {}
+node110.template xnode
+node111.class table
+node111.completed 0
+node111.filename lagdamper.tab
+node111.label {Lead-Lag translational damper}
+node111.memo {}
+node111.name lagdampertab
+node111.path .
+node111.selected 1
+node111.subnodes {}
+node111.template lagdampertab
+node112.class table
+node112.completed 0
+node112.filename beblademode.tab
+node112.label {Mode shape}
+node112.memo {}
+node112.name modeshape
+node112.path .
+node112.selected 1
+node112.subnodes {}
+node112.template modeshape
+node113.class table
+node113.completed 0
+node113.filename flapstopprop.tab
+node113.label {Flap stop property}
+node113.memo {}
+node113.name rotspringdamptab
+node113.path .
+node113.selected 1
+node113.subnodes {}
+node113.template rotspringdamptab
+node114.class table
+node114.completed 0
+node114.filename lagstopprop.tab
+node114.label {Lead-Lag stop property}
+node114.memo {}
+node114.name lagstopproptab
+node114.path .
+node114.selected 1
+node114.subnodes {}
+node114.template lagstopproptab
+node115.class table
+node115.completed 0
+node115.filename leadlagrotspringdamp.tab
+node115.label {Lead-Lag rotational damper property}
+node115.memo {}
+node115.name lagrotspringdamptab
+node115.path .
+node115.selected 1
+node115.subnodes {}
+node115.template lagrotspringdamptab
+node116.class alt
+node116.completed 1
+node116.currentSelection quasisteady
+node116.label Airloads
+node116.memo {}
+node116.name airloads
+node116.selected 1
+node116.selections {%none% analinearunstd quasisteady quasiunsteady lbdynstall dynstall prescribedaero}
+node116.selections.%none%.subnodes {}
+node116.selections.quasisteady.subnodes node120
+node116.subnodes node120
+node116.template airloads
+node117.class alt
+node117.completed 1
+node117.currentSelection finitestate
+node117.label {Induced Velocity}
+node117.memo {}
+node117.name inducedvelocity
+node117.selected 1
+node117.selections {%none% glauertinflow threestateinflow sixstateinflow finitestate vortexwake vortexwaketime vpm}
+node117.selections.%none%.subnodes {}
+node117.selections.finitestate.subnodes node161
+node117.selections.sixstateinflow.subnodes node126
+node117.subnodes node161
+node117.template inducedvelocity
+node118.class alt
+node118.completed 0
+node118.currentSelection %none%
+node118.label {Rotor Interference}
+node118.memo {}
+node118.name rtrintf
+node118.selected 1
+node118.selections {%none% rtrempirintfacps rtrempirintf rtrempirintfheli rtr3stateintf rtr6stateintf rtrfinitestateintf rtrvtxintf}
+node118.selections.%none%.subnodes {}
+node118.subnodes {}
+node118.template rtrintf
+node119.class table
+node119.completed 0
+node119.filename dcmotorprop.tab
+node119.label {DC motor property}
+node119.memo {}
+node119.name dcmotorprop
+node119.path .
+node119.selected 1
+node119.subnodes {}
+node119.template dcmotorprop
+node12.class alt
+node12.completed 1
+node12.currentSelection bearticulated
+node12.label {Blade Structure}
+node12.memo {}
+node12.name bestructure
+node12.selected 1
+node12.selections {bearticulated behingeless beteetering begimbal}
+node12.selections.bearticulated.subnodes node13
+node12.subnodes node13
+node12.template bestructure
+node120.class module
+node120.completed 1
+node120.fields {NSEGA FIRSTACPIB AFOILBOUNDARY RSBAR NSCL NSCD}
+node120.fields.AFOILBOUNDARY.mark 0
+node120.fields.AFOILBOUNDARY.value {0.0 1.0}
+node120.fields.FIRSTACPIB.mark 1
+node120.fields.FIRSTACPIB.value {40 mm}
+node120.fields.NSCD.mark 0
+node120.fields.NSCD.value 0.1
+node120.fields.NSCL.mark 0
+node120.fields.NSCL.value 0.6
+node120.fields.NSEGA.mark 0
+node120.fields.NSEGA.value 5
+node120.fields.RSBAR.mark 0
+node120.fields.RSBAR.value 0.70
+node120.label Quasi-Steady
+node120.memo {}
+node120.name quasisteady
+node120.options {ACPOPTION ATABOPTION ISROTSTALL ISWLMODEL ISSMOOTHAIRFOIL}
+node120.options.ACPOPTION.mark 1
+node120.options.ACPOPTION.value 1
+node120.options.ATABOPTION.mark 1
+node120.options.ATABOPTION.value 1
+node120.options.ISROTSTALL.mark 0
+node120.options.ISROTSTALL.value 0
+node120.options.ISSMOOTHAIRFOIL.mark 1
+node120.options.ISSMOOTHAIRFOIL.value 1
+node120.options.ISWLMODEL.mark 0
+node120.options.ISWLMODEL.value 0
+node120.selected 1
+node120.subnodes {node121 node122 node123 node124}
+node120.template quasisteady
+node121.choices airfoiltab
+node121.class rep
+node121.completed 1
+node121.label {2-D nonuniform table}
+node121.memo {}
+node121.name airfoiltab
+node121.selected 1
+node121.subnodes node125
+node121.template airfoiltab
+node122.choices uniairfoiltab
+node122.class rep
+node122.completed 0
+node122.label {Uniform airfoil table}
+node122.memo {}
+node122.name uniairfoiltab
+node122.selected 1
+node122.subnodes {}
+node122.template uniairfoiltab
+node123.class table
+node123.completed 1
+node123.filename aeronodes_tr.tab
+node123.label {Aero segment nodes}
+node123.memo {}
+node123.name aeroxnode
+node123.path ./tables/
+node123.selected 1
+node123.subnodes {}
+node123.template aeroxnode
+node124.class table
+node124.completed 0
+node124.filename aeroxnodetefles.tab
+node124.label {Aero nodes with TEF/LES}
+node124.memo {}
+node124.name aeroxnodetefles
+node124.path .
+node124.selected 1
+node124.subnodes {}
+node124.template aeroxnodetefles
+node125.class table
+node125.completed 1
+node125.filename naca23012.tab
+node125.label NACA23012
+node125.memo {}
+node125.name airfoiltab
+node125.path tables
+node125.selected 1
+node125.subnodes {}
+node125.template airfoiltab
+node126.class module
+node126.completed 1
+node126.label {Peters-He Six State Inflow}
+node126.memo {}
+node126.name sixstateinflow
+node126.options {GRDEFFOPT ISDELTALS DISTORTWAKE ISKAPPA}
+node126.options.DISTORTWAKE.mark 0
+node126.options.DISTORTWAKE.value 0
+node126.options.GRDEFFOPT.mark 0
+node126.options.GRDEFFOPT.value 0
+node126.options.ISDELTALS.mark 0
+node126.options.ISDELTALS.value 0
+node126.options.ISKAPPA.mark 0
+node126.options.ISKAPPA.value 0
+node126.selected 1
+node126.subnodes {node127 node128 node129}
+node126.template sixstateinflow
+node127.class table
+node127.completed 0
+node127.filename kappa.tab
+node127.label {Inflow correction (1D table)}
+node127.memo {}
+node127.name kappatab
+node127.path .
+node127.selected 1
+node127.subnodes {}
+node127.template kappatab
+node128.class table
+node128.completed 0
+node128.filename kappa2d.tab
+node128.label {Inflow correction (2D table)}
+node128.memo {}
+node128.name kappatab2d
+node128.path .
+node128.selected 1
+node128.subnodes {}
+node128.template kappatab2d
+node129.class table
+node129.completed 0
+node129.filename deltalvpm.tab
+node129.label {Delta L-matrix}
+node129.memo {}
+node129.name vpmdeltal
+node129.path .
+node129.selected 1
+node129.subnodes {}
+node129.template vpmdeltal
+node13.class module
+node13.completed 0
+node13.fields {NSEGM TRANSYLEN CONEANG CONEOF FLAPHOF FEATHOF DELTA3 FLAPKK FLAPCC FLAPANG0 LAGHOF LAGKK LAGCC LAGANG0 MASTLEN DAMPDELTA0 DAMPDELTA2 DAMPDELTA3 BLDMR DLDMR ALDMR THETAGEO THETAGEO2 CLDMR RLDMR FLAPSTOPMODEL LAGSTOPMODEL}
+node13.fields.ALDMR.mark 0
+node13.fields.ALDMR.value {0.0189 ft}
+node13.fields.BLDMR.mark 0
+node13.fields.BLDMR.value {0.2702 ft}
+node13.fields.CLDMR.mark 0
+node13.fields.CLDMR.value {1.0033 ft}
+node13.fields.CONEANG.mark 0
+node13.fields.CONEANG.value {0.0 deg}
+node13.fields.CONEOF.mark 0
+node13.fields.CONEOF.value {0.0 ft}
+node13.fields.DAMPDELTA0.mark 0
+node13.fields.DAMPDELTA0.value {7.0 deg}
+node13.fields.DAMPDELTA2.mark 0
+node13.fields.DAMPDELTA2.value {90.0 deg}
+node13.fields.DAMPDELTA3.mark 0
+node13.fields.DAMPDELTA3.value {90.0 deg}
+node13.fields.DELTA3.mark 0
+node13.fields.DELTA3.value {0 deg}
+node13.fields.DLDMR.mark 0
+node13.fields.DLDMR.value {0.8342 ft}
+node13.fields.FEATHOF.mark 1
+node13.fields.FEATHOF.value {27 mm}
+node13.fields.FLAPANG0.mark 0
+node13.fields.FLAPANG0.value {0 deg}
+node13.fields.FLAPCC.mark 0
+node13.fields.FLAPCC.value {0 ft-lbf-sec/rad}
+node13.fields.FLAPHOF.mark 0
+node13.fields.FLAPHOF.value {1.25 ft}
+node13.fields.FLAPKK.mark 0
+node13.fields.FLAPKK.value {0 ft-lbf/rad}
+node13.fields.FLAPSTOPMODEL.mark 0
+node13.fields.FLAPSTOPMODEL.value {1 }
+node13.fields.LAGANG0.mark 0
+node13.fields.LAGANG0.value {0.0 deg}
+node13.fields.LAGCC.mark 1
+node13.fields.LAGCC.value {200000.0 ft-lbf-sec/rad}
+node13.fields.LAGHOF.mark 0
+node13.fields.LAGHOF.value {1.25 ft}
+node13.fields.LAGKK.mark 0
+node13.fields.LAGKK.value {0 ft-lbf/rad}
+node13.fields.LAGSTOPMODEL.mark 0
+node13.fields.LAGSTOPMODEL.value {1 }
+node13.fields.MASTLEN.mark 0
+node13.fields.MASTLEN.value {0.0 ft}
+node13.fields.NSEGM.mark 0
+node13.fields.NSEGM.value 6
+node13.fields.RLDMR.mark 0
+node13.fields.RLDMR.value {0.5748 ft}
+node13.fields.THETAGEO.mark 0
+node13.fields.THETAGEO.value {17.481 deg}
+node13.fields.THETAGEO2.mark 0
+node13.fields.THETAGEO2.value {90.0 deg}
+node13.fields.TRANSYLEN.mark 0
+node13.fields.TRANSYLEN.value {0.0 ft}
+node13.label Articulated
+node13.memo {}
+node13.name bearticulated
+node13.options {ISBEELASTIC SCPOPTION ISFLAPHINGE ISLAGHINGE LAGDAMPER FLAPSTOPOPTION LAGSTOPOPTION ISIBC}
+node13.options.FLAPSTOPOPTION.mark 0
+node13.options.FLAPSTOPOPTION.value 0
+node13.options.ISBEELASTIC.mark 0
+node13.options.ISBEELASTIC.value 0
+node13.options.ISFLAPHINGE.mark 1
+node13.options.ISFLAPHINGE.value 0
+node13.options.ISIBC.mark 0
+node13.options.ISIBC.value 0
+node13.options.ISLAGHINGE.mark 0
+node13.options.ISLAGHINGE.value 0
+node13.options.LAGDAMPER.mark 0
+node13.options.LAGDAMPER.value 0
+node13.options.LAGSTOPOPTION.mark 0
+node13.options.LAGSTOPOPTION.value 0
+node13.options.SCPOPTION.mark 1
+node13.options.SCPOPTION.value 0
+node13.selected 1
+node13.subnodes {node14 node15 node16 node17 node18 node19 node20}
+node13.template bearticulated
+node130.class module
+node130.completed 0
+node130.fields {FSBLWLAESURF PSITHEPHISURF SURFIDX SURFSWP SURFSPAN NSURFSEG SURFANG SURFDEFIC CTRLSURFINDEX ISHSTABILATOR}
+node130.fields.CTRLSURFINDEX.mark 0
+node130.fields.CTRLSURFINDEX.value 1
+node130.fields.FSBLWLAESURF.mark 1
+node130.fields.FSBLWLAESURF.value {750.0 0.0 0 mm}
+node130.fields.ISHSTABILATOR.mark 0
+node130.fields.ISHSTABILATOR.value 1
+node130.fields.NSURFSEG.mark 1
+node130.fields.NSURFSEG.value 1
+node130.fields.PSITHEPHISURF.mark 1
+node130.fields.PSITHEPHISURF.value {-90 0 0 deg}
+node130.fields.SURFANG.mark 1
+node130.fields.SURFANG.value {2 deg}
+node130.fields.SURFDEFIC.mark 1
+node130.fields.SURFDEFIC.value 1
+node130.fields.SURFIDX.mark 1
+node130.fields.SURFIDX.value 1
+node130.fields.SURFSPAN.mark 1
+node130.fields.SURFSPAN.value {100 mm}
+node130.fields.SURFSWP.mark 1
+node130.fields.SURFSWP.value {0 deg}
+node130.label {Right horizontal stabilizer}
+node130.memo {}
+node130.name aesurftab2d
+node130.options {AESURF3DFLOW AESURFOPTION CTRLSURF MULTISURFACPS}
+node130.options.AESURF3DFLOW.mark 1
+node130.options.AESURF3DFLOW.value 1
+node130.options.AESURFOPTION.mark 1
+node130.options.AESURFOPTION.value 1
+node130.options.CTRLSURF.mark 1
+node130.options.CTRLSURF.value 1
+node130.options.MULTISURFACPS.mark 1
+node130.options.MULTISURFACPS.value 0
+node130.selected 1
+node130.subnodes {node131 node132 node133 node134}
+node130.template aesurftab2d
+node131.class table
+node131.completed 1
+node131.filename hstab_archer.tab
+node131.label {Lifting surface property}
+node131.memo {}
+node131.name aesurfprop
+node131.path ./tables/
+node131.selected 1
+node131.subnodes {}
+node131.template aesurfprop
+node132.class table
+node132.completed 1
+node132.filename naca23012.tab
+node132.label {2-D nonuniform table}
+node132.memo {}
+node132.name airfoiltab
+node132.path ./tables/
+node132.selected 1
+node132.subnodes {}
+node132.template airfoiltab
+node133.class table
+node133.completed 1
+node133.filename Praca-inzynierska/AH-56a/NACA0015.tab
+node133.label {Uniform airfoil table}
+node133.memo {}
+node133.name uniairfoiltab
+node133.path .
+node133.selected 1
+node133.subnodes {}
+node133.template uniairfoiltab
+node134.class table
+node134.completed 0
+node134.filename bodyacps.tab
+node134.label {Multiple ACP table}
+node134.memo {}
+node134.name multipleacptab
+node134.path .
+node134.selected 1
+node134.subnodes {}
+node134.template multipleacptab
+node135.class module
+node135.completed 0
+node135.fields {FSBLWLAESURF PSITHEPHISURF SURFIDX SURFSWP SURFSPAN NSURFSEG SURFANG SURFDEFIC CTRLSURFINDEX ISHSTABILATOR}
+node135.fields.CTRLSURFINDEX.mark 1
+node135.fields.CTRLSURFINDEX.value 2
+node135.fields.FSBLWLAESURF.mark 1
+node135.fields.FSBLWLAESURF.value {750.0 0.0 0 mm}
+node135.fields.ISHSTABILATOR.mark 0
+node135.fields.ISHSTABILATOR.value 1
+node135.fields.NSURFSEG.mark 1
+node135.fields.NSURFSEG.value 1
+node135.fields.PSITHEPHISURF.mark 1
+node135.fields.PSITHEPHISURF.value {-90 0 0 deg}
+node135.fields.SURFANG.mark 1
+node135.fields.SURFANG.value {2 deg}
+node135.fields.SURFDEFIC.mark 1
+node135.fields.SURFDEFIC.value 1.0
+node135.fields.SURFIDX.mark 1
+node135.fields.SURFIDX.value -1
+node135.fields.SURFSPAN.mark 1
+node135.fields.SURFSPAN.value {100 mm}
+node135.fields.SURFSWP.mark 1
+node135.fields.SURFSWP.value {0 deg}
+node135.label {Left horizontal stabilizer}
+node135.memo {}
+node135.name aesurftab2d
+node135.options {AESURF3DFLOW AESURFOPTION CTRLSURF MULTISURFACPS}
+node135.options.AESURF3DFLOW.mark 0
+node135.options.AESURF3DFLOW.value 1
+node135.options.AESURFOPTION.mark 1
+node135.options.AESURFOPTION.value 1
+node135.options.CTRLSURF.mark 1
+node135.options.CTRLSURF.value 1
+node135.options.MULTISURFACPS.mark 0
+node135.options.MULTISURFACPS.value 0
+node135.selected 1
+node135.subnodes {node136 node137 node138 node139}
+node135.template aesurftab2d
+node136.class table
+node136.completed 1
+node136.filename hstab_archer.tab
+node136.label {Lifting surface property}
+node136.memo {}
+node136.name aesurfprop
+node136.path ./tables/
+node136.selected 1
+node136.subnodes {}
+node136.template aesurfprop
+node137.class table
+node137.completed 1
+node137.filename naca23012.tab
+node137.label {2-D nonuniform table}
+node137.memo {}
+node137.name airfoiltab
+node137.path ./tables/
+node137.selected 1
+node137.subnodes {}
+node137.template airfoiltab
+node138.class table
+node138.completed 0
+node138.filename naca0012uniform.sav
+node138.label {Uniform airfoil table}
+node138.memo {}
+node138.name uniairfoiltab
+node138.path .
+node138.selected 1
+node138.subnodes {}
+node138.template uniairfoiltab
+node139.class table
+node139.completed 0
+node139.filename bodyacps.tab
+node139.label {Multiple ACP table}
+node139.memo {}
+node139.name multipleacptab
+node139.path .
+node139.selected 1
+node139.subnodes {}
+node139.template multipleacptab
+node14.class table
+node14.completed 1
+node14.filename bladeprop_vario.tab
+node14.label {Blade property}
+node14.memo {}
+node14.name bladeprop
+node14.path tables
+node14.selected 1
+node14.subnodes {}
+node14.template bladeprop
+node140.class module
+node140.completed 1
+node140.fields {FSBLWLAESURF PSITHEPHISURF SURFIDX SURFSWP SURFSPAN NSURFSEG SURFANG SURFDEFIC CTRLSURFINDEX ISHSTABILATOR}
+node140.fields.CTRLSURFINDEX.mark 1
+node140.fields.CTRLSURFINDEX.value 3
+node140.fields.FSBLWLAESURF.mark 1
+node140.fields.FSBLWLAESURF.value {830.4 0.0 -209.3 mm}
+node140.fields.ISHSTABILATOR.mark 1
+node140.fields.ISHSTABILATOR.value 0
+node140.fields.NSURFSEG.mark 1
+node140.fields.NSURFSEG.value 1
+node140.fields.PSITHEPHISURF.mark 1
+node140.fields.PSITHEPHISURF.value {0 -90 -96 deg}
+node140.fields.SURFANG.mark 1
+node140.fields.SURFANG.value {0 deg}
+node140.fields.SURFDEFIC.mark 1
+node140.fields.SURFDEFIC.value 1.0
+node140.fields.SURFIDX.mark 1
+node140.fields.SURFIDX.value 1
+node140.fields.SURFSPAN.mark 1
+node140.fields.SURFSPAN.value {260 mm}
+node140.fields.SURFSWP.mark 1
+node140.fields.SURFSWP.value {0 deg}
+node140.label {Vertical horizontal stabilizer}
+node140.memo {}
+node140.name aesurftab2d
+node140.options {AESURF3DFLOW AESURFOPTION CTRLSURF MULTISURFACPS}
+node140.options.AESURF3DFLOW.mark 0
+node140.options.AESURF3DFLOW.value 1
+node140.options.AESURFOPTION.mark 0
+node140.options.AESURFOPTION.value 1
+node140.options.CTRLSURF.mark 1
+node140.options.CTRLSURF.value 1
+node140.options.MULTISURFACPS.mark 0
+node140.options.MULTISURFACPS.value 0
+node140.selected 0
+node140.subnodes {node141 node142 node143 node144}
+node140.template aesurftab2d
+node141.class table
+node141.completed 1
+node141.filename vertical(3).tab
+node141.label {Lifting surface property}
+node141.memo {}
+node141.name aesurfprop
+node141.path ./tables/
+node141.selected 1
+node141.subnodes {}
+node141.template aesurfprop
+node142.class table
+node142.completed 1
+node142.filename NACA0015.tab
+node142.label {2-D nonuniform table}
+node142.memo {}
+node142.name airfoiltab
+node142.path ./tables/
+node142.selected 1
+node142.subnodes {}
+node142.template airfoiltab
+node143.class table
+node143.completed 0
+node143.filename naca0012uniform.sav
+node143.label {Uniform airfoil table}
+node143.memo {}
+node143.name uniairfoiltab
+node143.path .
+node143.selected 1
+node143.subnodes {}
+node143.template uniairfoiltab
+node144.class table
+node144.completed 0
+node144.filename bodyacps.tab
+node144.label {Multiple ACP table}
+node144.memo {}
+node144.name multipleacptab
+node144.path .
+node144.selected 1
+node144.subnodes {}
+node144.template multipleacptab
+node145.class module
+node145.completed 1
+node145.fields {FSBLWLAESURF PSITHEPHISURF SURFIDX SURFSWP SURFSPAN NSURFSEG SURFANG SURFDEFIC CTRLSURFINDEX ISHSTABILATOR}
+node145.fields.CTRLSURFINDEX.mark 1
+node145.fields.CTRLSURFINDEX.value 4
+node145.fields.FSBLWLAESURF.mark 1
+node145.fields.FSBLWLAESURF.value {-2.2 0.0 -265.7 mm}
+node145.fields.ISHSTABILATOR.mark 0
+node145.fields.ISHSTABILATOR.value 1
+node145.fields.NSURFSEG.mark 1
+node145.fields.NSURFSEG.value 1
+node145.fields.PSITHEPHISURF.mark 1
+node145.fields.PSITHEPHISURF.value {90 0 180 deg}
+node145.fields.SURFANG.mark 1
+node145.fields.SURFANG.value {0 deg}
+node145.fields.SURFDEFIC.mark 1
+node145.fields.SURFDEFIC.value 1
+node145.fields.SURFIDX.mark 1
+node145.fields.SURFIDX.value 1
+node145.fields.SURFSPAN.mark 1
+node145.fields.SURFSPAN.value {541 mm}
+node145.fields.SURFSWP.mark 1
+node145.fields.SURFSWP.value {7 deg}
+node145.label {Right wing}
+node145.memo {}
+node145.name aesurftab2d
+node145.options {AESURF3DFLOW AESURFOPTION CTRLSURF MULTISURFACPS}
+node145.options.AESURF3DFLOW.mark 0
+node145.options.AESURF3DFLOW.value 1
+node145.options.AESURFOPTION.mark 0
+node145.options.AESURFOPTION.value 1
+node145.options.CTRLSURF.mark 1
+node145.options.CTRLSURF.value 1
+node145.options.MULTISURFACPS.mark 0
+node145.options.MULTISURFACPS.value 0
+node145.selected 0
+node145.subnodes {node146 node147 node148 node149}
+node145.template aesurftab2d
+node146.class table
+node146.completed 1
+node146.filename wing2.tab
+node146.label {Lifting surface property}
+node146.memo {}
+node146.name aesurfprop
+node146.path ./tables/
+node146.selected 1
+node146.subnodes {}
+node146.template aesurfprop
+node147.class table
+node147.completed 1
+node147.filename naca23012.tab
+node147.label {2-D nonuniform table}
+node147.memo {}
+node147.name airfoiltab
+node147.path ./tables/
+node147.selected 1
+node147.subnodes {}
+node147.template airfoiltab
+node148.class table
+node148.completed 0
+node148.filename naca0012uniform.sav
+node148.label {Uniform airfoil table}
+node148.memo {}
+node148.name uniairfoiltab
+node148.path .
+node148.selected 1
+node148.subnodes {}
+node148.template uniairfoiltab
+node149.class table
+node149.completed 0
+node149.filename bodyacps.tab
+node149.label {Multiple ACP table}
+node149.memo {}
+node149.name multipleacptab
+node149.path .
+node149.selected 1
+node149.subnodes {}
+node149.template multipleacptab
+node15.class table
+node15.completed 0
+node15.filename bladexnode.tab
+node15.label {Structural nodes}
+node15.memo {}
+node15.name xnode
+node15.path .
+node15.selected 1
+node15.subnodes {}
+node15.template xnode
+node150.class module
+node150.completed 1
+node150.fields {FSBLWLAESURF PSITHEPHISURF SURFIDX SURFSWP SURFSPAN NSURFSEG SURFANG SURFDEFIC CTRLSURFINDEX ISHSTABILATOR}
+node150.fields.CTRLSURFINDEX.mark 1
+node150.fields.CTRLSURFINDEX.value 5
+node150.fields.FSBLWLAESURF.mark 1
+node150.fields.FSBLWLAESURF.value {-2.2 0.0 -265.7 mm}
+node150.fields.ISHSTABILATOR.mark 0
+node150.fields.ISHSTABILATOR.value 1
+node150.fields.NSURFSEG.mark 1
+node150.fields.NSURFSEG.value 1
+node150.fields.PSITHEPHISURF.mark 1
+node150.fields.PSITHEPHISURF.value {90 0 180 deg}
+node150.fields.SURFANG.mark 1
+node150.fields.SURFANG.value {0 deg}
+node150.fields.SURFDEFIC.mark 1
+node150.fields.SURFDEFIC.value 1.0
+node150.fields.SURFIDX.mark 1
+node150.fields.SURFIDX.value -1
+node150.fields.SURFSPAN.mark 1
+node150.fields.SURFSPAN.value {541 mm}
+node150.fields.SURFSWP.mark 1
+node150.fields.SURFSWP.value {7 deg}
+node150.label {Left wing}
+node150.memo {}
+node150.name aesurftab2d
+node150.options {AESURF3DFLOW AESURFOPTION CTRLSURF MULTISURFACPS}
+node150.options.AESURF3DFLOW.mark 0
+node150.options.AESURF3DFLOW.value 1
+node150.options.AESURFOPTION.mark 0
+node150.options.AESURFOPTION.value 1
+node150.options.CTRLSURF.mark 1
+node150.options.CTRLSURF.value 1
+node150.options.MULTISURFACPS.mark 0
+node150.options.MULTISURFACPS.value 0
+node150.selected 0
+node150.subnodes {node151 node152 node153 node154}
+node150.template aesurftab2d
+node151.class table
+node151.completed 1
+node151.filename wing2.tab
+node151.label {Lifting surface property}
+node151.memo {}
+node151.name aesurfprop
+node151.path ./tables/
+node151.selected 1
+node151.subnodes {}
+node151.template aesurfprop
+node152.class table
+node152.completed 1
+node152.filename naca23012.tab
+node152.label {2-D nonuniform table}
+node152.memo {}
+node152.name airfoiltab
+node152.path ./tables/
+node152.selected 1
+node152.subnodes {}
+node152.template airfoiltab
+node153.class table
+node153.completed 0
+node153.filename naca0012uniform.sav
+node153.label {Uniform airfoil table}
+node153.memo {}
+node153.name uniairfoiltab
+node153.path .
+node153.selected 1
+node153.subnodes {}
+node153.template uniairfoiltab
+node154.class table
+node154.completed 0
+node154.filename bodyacps.tab
+node154.label {Multiple ACP table}
+node154.memo {}
+node154.name multipleacptab
+node154.path .
+node154.selected 1
+node154.subnodes {}
+node154.template multipleacptab
+node155.class module
+node155.completed 0
+node155.fields FSBLWLSENSOR
+node155.fields.FSBLWLSENSOR.mark 1
+node155.fields.FSBLWLSENSOR.value {125 29 -108 mm}
+node155.label {Airframe sens1}
+node155.memo {}
+node155.name airframesensor
+node155.selected 1
+node155.subnodes {}
+node155.template airframesensor
+node156.class module
+node156.completed 1
+node156.fields {FSBLWLAIRSPEEDSENSOR EULERAIRSPEEDSENSOR}
+node156.fields.EULERAIRSPEEDSENSOR.mark 0
+node156.fields.EULERAIRSPEEDSENSOR.value {0.0  0.0  0.0 deg}
+node156.fields.FSBLWLAIRSPEEDSENSOR.mark 1
+node156.fields.FSBLWLAIRSPEEDSENSOR.value {-300.0  0.0  -150.0 mm}
+node156.label {Airspeed Sensor}
+node156.memo {}
+node156.name airspeedsensor
+node156.selected 0
+node156.subnodes {}
+node156.template airspeedsensor
+node157.class attachment
+node157.completed 1
+node157.filename archer_grabowski2.csge
+node157.label Attachment
+node157.memo {}
+node157.name +attachment
+node157.path fcs
+node157.selected 1
+node157.subnodes {}
+node157.template +attachment
+node158.class module
+node158.completed 0
+node158.label {Electrical Motor}
+node158.memo {}
+node158.name emotorperf
+node158.options ISPERFORMANCE
+node158.options.ISPERFORMANCE.mark 0
+node158.options.ISPERFORMANCE.value 0
+node158.selected 1
+node158.subnodes {}
+node158.template emotorperf
+node159.class module
+node159.completed 0
+node159.fields {ROTORLOC EULERHUB NBLADES RMR BTL ATR CDHUB DRAGAREA CD00 CD01 CD02 THETC0 CHORDTR TWSTTR TD3TR DELTTR BVTTR VBVTTR DROT OMEGANOM KAPPA DMU KM TAUBETA0}
+node159.fields.ATR.mark 0
+node159.fields.ATR.value 5.73
+node159.fields.BTL.mark 0
+node159.fields.BTL.value 0.92
+node159.fields.BVTTR.mark 0
+node159.fields.BVTTR.value 0.7960
+node159.fields.CD00.mark 0
+node159.fields.CD00.value 0.0087
+node159.fields.CD01.mark 0
+node159.fields.CD01.value -0.0216
+node159.fields.CD02.mark 0
+node159.fields.CD02.value 0.40
+node159.fields.CDHUB.mark 0
+node159.fields.CDHUB.value 0.05
+node159.fields.CHORDTR.mark 0
+node159.fields.CHORDTR.value {0.81 ft}
+node159.fields.DELTTR.mark 0
+node159.fields.DELTTR.value {0.001455 deg/lbf}
+node159.fields.DMU.mark 0
+node159.fields.DMU.value 4.65
+node159.fields.DRAGAREA.mark 0
+node159.fields.DRAGAREA.value {9.5 ft^2}
+node159.fields.DROT.mark 0
+node159.fields.DROT.value 1
+node159.fields.EULERHUB.mark 0
+node159.fields.EULERHUB.value {0.0  0.0  -110.0  deg}
+node159.fields.KAPPA.mark 0
+node159.fields.KAPPA.value 1.15
+node159.fields.KM.mark 0
+node159.fields.KM.value {0.8488 }
+node159.fields.NBLADES.mark 0
+node159.fields.NBLADES.value 4
+node159.fields.OMEGANOM.mark 0
+node159.fields.OMEGANOM.value {124.62 rad/sec}
+node159.fields.RMR.mark 0
+node159.fields.RMR.value {5.5 ft}
+node159.fields.ROTORLOC.mark 0
+node159.fields.ROTORLOC.value {60.0  -1.2  27.0  ft}
+node159.fields.TAUBETA0.mark 0
+node159.fields.TAUBETA0.value {0.1 sec}
+node159.fields.TD3TR.mark 0
+node159.fields.TD3TR.value 0.7002075
+node159.fields.THETC0.mark 0
+node159.fields.THETC0.value {6.0 deg}
+node159.fields.TWSTTR.mark 0
+node159.fields.TWSTTR.value {-18.0 deg}
+node159.fields.VBVTTR.mark 0
+node159.fields.VBVTTR.value {30 knots}
+node159.label {Disk Tail Rotor (Coll only)}
+node159.memo {}
+node159.name disktailrotor
+node159.selected 1
+node159.subnodes {}
+node159.template disktailrotor
+node16.class table
+node16.completed 0
+node16.filename lagdamper.tab
+node16.label {Lead-Lag translational damper}
+node16.memo {}
+node16.name lagdampertab
+node16.path .
+node16.selected 1
+node16.subnodes {}
+node16.template lagdampertab
+node160.class table
+node160.completed 1
+node160.filename {NACA0015 cd+20%.tab}
+node160.label {NACA0015 CD+20%}
+node160.memo {}
+node160.name airfoiltab
+node160.path tables
+node160.selected 1
+node160.subnodes {}
+node160.template airfoiltab
+node161.class module
+node161.completed 1
+node161.fields {NHARDW NRADDW}
+node161.fields.NHARDW.mark 1
+node161.fields.NHARDW.value 1
+node161.fields.NRADDW.mark 1
+node161.fields.NRADDW.value 1
+node161.label {Peters-He Finite State}
+node161.memo {}
+node161.name finitestate
+node161.options {GRDEFFOPT ISDELTALS DISTORTWAKE ISKAPPA}
+node161.options.DISTORTWAKE.mark 0
+node161.options.DISTORTWAKE.value 0
+node161.options.GRDEFFOPT.mark 0
+node161.options.GRDEFFOPT.value 0
+node161.options.ISDELTALS.mark 0
+node161.options.ISDELTALS.value 0
+node161.options.ISKAPPA.mark 0
+node161.options.ISKAPPA.value 0
+node161.selected 1
+node161.subnodes {node162 node163 node164}
+node161.template finitestate
+node162.class table
+node162.completed 0
+node162.filename kappa.tab
+node162.label {Inflow correction (1D table)}
+node162.memo {}
+node162.name kappatab
+node162.path .
+node162.selected 1
+node162.subnodes {}
+node162.template kappatab
+node163.class table
+node163.completed 0
+node163.filename kappa2d.tab
+node163.label {Inflow correction (2D table)}
+node163.memo {}
+node163.name kappatab2d
+node163.path .
+node163.selected 1
+node163.subnodes {}
+node163.template kappatab2d
+node164.class table
+node164.completed 0
+node164.filename deltalvpm.tab
+node164.label {Delta L-matrix}
+node164.memo {}
+node164.name vpmdeltal
+node164.path .
+node164.selected 1
+node164.subnodes {}
+node164.template vpmdeltal
+node165.class module
+node165.completed 0
+node165.fields {FSBLWLLGEAR EULERLGEAR WOWINDEX BRAKE MAXLOAD MUSIDE GEARUDSL GEARMUB GEARMUR GEARVTRAN GEARMUSIDE GEARCC GEARKK GEARCX GEARCY GEARZ0 GEARLIMTCX GEARLIMTCY GEARINTCX GEARINTCY GEARWLMAX TIRERADIUS FXSECURMAX FYSECURMAX CASTOROFFSET CASTORM CASTORI CASTORKK CASTORCC}
+node165.fields.BRAKE.mark 0
+node165.fields.BRAKE.value {1.0 }
+node165.fields.CASTORCC.mark 0
+node165.fields.CASTORCC.value {5  50 lbf-ft-sec}
+node165.fields.CASTORI.mark 0
+node165.fields.CASTORI.value {0 0 1 0 0 0 slug-ft^2}
+node165.fields.CASTORKK.mark 0
+node165.fields.CASTORKK.value {10  1000 lbf-ft}
+node165.fields.CASTORM.mark 0
+node165.fields.CASTORM.value {0.1 slug}
+node165.fields.CASTOROFFSET.mark 0
+node165.fields.CASTOROFFSET.value {0.5 ft}
+node165.fields.EULERLGEAR.mark 0
+node165.fields.EULERLGEAR.value {0  0  0  deg}
+node165.fields.FSBLWLLGEAR.mark 1
+node165.fields.FSBLWLLGEAR.value {-0.143 0.120 -0.320 meter}
+node165.fields.FXSECURMAX.mark 0
+node165.fields.FXSECURMAX.value {40000.0 lbf}
+node165.fields.FYSECURMAX.mark 0
+node165.fields.FYSECURMAX.value {40000.0 lbf}
+node165.fields.GEARCC.mark 0
+node165.fields.GEARCC.value {2000  2500 lbf-sec/ft}
+node165.fields.GEARCX.mark 0
+node165.fields.GEARCX.value 0.2
+node165.fields.GEARCY.mark 0
+node165.fields.GEARCY.value 0.2
+node165.fields.GEARINTCX.mark 0
+node165.fields.GEARINTCX.value 0.8
+node165.fields.GEARINTCY.mark 0
+node165.fields.GEARINTCY.value 0.8
+node165.fields.GEARKK.mark 0
+node165.fields.GEARKK.value {14520  22673 lbf/ft}
+node165.fields.GEARLIMTCX.mark 0
+node165.fields.GEARLIMTCX.value {-7.0 7.0}
+node165.fields.GEARLIMTCY.mark 0
+node165.fields.GEARLIMTCY.value {-1.0 1.0}
+node165.fields.GEARMUB.mark 0
+node165.fields.GEARMUB.value {-0.07  -0.08}
+node165.fields.GEARMUR.mark 0
+node165.fields.GEARMUR.value {-0.023 -0.017}
+node165.fields.GEARMUSIDE.mark 0
+node165.fields.GEARMUSIDE.value {-0.2667 }
+node165.fields.GEARUDSL.mark 1
+node165.fields.GEARUDSL.value {0.2 meter}
+node165.fields.GEARVTRAN.mark 0
+node165.fields.GEARVTRAN.value {0.2 0.2 ft/sec}
+node165.fields.GEARWLMAX.mark 1
+node165.fields.GEARWLMAX.value {10 newton}
+node165.fields.GEARZ0.mark 0
+node165.fields.GEARZ0.value {0.7 ft}
+node165.fields.MAXLOAD.mark 1
+node165.fields.MAXLOAD.value {-100 newton}
+node165.fields.MUSIDE.mark 0
+node165.fields.MUSIDE.value {-0.53  -0.27 }
+node165.fields.TIRERADIUS.mark 1
+node165.fields.TIRERADIUS.value {0.025 meter}
+node165.fields.WOWINDEX.mark 0
+node165.fields.WOWINDEX.value 1
+node165.label {Left Front}
+node165.memo {}
+node165.name hydralandgear
+node165.options {ISWOW STRUTTIREMODEL CASTORWHEEL SECURING}
+node165.options.CASTORWHEEL.mark 0
+node165.options.CASTORWHEEL.value 0
+node165.options.ISWOW.mark 1
+node165.options.ISWOW.value 1
+node165.options.SECURING.mark 0
+node165.options.SECURING.value 0
+node165.options.STRUTTIREMODEL.mark 0
+node165.options.STRUTTIREMODEL.value 1
+node165.selected 1
+node165.subnodes {node166 node167}
+node165.template hydralandgear
+node166.class table
+node166.completed 0
+node166.filename archer-lgearstruc.tab
+node166.label {Nonlinear strut property}
+node166.memo {}
+node166.name struttab
+node166.path tables
+node166.selected 1
+node166.subnodes {}
+node166.template struttab
+node167.class table
+node167.completed 0
+node167.filename archer-tire.tab
+node167.label {Nonlinear tire property}
+node167.memo {}
+node167.name tiretab
+node167.path tables
+node167.selected 1
+node167.subnodes {}
+node167.template tiretab
+node168.class module
+node168.completed 0
+node168.fields {FSBLWLLGEAR EULERLGEAR WOWINDEX BRAKE MAXLOAD MUSIDE GEARUDSL GEARMUB GEARMUR GEARVTRAN GEARMUSIDE GEARCC GEARKK GEARCX GEARCY GEARZ0 GEARLIMTCX GEARLIMTCY GEARINTCX GEARINTCY GEARWLMAX TIRERADIUS FXSECURMAX FYSECURMAX CASTOROFFSET CASTORM CASTORI CASTORKK CASTORCC}
+node168.fields.BRAKE.mark 0
+node168.fields.BRAKE.value {1.0 }
+node168.fields.CASTORCC.mark 0
+node168.fields.CASTORCC.value {5  50 lbf-ft-sec}
+node168.fields.CASTORI.mark 0
+node168.fields.CASTORI.value {0 0 1 0 0 0 slug-ft^2}
+node168.fields.CASTORKK.mark 0
+node168.fields.CASTORKK.value {10  1000 lbf-ft}
+node168.fields.CASTORM.mark 0
+node168.fields.CASTORM.value {0.1 slug}
+node168.fields.CASTOROFFSET.mark 0
+node168.fields.CASTOROFFSET.value {0.5 ft}
+node168.fields.EULERLGEAR.mark 0
+node168.fields.EULERLGEAR.value {0  0  0  deg}
+node168.fields.FSBLWLLGEAR.mark 1
+node168.fields.FSBLWLLGEAR.value {0.143 0.120 -0.320 meter}
+node168.fields.FXSECURMAX.mark 0
+node168.fields.FXSECURMAX.value {40000.0 lbf}
+node168.fields.FYSECURMAX.mark 0
+node168.fields.FYSECURMAX.value {40000.0 lbf}
+node168.fields.GEARCC.mark 0
+node168.fields.GEARCC.value {2000  2500 lbf-sec/ft}
+node168.fields.GEARCX.mark 0
+node168.fields.GEARCX.value 0.2
+node168.fields.GEARCY.mark 0
+node168.fields.GEARCY.value 0.2
+node168.fields.GEARINTCX.mark 0
+node168.fields.GEARINTCX.value 0.8
+node168.fields.GEARINTCY.mark 0
+node168.fields.GEARINTCY.value 0.8
+node168.fields.GEARKK.mark 0
+node168.fields.GEARKK.value {14520  22673 lbf/ft}
+node168.fields.GEARLIMTCX.mark 0
+node168.fields.GEARLIMTCX.value {-7.0 7.0}
+node168.fields.GEARLIMTCY.mark 0
+node168.fields.GEARLIMTCY.value {-1.0 1.0}
+node168.fields.GEARMUB.mark 0
+node168.fields.GEARMUB.value {-0.07  -0.08}
+node168.fields.GEARMUR.mark 0
+node168.fields.GEARMUR.value {-0.023 -0.017}
+node168.fields.GEARMUSIDE.mark 0
+node168.fields.GEARMUSIDE.value {-0.2667 }
+node168.fields.GEARUDSL.mark 1
+node168.fields.GEARUDSL.value {0.2 meter}
+node168.fields.GEARVTRAN.mark 0
+node168.fields.GEARVTRAN.value {0.2 0.2 ft/sec}
+node168.fields.GEARWLMAX.mark 1
+node168.fields.GEARWLMAX.value {10 newton}
+node168.fields.GEARZ0.mark 0
+node168.fields.GEARZ0.value {0.7 ft}
+node168.fields.MAXLOAD.mark 1
+node168.fields.MAXLOAD.value {-100 newton}
+node168.fields.MUSIDE.mark 0
+node168.fields.MUSIDE.value {-0.53  -0.27 }
+node168.fields.TIRERADIUS.mark 1
+node168.fields.TIRERADIUS.value {0.025 meter}
+node168.fields.WOWINDEX.mark 0
+node168.fields.WOWINDEX.value 1
+node168.label {Left Rear}
+node168.memo {}
+node168.name hydralandgear
+node168.options {ISWOW STRUTTIREMODEL CASTORWHEEL SECURING}
+node168.options.CASTORWHEEL.mark 0
+node168.options.CASTORWHEEL.value 0
+node168.options.ISWOW.mark 1
+node168.options.ISWOW.value 1
+node168.options.SECURING.mark 0
+node168.options.SECURING.value 0
+node168.options.STRUTTIREMODEL.mark 0
+node168.options.STRUTTIREMODEL.value 1
+node168.selected 1
+node168.subnodes {node169 node170}
+node168.template hydralandgear
+node169.class table
+node169.completed 0
+node169.filename archer-lgearstruc.tab
+node169.label {Nonlinear strut property}
+node169.memo {}
+node169.name struttab
+node169.path tables
+node169.selected 1
+node169.subnodes {}
+node169.template struttab
+node17.class table
+node17.completed 0
+node17.filename beblademode.tab
+node17.label {Mode shape}
+node17.memo {}
+node17.name modeshape
+node17.path .
+node17.selected 1
+node17.subnodes {}
+node17.template modeshape
+node170.class table
+node170.completed 0
+node170.filename archer-tire.tab
+node170.label {Nonlinear tire property}
+node170.memo {}
+node170.name tiretab
+node170.path tables
+node170.selected 1
+node170.subnodes {}
+node170.template tiretab
+node171.class module
+node171.completed 0
+node171.fields {FSBLWLLGEAR EULERLGEAR WOWINDEX BRAKE MAXLOAD MUSIDE GEARUDSL GEARMUB GEARMUR GEARVTRAN GEARMUSIDE GEARCC GEARKK GEARCX GEARCY GEARZ0 GEARLIMTCX GEARLIMTCY GEARINTCX GEARINTCY GEARWLMAX TIRERADIUS FXSECURMAX FYSECURMAX CASTOROFFSET CASTORM CASTORI CASTORKK CASTORCC}
+node171.fields.BRAKE.mark 0
+node171.fields.BRAKE.value {1.0 }
+node171.fields.CASTORCC.mark 0
+node171.fields.CASTORCC.value {5  50 lbf-ft-sec}
+node171.fields.CASTORI.mark 0
+node171.fields.CASTORI.value {0 0 1 0 0 0 slug-ft^2}
+node171.fields.CASTORKK.mark 0
+node171.fields.CASTORKK.value {10  1000 lbf-ft}
+node171.fields.CASTORM.mark 0
+node171.fields.CASTORM.value {0.1 slug}
+node171.fields.CASTOROFFSET.mark 0
+node171.fields.CASTOROFFSET.value {0.5 ft}
+node171.fields.EULERLGEAR.mark 0
+node171.fields.EULERLGEAR.value {0  0  0  deg}
+node171.fields.FSBLWLLGEAR.mark 1
+node171.fields.FSBLWLLGEAR.value {-0.143 -0.120 -0.320 meter}
+node171.fields.FXSECURMAX.mark 0
+node171.fields.FXSECURMAX.value {40000.0 lbf}
+node171.fields.FYSECURMAX.mark 0
+node171.fields.FYSECURMAX.value {40000.0 lbf}
+node171.fields.GEARCC.mark 0
+node171.fields.GEARCC.value {2000  2500 lbf-sec/ft}
+node171.fields.GEARCX.mark 0
+node171.fields.GEARCX.value 0.2
+node171.fields.GEARCY.mark 0
+node171.fields.GEARCY.value 0.2
+node171.fields.GEARINTCX.mark 0
+node171.fields.GEARINTCX.value 0.8
+node171.fields.GEARINTCY.mark 0
+node171.fields.GEARINTCY.value 0.8
+node171.fields.GEARKK.mark 0
+node171.fields.GEARKK.value {14520  22673 lbf/ft}
+node171.fields.GEARLIMTCX.mark 0
+node171.fields.GEARLIMTCX.value {-7.0 7.0}
+node171.fields.GEARLIMTCY.mark 0
+node171.fields.GEARLIMTCY.value {-1.0 1.0}
+node171.fields.GEARMUB.mark 0
+node171.fields.GEARMUB.value {-0.07  -0.08}
+node171.fields.GEARMUR.mark 0
+node171.fields.GEARMUR.value {-0.023 -0.017}
+node171.fields.GEARMUSIDE.mark 0
+node171.fields.GEARMUSIDE.value {-0.2667 }
+node171.fields.GEARUDSL.mark 1
+node171.fields.GEARUDSL.value {0.2 meter}
+node171.fields.GEARVTRAN.mark 0
+node171.fields.GEARVTRAN.value {0.2 0.2 ft/sec}
+node171.fields.GEARWLMAX.mark 1
+node171.fields.GEARWLMAX.value {10 newton}
+node171.fields.GEARZ0.mark 0
+node171.fields.GEARZ0.value {0.7 ft}
+node171.fields.MAXLOAD.mark 1
+node171.fields.MAXLOAD.value {-100 newton}
+node171.fields.MUSIDE.mark 0
+node171.fields.MUSIDE.value {-0.53  -0.27 }
+node171.fields.TIRERADIUS.mark 1
+node171.fields.TIRERADIUS.value {0.025 meter}
+node171.fields.WOWINDEX.mark 0
+node171.fields.WOWINDEX.value 1
+node171.label {Right Front}
+node171.memo {}
+node171.name hydralandgear
+node171.options {ISWOW STRUTTIREMODEL CASTORWHEEL SECURING}
+node171.options.CASTORWHEEL.mark 0
+node171.options.CASTORWHEEL.value 0
+node171.options.ISWOW.mark 1
+node171.options.ISWOW.value 1
+node171.options.SECURING.mark 0
+node171.options.SECURING.value 0
+node171.options.STRUTTIREMODEL.mark 0
+node171.options.STRUTTIREMODEL.value 1
+node171.selected 1
+node171.subnodes {node172 node173}
+node171.template hydralandgear
+node172.class table
+node172.completed 0
+node172.filename archer-lgearstruc.tab
+node172.label {Nonlinear strut property}
+node172.memo {}
+node172.name struttab
+node172.path tables
+node172.selected 1
+node172.subnodes {}
+node172.template struttab
+node173.class table
+node173.completed 0
+node173.filename archer-tire.tab
+node173.label {Nonlinear tire property}
+node173.memo {}
+node173.name tiretab
+node173.path tables
+node173.selected 1
+node173.subnodes {}
+node173.template tiretab
+node174.class module
+node174.completed 0
+node174.fields {FSBLWLLGEAR EULERLGEAR WOWINDEX BRAKE MAXLOAD MUSIDE GEARUDSL GEARMUB GEARMUR GEARVTRAN GEARMUSIDE GEARCC GEARKK GEARCX GEARCY GEARZ0 GEARLIMTCX GEARLIMTCY GEARINTCX GEARINTCY GEARWLMAX TIRERADIUS FXSECURMAX FYSECURMAX CASTOROFFSET CASTORM CASTORI CASTORKK CASTORCC}
+node174.fields.BRAKE.mark 0
+node174.fields.BRAKE.value {1.0 }
+node174.fields.CASTORCC.mark 0
+node174.fields.CASTORCC.value {5  50 lbf-ft-sec}
+node174.fields.CASTORI.mark 0
+node174.fields.CASTORI.value {0 0 1 0 0 0 slug-ft^2}
+node174.fields.CASTORKK.mark 0
+node174.fields.CASTORKK.value {10  1000 lbf-ft}
+node174.fields.CASTORM.mark 0
+node174.fields.CASTORM.value {0.1 slug}
+node174.fields.CASTOROFFSET.mark 0
+node174.fields.CASTOROFFSET.value {0.5 ft}
+node174.fields.EULERLGEAR.mark 0
+node174.fields.EULERLGEAR.value {0  0  0  deg}
+node174.fields.FSBLWLLGEAR.mark 1
+node174.fields.FSBLWLLGEAR.value {0.143 -0.120 -0.320 meter}
+node174.fields.FXSECURMAX.mark 0
+node174.fields.FXSECURMAX.value {40000.0 lbf}
+node174.fields.FYSECURMAX.mark 0
+node174.fields.FYSECURMAX.value {40000.0 lbf}
+node174.fields.GEARCC.mark 0
+node174.fields.GEARCC.value {2000  2500 lbf-sec/ft}
+node174.fields.GEARCX.mark 0
+node174.fields.GEARCX.value 0.2
+node174.fields.GEARCY.mark 0
+node174.fields.GEARCY.value 0.2
+node174.fields.GEARINTCX.mark 0
+node174.fields.GEARINTCX.value 0.8
+node174.fields.GEARINTCY.mark 0
+node174.fields.GEARINTCY.value 0.8
+node174.fields.GEARKK.mark 0
+node174.fields.GEARKK.value {14520  22673 lbf/ft}
+node174.fields.GEARLIMTCX.mark 0
+node174.fields.GEARLIMTCX.value {-7.0 7.0}
+node174.fields.GEARLIMTCY.mark 0
+node174.fields.GEARLIMTCY.value {-1.0 1.0}
+node174.fields.GEARMUB.mark 0
+node174.fields.GEARMUB.value {-0.07  -0.08}
+node174.fields.GEARMUR.mark 0
+node174.fields.GEARMUR.value {-0.023 -0.017}
+node174.fields.GEARMUSIDE.mark 0
+node174.fields.GEARMUSIDE.value {-0.2667 }
+node174.fields.GEARUDSL.mark 1
+node174.fields.GEARUDSL.value {0.2 meter}
+node174.fields.GEARVTRAN.mark 0
+node174.fields.GEARVTRAN.value {0.2 0.2 ft/sec}
+node174.fields.GEARWLMAX.mark 1
+node174.fields.GEARWLMAX.value {10 newton}
+node174.fields.GEARZ0.mark 0
+node174.fields.GEARZ0.value {0.7 ft}
+node174.fields.MAXLOAD.mark 1
+node174.fields.MAXLOAD.value {-100 newton}
+node174.fields.MUSIDE.mark 0
+node174.fields.MUSIDE.value {-0.53  -0.27 }
+node174.fields.TIRERADIUS.mark 1
+node174.fields.TIRERADIUS.value {0.025 meter}
+node174.fields.WOWINDEX.mark 0
+node174.fields.WOWINDEX.value 1
+node174.label {Right Rear}
+node174.memo {}
+node174.name hydralandgear
+node174.options {ISWOW STRUTTIREMODEL CASTORWHEEL SECURING}
+node174.options.CASTORWHEEL.mark 0
+node174.options.CASTORWHEEL.value 0
+node174.options.ISWOW.mark 1
+node174.options.ISWOW.value 1
+node174.options.SECURING.mark 0
+node174.options.SECURING.value 0
+node174.options.STRUTTIREMODEL.mark 0
+node174.options.STRUTTIREMODEL.value 1
+node174.selected 1
+node174.subnodes {node175 node176}
+node174.template hydralandgear
+node175.class table
+node175.completed 0
+node175.filename archer-lgearstruc.tab
+node175.label {Nonlinear strut property}
+node175.memo {}
+node175.name struttab
+node175.path tables
+node175.selected 1
+node175.subnodes {}
+node175.template struttab
+node176.class table
+node176.completed 0
+node176.filename archer-tire.tab
+node176.label {Nonlinear tire property}
+node176.memo {}
+node176.name tiretab
+node176.path tables
+node176.selected 1
+node176.subnodes {}
+node176.template tiretab
+node18.class table
+node18.completed 0
+node18.filename flapstopprop.tab
+node18.label {Flap stop property}
+node18.memo {}
+node18.name rotspringdamptab
+node18.path .
+node18.selected 1
+node18.subnodes {}
+node18.template rotspringdamptab
+node19.class table
+node19.completed 0
+node19.filename lagstopprop.tab
+node19.label {Lead-Lag stop property}
+node19.memo {}
+node19.name lagstopproptab
+node19.path .
+node19.selected 1
+node19.subnodes {}
+node19.template lagstopproptab
+node2.class module
+node2.completed 1
+node2.fields {GAMMA GASCN LATIC}
+node2.fields.GAMMA.mark 0
+node2.fields.GAMMA.value 1.4
+node2.fields.GASCN.mark 0
+node2.fields.GASCN.value {1716.2 ft-lbf/slug/degR}
+node2.fields.LATIC.mark 0
+node2.fields.LATIC.value {37.6 deg}
+node2.label Environment
+node2.memo {}
+node2.name environatmos
+node2.selected 1
+node2.subnodes {node3 node4 node5 node6 node7 node8 node9}
+node2.template environatmos
+node20.class table
+node20.completed 0
+node20.filename leadlagrotspringdamp.tab
+node20.label {Lead-Lag rotational damper property}
+node20.memo {}
+node20.name lagrotspringdamptab
+node20.path .
+node20.selected 1
+node20.subnodes {}
+node20.template lagrotspringdamptab
+node21.class alt
+node21.completed 1
+node21.currentSelection quasisteady
+node21.label Airloads
+node21.memo {}
+node21.name airloads
+node21.selected 1
+node21.selections {%none% analinearunstd quasisteady quasiunsteady lbdynstall dynstall prescribedaero}
+node21.selections.%none%.subnodes {}
+node21.selections.quasisteady.subnodes node91
+node21.subnodes node91
+node21.template airloads
+node22.class alt
+node22.completed 1
+node22.currentSelection sixstateinflow
+node22.label {Induced Velocity}
+node22.memo {}
+node22.name inducedvelocity
+node22.selected 1
+node22.selections {%none% glauertinflow threestateinflow sixstateinflow finitestate vortexwake vortexwaketime vpm}
+node22.selections.%none%.subnodes {}
+node22.selections.sixstateinflow.subnodes node98
+node22.subnodes node98
+node22.template inducedvelocity
+node23.class alt
+node23.completed 1
+node23.currentSelection rtr3stateintf
+node23.label {Rotor Interference}
+node23.memo {}
+node23.name rtrintf
+node23.selected 1
+node23.selections {%none% rtrempirintfacps rtrempirintf rtrempirintfheli rtr3stateintf rtr6stateintf rtrfinitestateintf rtrvtxintf}
+node23.selections.%none%.subnodes {}
+node23.selections.rtr3stateintf.subnodes node102
+node23.subnodes node102
+node23.template rtrintf
+node24.class table
+node24.completed 0
+node24.filename dcmotorprop.tab
+node24.label {DC motor property}
+node24.memo {}
+node24.name dcmotorprop
+node24.path .
+node24.selected 1
+node24.subnodes {}
+node24.template dcmotorprop
+node25.class alt
+node25.completed 1
+node25.currentSelection berotor
+node25.label Rotor2
+node25.memo {}
+node25.name rotor2
+node25.selected 1
+node25.selections {%none% baileyrotor disktailrotor berotor ferotor ductfan diskrotor trotormapintf}
+node25.selections.%none%.subnodes {}
+node25.selections.berotor.subnodes node106
+node25.selections.disktailrotor.subnodes node159
+node25.subnodes node106
+node25.template rotor2
+node26.class alt
+node26.completed 1
+node26.currentSelection %none%
+node26.label Rotor3
+node26.memo {}
+node26.name rotor3
+node26.selected 1
+node26.selections {%none% bemorerotor ductfan diskrotor}
+node26.selections.%none%.subnodes {}
+node26.subnodes {}
+node26.template rotor3
+node27.class alt
+node27.completed 0
+node27.currentSelection %none%
+node27.label Rotor4
+node27.memo {}
+node27.name rotor4
+node27.selected 1
+node27.selections {%none% bemorerotor ductfan diskrotor}
+node27.selections.%none%.subnodes {}
+node27.subnodes {}
+node27.template rotor4
+node28.choices wrotorn
+node28.class rep
+node28.completed 0
+node28.label {More Rotors}
+node28.memo {}
+node28.name morerotor
+node28.selected 0
+node28.subnodes {}
+node28.template morerotor
+node29.class alt
+node29.completed 1
+node29.currentSelection %none%
+node29.label Wing
+node29.memo {}
+node29.name wing
+node29.selected 1
+node29.selections {%none% liftingline enhanceliftingline liftingsurf}
+node29.selections.%none%.subnodes {}
+node29.subnodes {}
+node29.template wing
+node3.class alt
+node3.completed 0
+node3.currentSelection %none%
+node3.label Turbulence
+node3.memo {}
+node3.name turbulence
+node3.selected 1
+node3.selections {%none% vonkarman}
+node3.selections.%none%.subnodes {}
+node3.subnodes {}
+node3.template turbulence
+node30.class module
+node30.completed 1
+node30.label Airframe
+node30.memo {}
+node30.name airframe
+node30.options MULTISURFREF
+node30.options.MULTISURFREF.mark 0
+node30.options.MULTISURFREF.value 0
+node30.selected 1
+node30.subnodes {node31 node33 node43 node44 node45 node46 node53 node54 node55 node57 node58 node59}
+node30.template airframe
+node31.class alt
+node31.completed 1
+node31.currentSelection rigidfuselage
+node31.label Fuselage
+node31.memo {}
+node31.name fuselage
+node31.selected 1
+node31.selections {rigidfuselage cnstrigidbody elasticfuselage}
+node31.selections.rigidfuselage.subnodes node32
+node31.subnodes node32
+node31.template fuselage
+node32.class module
+node32.completed 0
+node32.fields {FUSECGLOC FMASS IXX IYY IZZ IXY IXZ IYZ TOTCGLOC TOTVMASS TOTIXX TOTIYY TOTIZZ TOTIXY TOTIXZ TOTIYZ}
+node32.fields.FMASS.mark 0
+node32.fields.FMASS.value {475.0 slug}
+node32.fields.FUSECGLOC.mark 0
+node32.fields.FUSECGLOC.value {30.0  0.0  21.0  ft}
+node32.fields.IXX.mark 0
+node32.fields.IXX.value {5500.0 slug-ft^2}
+node32.fields.IXY.mark 0
+node32.fields.IXY.value {0 slug-ft^2}
+node32.fields.IXZ.mark 0
+node32.fields.IXZ.value {-1500.0 slug-ft^2}
+node32.fields.IYY.mark 0
+node32.fields.IYY.value {40000.0 slug-ft^2}
+node32.fields.IYZ.mark 0
+node32.fields.IYZ.value {0 slug-ft^2}
+node32.fields.IZZ.mark 0
+node32.fields.IZZ.value {37000.0 slug-ft^2}
+node32.fields.TOTCGLOC.mark 1
+node32.fields.TOTCGLOC.value {0 0 -150.16 mm}
+node32.fields.TOTIXX.mark 1
+node32.fields.TOTIXX.value {0.026215 kg-meter^2}
+node32.fields.TOTIXY.mark 1
+node32.fields.TOTIXY.value {0.0106599 kg-meter^2}
+node32.fields.TOTIXZ.mark 1
+node32.fields.TOTIXZ.value {0.0079553 kg-meter^2}
+node32.fields.TOTIYY.mark 1
+node32.fields.TOTIYY.value {0.741964 kg-meter^2}
+node32.fields.TOTIYZ.mark 1
+node32.fields.TOTIYZ.value {0.000035498 kg-meter^2}
+node32.fields.TOTIZZ.mark 1
+node32.fields.TOTIZZ.value {0.731699 kg-meter^2}
+node32.fields.TOTVMASS.mark 1
+node32.fields.TOTVMASS.value {7.23 kg}
+node32.label {Rigid Fuselage (Nonlinear 6-DOFs)}
+node32.memo {}
+node32.name rigidfuselage
+node32.options MASSFLAG
+node32.options.MASSFLAG.mark 0
+node32.options.MASSFLAG.value 1
+node32.selected 1
+node32.subnodes {}
+node32.template rigidfuselage
+node33.class module
+node33.completed 0
+node33.fields FSBLWLFUSEAE
+node33.fields.FSBLWLFUSEAE.mark 1
+node33.fields.FSBLWLFUSEAE.value {0 0 -150.16 mm}
+node33.label {Empirical Fuselage Airloads}
+node33.memo {}
+node33.name fuselageaero
+node33.selected 1
+node33.subnodes {node34 node42}
+node33.template fuselageaero
+node34.class module
+node34.completed 0
+node34.fields {LCHARACTER AEREFAREA AEREFLEN}
+node34.fields.AEREFAREA.mark 1
+node34.fields.AEREFAREA.value {1 meter^2}
+node34.fields.AEREFLEN.mark 1
+node34.fields.AEREFLEN.value {1 meter}
+node34.fields.LCHARACTER.mark 1
+node34.fields.LCHARACTER.value {1 meter}
+node34.label {Empirical Airloads}
+node34.memo {}
+node34.name aefuselagetab2d
+node34.options {FUSEAEOPTION MULTIFUSEACPS}
+node34.options.FUSEAEOPTION.mark 1
+node34.options.FUSEAEOPTION.value 2
+node34.options.MULTIFUSEACPS.mark 0
+node34.options.MULTIFUSEACPS.value 0
+node34.selected 1
+node34.subnodes {node35 node36 node37 node38 node39 node40 node41}
+node34.template aefuselagetab2d
+node35.class table
+node35.completed 1
+node35.filename fuselageaeroOH6_null_moments.tab
+node35.label {Nonuniform airload table (body frame)}
+node35.memo {}
+node35.name fuselageaerotab
+node35.path tables
+node35.selected 1
+node35.subnodes {}
+node35.template fuselageaerotab
+node36.class table
+node36.completed 0
+node36.filename archer_cfd_001.tab
+node36.label {Nonuniform airload table (wind frame)}
+node36.memo {}
+node36.name bodywindaerotab
+node36.path tables
+node36.selected 1
+node36.subnodes {}
+node36.template bodywindaerotab
+node37.class table
+node37.completed 0
+node37.filename fuselageaero3d.tab
+node37.label {3-D airload table (body frame)}
+node37.memo {}
+node37.name fuselageaerotab3d
+node37.path .
+node37.selected 1
+node37.subnodes {}
+node37.template fuselageaerotab3d
+node38.class table
+node38.completed 0
+node38.filename bodywindaero3d.tab
+node38.label {3-D airload table (wind frame)}
+node38.memo {}
+node38.name bodywindaerotab3d
+node38.path .
+node38.selected 1
+node38.subnodes {}
+node38.template bodywindaerotab3d
+node39.class table
+node39.completed 0
+node39.filename reeffect.tab
+node39.label {Reynolds number effect table }
+node39.memo {}
+node39.name reeffecttab
+node39.path .
+node39.selected 1
+node39.subnodes {}
+node39.template reeffecttab
+node4.class table
+node4.completed 1
+node4.filename altcritical.tab
+node4.label {Altitudes for temperature gradient}
+node4.memo {}
+node4.name atmostabcralt
+node4.path {$FL_DIR/flme/data}
+node4.selected 1
+node4.subnodes {}
+node4.template atmostabcralt
+node40.class table
+node40.completed 0
+node40.filename unifuselageaero.sav
+node40.label {Uniform airload table}
+node40.memo {}
+node40.name unifuselageaerotab
+node40.path .
+node40.selected 1
+node40.subnodes {}
+node40.template unifuselageaerotab
+node41.class table
+node41.completed 0
+node41.filename bodyacps.tab
+node41.label {Multiple ACP table}
+node41.memo {}
+node41.name multipleacptab
+node41.path .
+node41.selected 1
+node41.subnodes {}
+node41.template multipleacptab
+node42.class alt
+node42.completed 0
+node42.currentSelection %none%
+node42.label {Empirical Interference}
+node42.memo {}
+node42.name fuselageempirintf
+node42.selected 1
+node42.selections {%none% fuselageempirintfvelocity fuselageempirintfqdyn}
+node42.selections.%none%.subnodes {}
+node42.subnodes {}
+node42.template fuselageempirintf
+node43.choices {aesurftab2d aesurftab3d}
+node43.class rep
+node43.completed 1
+node43.label Stabilizers
+node43.memo {}
+node43.name aesurface
+node43.selected 0
+node43.subnodes {node130 node135 node140 node145 node150}
+node43.template aesurface
+node44.choices liftinglinewing
+node44.class rep
+node44.completed 0
+node44.label {More Wings}
+node44.memo {}
+node44.name aerowing
+node44.selected 0
+node44.subnodes {}
+node44.template aerowing
+node45.choices {airframetab1d airframetab2d airframetab3d airframetab4d airframetab5d airframetab6d}
+node45.class rep
+node45.completed 0
+node45.label {Miscellaneous Airloads}
+node45.memo {}
+node45.name miscairloads
+node45.selected 0
+node45.subnodes {}
+node45.template miscairloads
+node46.class module
+node46.completed 0
+node46.fields {PANELREFLOC PANELFRAME CBAR PCORE EPSILN NITMAX}
+node46.fields.CBAR.mark 0
+node46.fields.CBAR.value {43.658 ft}
+node46.fields.EPSILN.mark 0
+node46.fields.EPSILN.value 1.0E-5
+node46.fields.NITMAX.mark 0
+node46.fields.NITMAX.value 40
+node46.fields.PANELFRAME.mark 0
+node46.fields.PANELFRAME.value {0.0  180.0  0.0  deg}
+node46.fields.PANELREFLOC.mark 0
+node46.fields.PANELREFLOC.value {11.7  0.0  17.8  ft}
+node46.fields.PCORE.mark 0
+node46.fields.PCORE.value 0.01
+node46.label {Panel Method}
+node46.memo {}
+node46.name panelmethod
+node46.options {IFFILE SYM UNSTDY}
+node46.options.IFFILE.mark 0
+node46.options.IFFILE.value 0
+node46.options.SYM.mark 0
+node46.options.SYM.value 0
+node46.options.UNSTDY.mark 0
+node46.options.UNSTDY.value 0
+node46.selected 0
+node46.subnodes {node47 node48 node50 node52}
+node46.template panelmethod
+node47.class module
+node47.completed 0
+node47.fields {FSBLWLFUSEAE AEREFAREA AEREFLEN VARMAX}
+node47.fields.AEREFAREA.mark 0
+node47.fields.AEREFAREA.value {1.0 ft^2}
+node47.fields.AEREFLEN.mark 0
+node47.fields.AEREFLEN.value {1.0 ft}
+node47.fields.FSBLWLFUSEAE.mark 0
+node47.fields.FSBLWLFUSEAE.value {28.8  0.0  19.5  ft}
+node47.fields.VARMAX.mark 0
+node47.fields.VARMAX.value 0.05
+node47.label {Panel Airloads}
+node47.memo {}
+node47.name panelairload
+node47.options IFPFO
+node47.options.IFPFO.mark 0
+node47.options.IFPFO.value 0
+node47.selected 0
+node47.subnodes {}
+node47.template panelairload
+node48.class module
+node48.completed 0
+node48.fields {PCOREI FUSELAGEINTFRTRINDEX FUSELAGEINTFSURFINDEX}
+node48.fields.FUSELAGEINTFRTRINDEX.mark 0
+node48.fields.FUSELAGEINTFRTRINDEX.value {1 2}
+node48.fields.FUSELAGEINTFSURFINDEX.mark 0
+node48.fields.FUSELAGEINTFSURFINDEX.value {1 2 3}
+node48.fields.PCOREI.mark 0
+node48.fields.PCOREI.value 0.01
+node48.label {Panel Interference}
+node48.memo {}
+node48.name panelintfrc
+node48.options {FUSELAGEINTFRTR FUSELAGEINTFSURF FUSELAGEINTFWING FUSELAGEINTFXYZ}
+node48.options.FUSELAGEINTFRTR.mark 0
+node48.options.FUSELAGEINTFRTR.value 0
+node48.options.FUSELAGEINTFSURF.mark 0
+node48.options.FUSELAGEINTFSURF.value 0
+node48.options.FUSELAGEINTFWING.mark 0
+node48.options.FUSELAGEINTFWING.value 0
+node48.options.FUSELAGEINTFXYZ.mark 0
+node48.options.FUSELAGEINTFXYZ.value 0
+node48.selected 0
+node48.subnodes node49
+node48.template panelintfrc
+node49.class table
+node49.completed 0
+node49.filename intftabxyz.tab
+node49.label {Flow-field points}
+node49.memo {}
+node49.name intftabxyz
+node49.path .
+node49.selected 1
+node49.subnodes {}
+node49.template intftabxyz
+node5.class table
+node5.completed 1
+node5.filename atmstdday.tab
+node5.label {Standard day atmosphere table}
+node5.memo {}
+node5.name atmosstdday
+node5.path {$FL_DIR/flme/data}
+node5.selected 1
+node5.subnodes {}
+node5.template atmostabstd
+node50.class module
+node50.completed 0
+node50.fields {WKLENND NITER WDAMP CPB CPMIN GDAMP}
+node50.fields.CPB.mark 0
+node50.fields.CPB.value 0
+node50.fields.CPMIN.mark 0
+node50.fields.CPMIN.value 0
+node50.fields.GDAMP.mark 0
+node50.fields.GDAMP.value 0.5
+node50.fields.NITER.mark 0
+node50.fields.NITER.value 4
+node50.fields.WDAMP.mark 0
+node50.fields.WDAMP.value 0.8
+node50.fields.WKLENND.mark 0
+node50.fields.WKLENND.value 2.0
+node50.label {Panel Wake}
+node50.memo {}
+node50.name panelwake
+node50.options {ISFREEWAKE ISSEPARATION}
+node50.options.ISFREEWAKE.mark 0
+node50.options.ISFREEWAKE.value 0
+node50.options.ISSEPARATION.mark 0
+node50.options.ISSEPARATION.value 0
+node50.selected 0
+node50.subnodes node51
+node50.template panelwake
+node51.class table
+node51.completed 0
+node51.filename panelwakegeom.tab
+node51.label {Panel wake geometry}
+node51.memo {}
+node51.name panelwakegeom
+node51.path .
+node51.selected 1
+node51.subnodes {}
+node51.template panelwakegeom
+node52.class table
+node52.completed 0
+node52.filename panelgeom.tab
+node52.label {Panel geometry}
+node52.memo {}
+node52.name panelgeom
+node52.path .
+node52.selected 1
+node52.subnodes {}
+node52.template panelgeom
+node53.class module
+node53.completed 0
+node53.fields {FSBLWLPILOT FSBLWLVELSEN EULERSPDSENSOR FSBLWLRADAR}
+node53.fields.EULERSPDSENSOR.mark 0
+node53.fields.EULERSPDSENSOR.value {0.0  0.0  0.0 deg}
+node53.fields.FSBLWLPILOT.mark 1
+node53.fields.FSBLWLPILOT.value {0.0  0.0  0.0 ft}
+node53.fields.FSBLWLRADAR.mark 1
+node53.fields.FSBLWLRADAR.value {0.0  0.0  0.0 meter}
+node53.fields.FSBLWLVELSEN.mark 1
+node53.fields.FSBLWLVELSEN.value {0.0  0.0  0.0 ft}
+node53.label {Pilot Station}
+node53.memo {}
+node53.name pilot
+node53.options ISNAVAID
+node53.options.ISNAVAID.mark 0
+node53.options.ISNAVAID.value 0
+node53.selected 1
+node53.subnodes {}
+node53.template pilot
+node54.choices {airframesensor accelerometer slipball airspeedsensor}
+node54.class rep
+node54.completed 1
+node54.label Sensors
+node54.memo {}
+node54.name sensor
+node54.selected 1
+node54.subnodes {node155 node156}
+node54.template sensor
+node55.class module
+node55.completed 0
+node55.fields FSBLWLCARGO
+node55.fields.FSBLWLCARGO.mark 0
+node55.fields.FSBLWLCARGO.value {30.0  0.0  21.0  ft}
+node55.label {Cargo Load}
+node55.memo {}
+node55.name cargoload
+node55.selected 0
+node55.subnodes node56
+node55.template cargoload
+node56.class table
+node56.completed 0
+node56.filename cargoload.tab
+node56.label {Cargo property}
+node56.memo {}
+node56.name cargoproptab
+node56.path .
+node56.selected 1
+node56.subnodes {}
+node56.template cargoproptab
+node57.choices {hydralandgear nlinearlandgear enhnllgear}
+node57.class rep
+node57.completed 0
+node57.label {Landing Gear}
+node57.memo {}
+node57.name landinggear
+node57.selected 1
+node57.subnodes {node165 node168 node171 node174}
+node57.template landinggear
+node58.choices auxiliarymassaero
+node58.class rep
+node58.completed 0
+node58.label {Auxiliary Body}
+node58.memo {}
+node58.name auxiliarybody
+node58.selected 0
+node58.subnodes {}
+node58.template auxiliarybody
+node59.class module
+node59.completed 0
+node59.label {Other Aero}
+node59.memo {}
+node59.name otheraero
+node59.selected 0
+node59.subnodes node60
+node59.template otheraero
+node6.class table
+node6.completed 1
+node6.filename atmhotday.tab
+node6.label {Hot day atmosphere table}
+node6.memo {}
+node6.name atmostabhot
+node6.path {$FL_DIR/flme/data}
+node6.selected 1
+node6.subnodes {}
+node6.template atmostabstd
+node60.choices wlaesurface
+node60.class rep
+node60.completed 0
+node60.label {Other Airloads}
+node60.memo {}
+node60.name otherairloads
+node60.selected 1
+node60.subnodes {}
+node60.template otherairloads
+node61.class module
+node61.completed 0
+node61.label {External Body}
+node61.memo {}
+node61.name externalbody
+node61.selected 0
+node61.subnodes {node62 node63 node64 node71}
+node61.template externalbody
+node62.class alt
+node62.completed 0
+node62.currentSelection %none%
+node62.label {Sling Load}
+node62.memo {}
+node62.name slingload
+node62.selected 1
+node62.selections {%none% rigidsling slingload3dof slingload6dof sload6dofmultistage}
+node62.selections.%none%.subnodes {}
+node62.subnodes {}
+node62.template slingload
+node63.choices jettison
+node63.class rep
+node63.completed 0
+node63.label Stores
+node63.memo {}
+node63.name externalstore
+node63.selected 1
+node63.subnodes {}
+node63.template externalstore
+node64.class module
+node64.completed 0
+node64.fields {SHIPWAKEINTFRTRINDEX SHIPWAKEINTFSURFINDEX SHIPWAKEINTFEWINGINDEX SHIPWAKEINTFSLOADINDEX SHIPBOWPOS RWEIGH SHIPDECKWIDTH SHIPDECKLEN}
+node64.fields.RWEIGH.mark 0
+node64.fields.RWEIGH.value {0.75 }
+node64.fields.SHIPBOWPOS.mark 0
+node64.fields.SHIPBOWPOS.value {300  0  0 ft}
+node64.fields.SHIPDECKLEN.mark 0
+node64.fields.SHIPDECKLEN.value {700.0 ft}
+node64.fields.SHIPDECKWIDTH.mark 0
+node64.fields.SHIPDECKWIDTH.value {90.0 ft }
+node64.fields.SHIPWAKEINTFEWINGINDEX.mark 0
+node64.fields.SHIPWAKEINTFEWINGINDEX.value 1
+node64.fields.SHIPWAKEINTFRTRINDEX.mark 0
+node64.fields.SHIPWAKEINTFRTRINDEX.value 1
+node64.fields.SHIPWAKEINTFSLOADINDEX.mark 0
+node64.fields.SHIPWAKEINTFSLOADINDEX.value 1
+node64.fields.SHIPWAKEINTFSURFINDEX.mark 0
+node64.fields.SHIPWAKEINTFSURFINDEX.value {1 2 3}
+node64.label Ship
+node64.memo {}
+node64.name ship
+node64.options {SHIPWAKEINTFRTR SHIPWAKEINTFSURF SHIPWAKEINTFFUSE SHIPWAKEINTFWING SHIPWAKEINTFEWING SHIPWAKEINTFSLOAD ISAMPL}
+node64.options.ISAMPL.mark 0
+node64.options.ISAMPL.value 0
+node64.options.SHIPWAKEINTFEWING.mark 0
+node64.options.SHIPWAKEINTFEWING.value 0
+node64.options.SHIPWAKEINTFFUSE.mark 0
+node64.options.SHIPWAKEINTFFUSE.value 0
+node64.options.SHIPWAKEINTFRTR.mark 0
+node64.options.SHIPWAKEINTFRTR.value 0
+node64.options.SHIPWAKEINTFSLOAD.mark 0
+node64.options.SHIPWAKEINTFSLOAD.value 0
+node64.options.SHIPWAKEINTFSURF.mark 0
+node64.options.SHIPWAKEINTFSURF.value 0
+node64.options.SHIPWAKEINTFWING.mark 0
+node64.options.SHIPWAKEINTFWING.value 0
+node64.selected 0
+node64.subnodes {node65 node68 node69 node70}
+node64.template ship
+node65.class alt
+node65.completed 0
+node65.currentSelection shipprescribed
+node65.label {Ship Dynamics}
+node65.memo {}
+node65.name shipdynamics
+node65.selected 1
+node65.selections {shipprescribed shipsine shipsth}
+node65.selections.shipprescribed.subnodes node66
+node65.subnodes node66
+node65.template shipdynamics
+node66.class module
+node66.completed 0
+node66.fields {SHIPVX WAVEHDANG}
+node66.fields.SHIPVX.mark 0
+node66.fields.SHIPVX.value {10  17  24 knots}
+node66.fields.WAVEHDANG.mark 0
+node66.fields.WAVEHDANG.value {0 30 60 deg}
+node66.label {Prescribed Ship Motion}
+node66.memo {}
+node66.name shipprescribed
+node66.options STHOPTION
+node66.options.STHOPTION.mark 0
+node66.options.STHOPTION.value 0
+node66.selected 1
+node66.subnodes node67
+node66.template shipprescribed
+node67.choices shipmotiontab
+node67.class rep
+node67.completed 0
+node67.label {Ship time history table}
+node67.memo {}
+node67.name shipmotiontab
+node67.selected 1
+node67.subnodes {}
+node67.template shipmotiontab
+node68.class alt
+node68.completed 0
+node68.currentSelection %none%
+node68.label {Ship Airwake}
+node68.memo {}
+node68.name shipairwake
+node68.selected 1
+node68.selections {%none% shipairwakelkup shipairwakemap panelshipdeck}
+node68.selections.%none%.subnodes {}
+node68.subnodes {}
+node68.template shipairwake
+node69.class alt
+node69.completed 0
+node69.currentSelection %none%
+node69.label {Ship Turbulence}
+node69.memo {}
+node69.name shipturb
+node69.selected 1
+node69.selections {%none% shipturbshaping shipturbborgman}
+node69.selections.%none%.subnodes {}
+node69.subnodes {}
+node69.template shipturb
+node7.class table
+node7.completed 1
+node7.filename atmtropday.tab
+node7.label {Tropical day atmosphere table}
+node7.memo {}
+node7.name atmostabtrop
+node7.path {$FL_DIR/flme/data}
+node7.selected 1
+node7.subnodes {}
+node7.template atmostabstd
+node70.class table
+node70.completed 0
+node70.filename shipspotloc.tab
+node70.label {Ship landing spot ID table}
+node70.memo {}
+node70.name shipspotloctab
+node70.path .
+node70.selected 0
+node70.subnodes {}
+node70.template shipspotloctab
+node71.class module
+node71.completed 0
+node71.fields {GROUNDINTFRTRINDEX GROUNDINTFSURFINDEX}
+node71.fields.GROUNDINTFRTRINDEX.mark 0
+node71.fields.GROUNDINTFRTRINDEX.value 1
+node71.fields.GROUNDINTFSURFINDEX.mark 0
+node71.fields.GROUNDINTFSURFINDEX.value {1 2 3}
+node71.label Ground
+node71.memo {}
+node71.name ground
+node71.options {GROUNDINTFRTR GROUNDINTFSURF GROUNDINTFFUSE GROUNDINTFWING}
+node71.options.GROUNDINTFFUSE.mark 0
+node71.options.GROUNDINTFFUSE.value 0
+node71.options.GROUNDINTFRTR.mark 0
+node71.options.GROUNDINTFRTR.value 0
+node71.options.GROUNDINTFSURF.mark 0
+node71.options.GROUNDINTFSURF.value 0
+node71.options.GROUNDINTFWING.mark 0
+node71.options.GROUNDINTFWING.value 0
+node71.selected 0
+node71.subnodes node72
+node71.template ground
+node72.class alt
+node72.completed 0
+node72.currentSelection %none%
+node72.label {Ground Interference}
+node72.memo {}
+node72.name groundintf
+node72.selected 1
+node72.selections {%none% panelground movingground}
+node72.selections.%none%.subnodes {}
+node72.subnodes {}
+node72.template groundintf
+node73.class alt
+node73.completed 1
+node73.currentSelection idealeng
+node73.label Propulsion
+node73.memo {}
+node73.name propulsion
+node73.selected 1
+node73.selections {idealeng simpleeng turshfeng multieng emotorperf}
+node73.selections.emotorperf.subnodes node158
+node73.selections.idealeng.subnodes node74
+node73.subnodes node74
+node73.template propulsion
+node74.class module
+node74.completed 1
+node74.fields {NENG ETQNOM GEARK}
+node74.fields.ETQNOM.mark 0
+node74.fields.ETQNOM.value {355.0 ft-lbf}
+node74.fields.GEARK.mark 0
+node74.fields.GEARK.value 1.2336e-02
+node74.fields.NENG.mark 0
+node74.fields.NENG.value 2
+node74.label {Ideal Engine}
+node74.memo {
+04 May 2018 Conversion: note: Option <RPMCONTROL> not found; using default value <0>}
+node74.name idealeng
+node74.options {ISPERFORMANCE RPMCONTROL}
+node74.options.ISPERFORMANCE.mark 1
+node74.options.ISPERFORMANCE.value 0
+node74.options.RPMCONTROL.mark 1
+node74.options.RPMCONTROL.value 0
+node74.selected 1
+node74.subnodes {node75 node78 node79}
+node74.template idealeng
+node75.class module
+node75.completed 0
+node75.fields {GEARBOXID NSTAGE1 NSTAGE2 NSTAGE3 GBPWRDES PRSPUMP KPUMP FRPUMP PWRGENT KGENT HPCFAN PACC}
+node75.fields.FRPUMP.mark 0
+node75.fields.FRPUMP.value {1.3 gallon/min}
+node75.fields.GBPWRDES.mark 0
+node75.fields.GBPWRDES.value {2828 2828 530 hp}
+node75.fields.GEARBOXID.mark 0
+node75.fields.GEARBOXID.value {0    1    2}
+node75.fields.HPCFAN.mark 0
+node75.fields.HPCFAN.value {0.0 hp}
+node75.fields.KGENT.mark 0
+node75.fields.KGENT.value 0.75
+node75.fields.KPUMP.mark 0
+node75.fields.KPUMP.value 0.80
+node75.fields.NSTAGE1.mark 0
+node75.fields.NSTAGE1.value {0    2    0}
+node75.fields.NSTAGE2.mark 0
+node75.fields.NSTAGE2.value {1    0    2}
+node75.fields.NSTAGE3.mark 0
+node75.fields.NSTAGE3.value {0    1    0}
+node75.fields.PACC.mark 0
+node75.fields.PACC.value {50.0 hp}
+node75.fields.PRSPUMP.mark 0
+node75.fields.PRSPUMP.value {3000 psi}
+node75.fields.PWRGENT.mark 0
+node75.fields.PWRGENT.value {2.2 kw}
+node75.label {Power Losses}
+node75.memo {}
+node75.name powerloss
+node75.selected 0
+node75.subnodes {node76 node77}
+node75.template powerloss
+node76.class table
+node76.completed 0
+node76.filename poweromega.tab
+node76.label {Correction parameter}
+node76.memo {}
+node76.name poweromegatab
+node76.path .
+node76.selected 0
+node76.subnodes {}
+node76.template poweromegatab
+node77.class table
+node77.completed 0
+node77.filename poweradjust.tab
+node77.label {Power adjustment}
+node77.memo {}
+node77.name poweradjusttab
+node77.path .
+node77.selected 0
+node77.subnodes {}
+node77.template poweradjusttab
+node78.choices fuelmass
+node78.class rep
+node78.completed 0
+node78.label {Fuel Tanks}
+node78.memo {}
+node78.name fueltanks
+node78.selected 1
+node78.subnodes {}
+node78.template fueltanks
+node79.class table
+node79.completed 0
+node79.filename engperformance.tab
+node79.label {Engine Power Available}
+node79.memo {}
+node79.name engperformtab
+node79.path .
+node79.selected 0
+node79.subnodes {}
+node79.template engperformtab
+node8.class table
+node8.completed 1
+node8.filename atmpolday.tab
+node8.label {Polar day atmosphere table}
+node8.memo {}
+node8.name atmostabpolar
+node8.path {$FL_DIR/flme/data}
+node8.selected 1
+node8.subnodes {}
+node8.template atmostabstd
+node80.class module
+node80.completed 0
+node80.fields {XBTRM XATRM XCTRM XPTRM XBTRMPC0 XATRMPC0 XCTRMPC0 XPTRMPC0 XBRANGE XARANGE XCRANGE XPRANGE BRRANGE}
+node80.fields.BRRANGE.mark 0
+node80.fields.BRRANGE.value {0.0 1.0}
+node80.fields.XARANGE.mark 1
+node80.fields.XARANGE.value {0.0 5.0}
+node80.fields.XATRM.mark 0
+node80.fields.XATRM.value 5.0
+node80.fields.XATRMPC0.mark 0
+node80.fields.XATRMPC0.value 50.0
+node80.fields.XBRANGE.mark 1
+node80.fields.XBRANGE.value {0.0 5.0}
+node80.fields.XBTRM.mark 0
+node80.fields.XBTRM.value 5.0
+node80.fields.XBTRMPC0.mark 0
+node80.fields.XBTRMPC0.value 50.0
+node80.fields.XCRANGE.mark 1
+node80.fields.XCRANGE.value {0.0 5.0}
+node80.fields.XCTRM.mark 0
+node80.fields.XCTRM.value 4.0
+node80.fields.XCTRMPC0.mark 0
+node80.fields.XCTRMPC0.value 45.0
+node80.fields.XPRANGE.mark 1
+node80.fields.XPRANGE.value {0.0 5.0}
+node80.fields.XPTRM.mark 0
+node80.fields.XPTRM.value 2.0
+node80.fields.XPTRMPC0.mark 1
+node80.fields.XPTRMPC0.value 50
+node80.label {Flight Control}
+node80.memo {}
+node80.name flightcontrol
+node80.options STANDARDCTRL
+node80.options.STANDARDCTRL.mark 1
+node80.options.STANDARDCTRL.value 1
+node80.scripts {prolog exc epilog configure}
+node80.scripts.configure.filename archer_grabowski2.configure
+node80.scripts.configure.selected 1
+node80.scripts.epilog.filename archer_grabowski2.epilog
+node80.scripts.epilog.selected 1
+node80.scripts.exc.filename archer_grabowski2.exc
+node80.scripts.exc.selected 1
+node80.scripts.prolog.filename archer_grabowski2.prolog
+node80.scripts.prolog.selected 1
+node80.selected 1
+node80.subnodes node157
+node80.template flightcontrol
+node80.userScriptPath fcs
+node81.class module
+node81.completed 0
+node81.label {External Program Coupling}
+node81.memo {}
+node81.name extcoupling
+node81.options EXTXYZREFFRM
+node81.options.EXTXYZREFFRM.mark 0
+node81.options.EXTXYZREFFRM.value -1
+node81.selected 0
+node81.subnodes {node82 node84 node87 node89}
+node81.template extcoupling
+node82.class module
+node82.completed 0
+node82.fields {VPMINTFRTRINDEX VPMINTFCFDRTRINDEX VPMINTFAESURFINDEX VPMINTFOTHERAEROINDEX VPMINTFDUCTINDEX VPMINTFWINGINDEX}
+node82.fields.VPMINTFAESURFINDEX.mark 0
+node82.fields.VPMINTFAESURFINDEX.value 1
+node82.fields.VPMINTFCFDRTRINDEX.mark 0
+node82.fields.VPMINTFCFDRTRINDEX.value 1
+node82.fields.VPMINTFDUCTINDEX.mark 0
+node82.fields.VPMINTFDUCTINDEX.value 1
+node82.fields.VPMINTFOTHERAEROINDEX.mark 0
+node82.fields.VPMINTFOTHERAEROINDEX.value 1
+node82.fields.VPMINTFRTRINDEX.mark 0
+node82.fields.VPMINTFRTRINDEX.value 1
+node82.fields.VPMINTFWINGINDEX.mark 0
+node82.fields.VPMINTFWINGINDEX.value 1
+node82.label {VPM Coupling}
+node82.memo {
+04 May 2018 Conversion: note: Option <VPMINTFEXTPANEL> not found; using default value <0>
+15 Nov 2018 Conversion: note: Field <VPMINTFWINGINDEX> not found; using default value <1>}
+node82.name vpmcoupling
+node82.options {VPMINTFXYZ VPMINTFRTR VPMINTFCFDRTR VPMINTFAESURF VPMINTFFUSE VPMINTFWING VPMINTFOTHERAERO VPMINTFDUCT VPMINTFEXTPANEL VPMINTFEXTBLUFFBODY}
+node82.options.VPMINTFAESURF.mark 0
+node82.options.VPMINTFAESURF.value 0
+node82.options.VPMINTFCFDRTR.mark 0
+node82.options.VPMINTFCFDRTR.value 0
+node82.options.VPMINTFDUCT.mark 0
+node82.options.VPMINTFDUCT.value 0
+node82.options.VPMINTFEXTBLUFFBODY.mark 0
+node82.options.VPMINTFEXTBLUFFBODY.value 0
+node82.options.VPMINTFEXTPANEL.mark 0
+node82.options.VPMINTFEXTPANEL.value 0
+node82.options.VPMINTFFUSE.mark 0
+node82.options.VPMINTFFUSE.value 0
+node82.options.VPMINTFOTHERAERO.mark 0
+node82.options.VPMINTFOTHERAERO.value 0
+node82.options.VPMINTFRTR.mark 0
+node82.options.VPMINTFRTR.value 1
+node82.options.VPMINTFWING.mark 0
+node82.options.VPMINTFWING.value 0
+node82.options.VPMINTFXYZ.mark 0
+node82.options.VPMINTFXYZ.value 0
+node82.selected 0
+node82.subnodes node83
+node82.template vpmcoupling
+node83.class table
+node83.completed 0
+node83.filename vpmparam.tab
+node83.label {VPM parameters}
+node83.memo {}
+node83.name vpmparam
+node83.path .
+node83.selected 1
+node83.subnodes {}
+node83.template vpmparamtab
+node84.class module
+node84.completed 0
+node84.label {Panel Body}
+node84.memo {}
+node84.name panelcoupling
+node84.selected 0
+node84.subnodes {node85 node86}
+node84.template panelcoupling
+node85.choices extpanelbody
+node85.class rep
+node85.completed 0
+node85.label {External panel bodies}
+node85.memo {}
+node85.name extpanelaero
+node85.selected 1
+node85.subnodes {}
+node85.template extpanelaero
+node86.class table
+node86.completed 0
+node86.filename aeromutualintf.tab
+node86.label {Mutual Interference Matrix}
+node86.memo {}
+node86.name mutualintfmatrix
+node86.path .
+node86.selected 1
+node86.subnodes {}
+node86.template mutualintfmatrix
+node87.class module
+node87.completed 0
+node87.label {Bluff Body}
+node87.memo {}
+node87.name bluffbodycoupling
+node87.selected 0
+node87.subnodes node88
+node87.template bluffbodycoupling
+node88.choices extbluffbody
+node88.class rep
+node88.completed 0
+node88.label {External bluff bodies}
+node88.memo {}
+node88.name extbluffbodyaero
+node88.selected 1
+node88.subnodes {}
+node88.template extbluffbodyaero
+node89.class table
+node89.completed 0
+node89.filename intftabxyz.tab
+node89.label {Flowfield Points}
+node89.memo {}
+node89.name intfxyz
+node89.path .
+node89.selected 1
+node89.subnodes {}
+node89.template intftabxyz
+node9.class table
+node9.completed 1
+node9.filename atmcoldday.tab
+node9.label {Cold day atmosphere table}
+node9.memo {}
+node9.name atmostabcold
+node9.path {$FL_DIR/flme/data}
+node9.selected 1
+node9.subnodes {}
+node9.template atmostabstd
+node90.choices user
+node90.class rep
+node90.completed 0
+node90.label {User-defined Subsystem}
+node90.memo {}
+node90.name user
+node90.selected 0
+node90.subnodes {}
+node90.template user
+node91.class module
+node91.completed 1
+node91.fields {NSEGA FIRSTACPIB AFOILBOUNDARY RSBAR NSCL NSCD}
+node91.fields.AFOILBOUNDARY.mark 0
+node91.fields.AFOILBOUNDARY.value {0.0 1.0}
+node91.fields.FIRSTACPIB.mark 1
+node91.fields.FIRSTACPIB.value {168 mm}
+node91.fields.NSCD.mark 0
+node91.fields.NSCD.value 0.1
+node91.fields.NSCL.mark 0
+node91.fields.NSCL.value 0.6
+node91.fields.NSEGA.mark 0
+node91.fields.NSEGA.value 5
+node91.fields.RSBAR.mark 0
+node91.fields.RSBAR.value 0.70
+node91.label Quasi-Steady
+node91.memo {}
+node91.name quasisteady
+node91.options {ACPOPTION ATABOPTION ISROTSTALL ISWLMODEL ISSMOOTHAIRFOIL}
+node91.options.ACPOPTION.mark 1
+node91.options.ACPOPTION.value 1
+node91.options.ATABOPTION.mark 1
+node91.options.ATABOPTION.value 1
+node91.options.ISROTSTALL.mark 0
+node91.options.ISROTSTALL.value 0
+node91.options.ISSMOOTHAIRFOIL.mark 1
+node91.options.ISSMOOTHAIRFOIL.value 1
+node91.options.ISWLMODEL.mark 0
+node91.options.ISWLMODEL.value 0
+node91.selected 1
+node91.subnodes {node92 node93 node94 node95}
+node91.template quasisteady
+node92.choices airfoiltab
+node92.class rep
+node92.completed 1
+node92.label {2-D nonuniform table}
+node92.memo {}
+node92.name airfoiltab
+node92.selected 1
+node92.subnodes node160
+node92.template airfoiltab
+node93.choices uniairfoiltab
+node93.class rep
+node93.completed 0
+node93.label {Uniform airfoil table}
+node93.memo {}
+node93.name uniairfoiltab
+node93.selected 1
+node93.subnodes node97
+node93.template uniairfoiltab
+node94.class table
+node94.completed 1
+node94.filename aeronodes_mr.tab
+node94.label {Aero segment nodes}
+node94.memo {}
+node94.name aeroxnode
+node94.path tables
+node94.selected 1
+node94.subnodes {}
+node94.template aeroxnode
+node95.class table
+node95.completed 0
+node95.filename aeroxnodetefles.tab
+node95.label {Aero nodes with TEF/LES}
+node95.memo {}
+node95.name aeroxnodetefles
+node95.path .
+node95.selected 1
+node95.subnodes {}
+node95.template aeroxnodetefles
+node96.filename NACA0015.tab
+node96.label NACA23012
+node96.path ./tables/
+node97.class table
+node97.completed 0
+node97.filename NACA23012.sav
+node97.label {NACA 0012}
+node97.memo {}
+node97.name uniairfoiltab
+node97.path /home/pbibik/FLAB/profile/
+node97.selected 1
+node97.subnodes {}
+node97.template uniairfoiltab
+node98.class module
+node98.completed 1
+node98.label {Peters-He Six State Inflow}
+node98.memo {}
+node98.name sixstateinflow
+node98.options {GRDEFFOPT ISDELTALS DISTORTWAKE ISKAPPA}
+node98.options.DISTORTWAKE.mark 0
+node98.options.DISTORTWAKE.value 0
+node98.options.GRDEFFOPT.mark 0
+node98.options.GRDEFFOPT.value 0
+node98.options.ISDELTALS.mark 0
+node98.options.ISDELTALS.value 0
+node98.options.ISKAPPA.mark 0
+node98.options.ISKAPPA.value 0
+node98.selected 1
+node98.subnodes {node99 node100 node101}
+node98.template sixstateinflow
+node99.class table
+node99.completed 0
+node99.filename kappa.tab
+node99.label {Inflow correction (1D table)}
+node99.memo {}
+node99.name kappatab
+node99.path .
+node99.selected 1
+node99.subnodes {}
+node99.template kappatab

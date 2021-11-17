@@ -1,0 +1,5 @@
+sim_vehicle.py -f heli --map --console --add-param-file archer.parm --model json:172.22.2.103 -L Przasnysz
+
+graph SERVO_OUTPUT_RAW.servo1_raw SERVO_OUTPUT_RAW.servo2_raw SERVO_OUTPUT_RAW.servo3_raw SERVO_OUTPUT_RAW.servo4_raw
+
+sim_vehicle.py -f json:<my:ip:address> -b bin/arducopter-heli --map --console --add-param-file <my_heli_params>.parm

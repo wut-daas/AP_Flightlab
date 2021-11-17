@@ -1,0 +1,208 @@
+//-----------------------------------------------------------
+//  File: archer_c002.exc
+//-----------------------------------------------------------
+//
+pushg
+//
+// Page # 1 :    -
+//
+BSOURCE	XaTrim
+	XaTrim_N = 1;
+	XaTrim_U = 0.0;
+BSOURCE	Xa
+	Xa_N = 1;
+	Xa_U = 0.0;
+BSUMJTHREE SUM001
+	SUM001_N = 1;
+	SUM001_SA1 = 1.0;
+	SUM001_SA2 = 1.0;
+BSINK	skokpoprz
+	skokpoprz_N = 1;
+BSOURCE	XbTrim
+	XbTrim_N = 1;
+	XbTrim_U = 0.0;
+BSOURCE	Xb
+	Xb_N = 1;
+	Xb_U = 0.0;
+BSUMJTHREE SUM003
+	SUM003_N = 1;
+	SUM003_SA1 = 1.0;
+	SUM003_SA2 = 1.0;
+BSINK	skokpodl
+	skokpodl_N = 1;
+BSOURCE	XcTrim
+	XcTrim_N = 1;
+	XcTrim_U = 0.0;
+BSOURCE	Xc
+	Xc_N = 1;
+	Xc_U = 0.0;
+BSUMJTHREE SUM005
+	SUM005_N = 1;
+	SUM005_SA1 = 1.0;
+	SUM005_SA2 = 1.0;
+BSINK	skokogwirnika
+	skokogwirnika_N = 1;
+BSOURCE	XpTrim
+	XpTrim_N = 1;
+	XpTrim_U = 0.0;
+BSOURCE	Xp
+	Xp_N = 1;
+	Xp_U = 0.0;
+BSUMJTHREE SUM010
+	SUM010_N = 1;
+	SUM010_SA1 = 1.0;
+	SUM010_SA2 = 1.0;
+BSINK	skokogsmigla
+	skokogsmigla_N = 1;
+//
+// Page # 2 :    Lateral
+//
+popg; pushg;
+group Lateral;
+BCONSTANT	BIAS001
+	BIAS001_N = 1;
+	BIAS001_Y = 0;
+BSUMJTHREE SUM001
+	SUM001_N = 1;
+	SUM001_SA1 = 1.0;
+	SUM001_SA2 = -1.0;
+BGAIN	XAgain
+	XAgain_N = 1;
+	XAgain_K = 1.0;
+lookup1d XATAB
+XATAB_extrapf = 0;
+XATAB_nx1 = 2;
+XATAB_x1 = [0 100];
+XATAB_ny = 1;
+XATAB_tab1d = [5 -5];
+BGAIN	D2R
+	D2R_N = 1;
+	D2R_K = 0.01745;
+BTRANSFS TFC001
+TFC001_N   = 1;
+TFC001_NUM = [1];
+TFC001_DEN = [0.008 1];
+//
+// Page # 3 :    Longitudinal
+//
+popg; pushg;
+group Longitudinal;
+BCONSTANT	BIAS001
+	BIAS001_N = 1;
+	BIAS001_Y = 0;
+BSUMJTHREE SUM001
+	SUM001_N = 1;
+	SUM001_SA1 = 1.0;
+	SUM001_SA2 = -1.0;
+BGAIN	XAgain
+	XAgain_N = 1;
+	XAgain_K = 1.0;
+lookup1d XBTAB
+XBTAB_extrapf = 0;
+XBTAB_nx1 = 2;
+XBTAB_x1 = [0 100];
+XBTAB_ny = 1;
+XBTAB_tab1d = [8 -8];
+BGAIN	D2R
+	D2R_N = 1;
+	D2R_K = 0.01745;
+BTRANSFS TFC001
+TFC001_N   = 1;
+TFC001_NUM = [1];
+TFC001_DEN = [0.008 1];
+//
+// Page # 4 :    Collective
+//
+popg; pushg;
+group Collective;
+BCONSTANT	BIAS001
+	BIAS001_N = 1;
+	BIAS001_Y = 0;
+BSUMJTHREE SUM001
+	SUM001_N = 1;
+	SUM001_SA1 = 1.0;
+	SUM001_SA2 = -1.0;
+BGAIN	XAgain
+	XAgain_N = 1;
+	XAgain_K = 1.0;
+lookup1d XATAB
+XATAB_extrapf = 0;
+XATAB_nx1 = 2;
+XATAB_x1 = [0 100];
+XATAB_ny = 1;
+XATAB_tab1d = [-2 20];
+BGAIN	D2R
+	D2R_N = 1;
+	D2R_K = 0.01745;
+BTRANSFS TFC001
+TFC001_N   = 1;
+TFC001_NUM = [1];
+TFC001_DEN = [0.008 1];
+//
+// Page # 5 :    Pedal
+//
+popg; pushg;
+group Pedal;
+BCONSTANT	BIAS001
+	BIAS001_N = 1;
+	BIAS001_Y = 0;
+BSUMJTHREE SUM001
+	SUM001_N = 1;
+	SUM001_SA1 = 1.0;
+	SUM001_SA2 = -1.0;
+BGAIN	XAgain
+	XAgain_N = 1;
+	XAgain_K = 1.0;
+lookup1d XATAB
+XATAB_extrapf = 0;
+XATAB_nx1 = 2;
+XATAB_x1 = [0 100];
+XATAB_ny = 1;
+XATAB_tab1d = [30 -20];
+BGAIN	D2R
+	D2R_N = 1;
+	D2R_K = 0.01745;
+BTRANSFS TFC001
+TFC001_N   = 1;
+TFC001_NUM = [1];
+TFC001_DEN = [0.012 1];
+//
+// CONNECTIONS
+//
+popg
+Connect XaTrim(1) to SUM001(1)
+Connect Xa(1) to SUM001(2)
+Connect XbTrim(1) to SUM003(1)
+Connect Xb(1) to SUM003(2)
+Connect XcTrim(1) to SUM005(1)
+Connect Xc(1) to SUM005(2)
+Connect Collective_TFC001(1) to skokogwirnika(1)
+Connect XpTrim(1) to SUM010(1)
+Connect Xp(1) to SUM010(2)
+Connect Pedal_TFC001(1) to skokogsmigla(1)
+Connect Lateral_TFC001(1) to skokpoprz(1)
+Connect Longitudinal_TFC001(1) to skokpodl(1)
+Connect SUM001(1) to Lateral_SUM001(1)
+Connect Lateral_BIAS001(1) to Lateral_SUM001(2)
+Connect Lateral_SUM001(1) to Lateral_XAgain(1)
+Connect Lateral_XAgain(1) to Lateral_XATAB(1)
+Connect Lateral_XATAB(1) to Lateral_D2R(1)
+Connect Lateral_D2R(1) to Lateral_TFC001(1)
+Connect SUM003(1) to Longitudinal_SUM001(1)
+Connect Longitudinal_BIAS001(1) to Longitudinal_SUM001(2)
+Connect Longitudinal_SUM001(1) to Longitudinal_XAgain(1)
+Connect Longitudinal_XAgain(1) to Longitudinal_XBTAB(1)
+Connect Longitudinal_XBTAB(1) to Longitudinal_D2R(1)
+Connect Longitudinal_D2R(1) to Longitudinal_TFC001(1)
+Connect SUM005(1) to Collective_SUM001(1)
+Connect Collective_BIAS001(1) to Collective_SUM001(2)
+Connect Collective_SUM001(1) to Collective_XAgain(1)
+Connect Collective_XAgain(1) to Collective_XATAB(1)
+Connect Collective_XATAB(1) to Collective_D2R(1)
+Connect Collective_D2R(1) to Collective_TFC001(1)
+Connect SUM010(1) to Pedal_SUM001(1)
+Connect Pedal_BIAS001(1) to Pedal_SUM001(2)
+Connect Pedal_SUM001(1) to Pedal_XAgain(1)
+Connect Pedal_XAgain(1) to Pedal_XATAB(1)
+Connect Pedal_XATAB(1) to Pedal_D2R(1)
+Connect Pedal_D2R(1) to Pedal_TFC001(1)

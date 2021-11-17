@@ -1,0 +1,419 @@
+<?xml version='1.0'?>
+<csge format='2.0'>
+<page>
+<annotations>
+</annotations>
+<elements>
+<element type='INPUT' name='XaTrim' coords='32 32 103 64'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='INPUT' name='Xa' coords='32 80 103 112'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='SUM' name='SUM001' coords='168 32 200 64'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='OUTPUT' name='skokpoprz' coords='480 88 576 120'>
+<field name='no' value='1'/>
+</element>
+<element type='INPUT' name='XbTrim' coords='32 184 103 216'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='INPUT' name='Xb' coords='32 232 103 264'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='SUM' name='SUM003' coords='168 184 200 216'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='OUTPUT' name='skokpodl' coords='480 240 591 272'>
+<field name='no' value='1'/>
+</element>
+<element type='INPUT' name='XcTrim' coords='32 344 103 376'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='INPUT' name='Xc' coords='32 392 103 424'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='SUM' name='SUM005' coords='168 344 200 376'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='OUTPUT' name='skokogwirnika' coords='480 392 623 424'>
+<field name='no' value='1'/>
+</element>
+<element type='INPUT' name='XpTrim' coords='32 504 103 536'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='INPUT' name='Xp' coords='32 552 103 584'>
+<field name='ni' value='1'/>
+<field name='uic' value='0.0'/>
+</element>
+<element type='SUM' name='SUM010' coords='168 504 200 536'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='OUTPUT' name='skokogsmigla' coords='480 560 608 592'>
+<field name='no' value='1'/>
+</element>
+<element type='CSW' name='CSW001' coords='400 80 464 128'>
+<field name='n' value='1'/>
+<field name='th' value='0.5'/>
+<field name='contval' value='0'/>
+</element>
+<element type='INPUT' name='directSP1' coords='272 88 352 120'>
+<field name='ni' value='1'/>
+<field name='uic' value='&amp;world_model_control_data_directsp'/>
+</element>
+<element type='INPUT' name='a1s1in' coords='272 128 352 160'>
+<field name='ni' value='1'/>
+<field name='uic' value='&amp;world_model_control_cpg_in_a1s1'/>
+</element>
+<element type='CSW' name='CSW002' coords='400 384 464 432'>
+<field name='n' value='1'/>
+<field name='th' value='0.5'/>
+<field name='contval' value='0'/>
+</element>
+<element type='INPUT' name='directSP2' coords='272 240 352 272'>
+<field name='ni' value='1'/>
+<field name='uic' value='&amp;world_model_control_data_directsp'/>
+</element>
+<element type='INPUT' name='b1s1in' coords='272 280 352 312'>
+<field name='ni' value='1'/>
+<field name='uic' value='&amp;world_model_control_cpg_in_b1s1'/>
+</element>
+<element type='CSW' name='CSW003' coords='400 232 464 280'>
+<field name='n' value='1'/>
+<field name='th' value='0.5'/>
+<field name='contval' value='0'/>
+</element>
+<element type='INPUT' name='directSP3' coords='272 400 352 432'>
+<field name='ni' value='1'/>
+<field name='uic' value='&amp;world_model_control_data_directsp'/>
+</element>
+<element type='INPUT' name='theta1in' coords='272 440 352 472'>
+<field name='ni' value='1'/>
+<field name='uic' value='&amp;world_model_control_cpg_in_theta1'/>
+</element>
+<element type='CSW' name='CSW004' coords='400 552 464 600'>
+<field name='n' value='1'/>
+<field name='th' value='0.5'/>
+<field name='contval' value='0'/>
+</element>
+<element type='INPUT' name='directSP4' coords='272 560 352 592'>
+<field name='ni' value='1'/>
+<field name='uic' value='&amp;world_model_control_data_directsp'/>
+</element>
+<element type='INPUT' name='theta2in' coords='272 600 352 632'>
+<field name='ni' value='1'/>
+<field name='uic' value='&amp;world_model_control_cpg_in_theta2'/>
+</element>
+</elements>
+<connectors>
+</connectors>
+<superblocks>
+<superblock name='Lateral' coords='272 16 336 80'>
+<page>
+<annotations>
+<label pos='337 96'>[0 100] procent -&gt; [-5 5] deg</label>
+<label pos='425 15'></label>
+<label pos='455 19'>D2R</label>
+<label pos='230 17'>XAGAIN</label>
+<label pos='320 9'>XATAB</label>
+</annotations>
+<elements>
+<element type='BIAS' name='BIAS001' coords='64 120 144 168'>
+<field name='ni' value='1'/>
+<field name='bias' value='0'/>
+</element>
+<element type='SUM' name='SUM001' coords='152 32 184 64'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='-1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='DGAIN' name='XAgain' coords='208 24 256 72'>
+<field name='n' value='1'/>
+<field name='k' value='1.0'/>
+</element>
+<element type='TABL1D' name='XATAB' coords='288 24 368 72'>
+<field name='nind' value='2'/>
+<field name='indpvar' value='[0 100]'/>
+<field name='n' value='1'/>
+<field name='table' value='[-5 5]'/>
+<field name='extrapf' value='0'/>
+</element>
+<element type='DGAIN' name='D2R' coords='408 24 487 72'>
+<field name='n' value='1'/>
+<field name='k' value='0.01745'/>
+</element>
+</elements>
+<connectors>
+<input name='T001' label='XATOT' coords='32 32 96 64'/>
+<output name='T002' label='CSW001' coords='531 32 605 64'/>
+</connectors>
+<superblocks>
+</superblocks>
+<connections>
+<connection src='T001' tgt='SUM001' points='97 48  152 48'/>
+<connection src='BIAS001' tgt='SUM001' points='144 144  168 144  168 64'/>
+<connection src='SUM001' tgt='XAgain' points='184 48  208 48'/>
+<connection src='XAgain' tgt='XATAB' points='256 48  288 48'/>
+<connection src='XATAB' tgt='D2R' points='368 48  408 48'/>
+<connection src='D2R' tgt='T002' points='487 48  531 48'/>
+</connections>
+</page>
+</superblock>
+<superblock name='Longitudinal' coords='266 168 342 232'>
+<page>
+<annotations>
+<label pos='337 96'>[0 100] procent -&gt; [-8 8] deg</label>
+<label pos='425 15'></label>
+<label pos='439 11'>D2R</label>
+<label pos='230 17'>XBGAIN</label>
+<label pos='320 9'>XBTAB</label>
+</annotations>
+<elements>
+<element type='BIAS' name='BIAS001' coords='64 120 144 168'>
+<field name='ni' value='1'/>
+<field name='bias' value='0'/>
+</element>
+<element type='SUM' name='SUM001' coords='152 32 184 64'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='-1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='DGAIN' name='XAgain' coords='208 24 256 72'>
+<field name='n' value='1'/>
+<field name='k' value='1.0'/>
+</element>
+<element type='TABL1D' name='XATAB' coords='288 24 368 72'>
+<field name='nind' value='2'/>
+<field name='indpvar' value='[0 100]'/>
+<field name='n' value='1'/>
+<field name='table' value='[-8 8]'/>
+<field name='extrapf' value='0'/>
+</element>
+<element type='DGAIN' name='D2R' coords='416 24 495 72'>
+<field name='n' value='1'/>
+<field name='k' value='0.01745'/>
+</element>
+</elements>
+<connectors>
+<input name='T001' label='XBTOT' coords='32 32 96 64'/>
+<output name='T002' label='CSW003' coords='539 32 613 64'/>
+</connectors>
+<superblocks>
+</superblocks>
+<connections>
+<connection src='T001' tgt='SUM001' points='97 48  152 48'/>
+<connection src='BIAS001' tgt='SUM001' points='144 144  168 144  168 64'/>
+<connection src='SUM001' tgt='XAgain' points='184 48  208 48'/>
+<connection src='XAgain' tgt='XATAB' points='256 48  288 48'/>
+<connection src='XATAB' tgt='D2R' points='368 48  416 48'/>
+<connection src='D2R' tgt='T002' points='495 48  539 48'/>
+</connections>
+</page>
+</superblock>
+<superblock name='Collective' coords='272 328 336 392'>
+<page>
+<annotations>
+<label pos='337 96'>[0 100] procent -&gt; [-2 12] deg</label>
+<label pos='425 15'></label>
+<label pos='447 19'>D2R</label>
+<label pos='230 17'>XCGAIN</label>
+<label pos='320 9'>XCCTAB</label>
+</annotations>
+<elements>
+<element type='BIAS' name='BIAS001' coords='64 120 144 168'>
+<field name='ni' value='1'/>
+<field name='bias' value='0'/>
+</element>
+<element type='SUM' name='SUM001' coords='152 32 184 64'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='-1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='DGAIN' name='XAgain' coords='208 24 256 72'>
+<field name='n' value='1'/>
+<field name='k' value='1.0'/>
+</element>
+<element type='TABL1D' name='XATAB' coords='288 24 368 72'>
+<field name='nind' value='2'/>
+<field name='indpvar' value='[0 100]'/>
+<field name='n' value='1'/>
+<field name='table' value='[-2 12]'/>
+<field name='extrapf' value='0'/>
+</element>
+<element type='DGAIN' name='D2R' coords='400 24 479 72'>
+<field name='n' value='1'/>
+<field name='k' value='0.01745'/>
+</element>
+</elements>
+<connectors>
+<input name='T001' label='XCTOT' coords='32 32 96 64'/>
+<output name='T002' label='CSW002' coords='539 32 613 64'/>
+</connectors>
+<superblocks>
+</superblocks>
+<connections>
+<connection src='T001' tgt='SUM001' points='97 48  152 48'/>
+<connection src='BIAS001' tgt='SUM001' points='144 144  168 144  168 64'/>
+<connection src='SUM001' tgt='XAgain' points='184 48  208 48'/>
+<connection src='XAgain' tgt='XATAB' points='256 48  288 48'/>
+<connection src='XATAB' tgt='D2R' points='368 48  400 48'/>
+<connection src='D2R' tgt='T002' points='479 48  539 48'/>
+</connections>
+</page>
+</superblock>
+<superblock name='Pedal' coords='272 488 336 552'>
+<page>
+<annotations>
+<label pos='337 96'>[0 100] procent -&gt; [-20 30] deg</label>
+<label pos='425 15'></label>
+<label pos='447 19'>D2R</label>
+<label pos='230 17'>XPGAIN</label>
+<label pos='320 9'>XPTAB</label>
+</annotations>
+<elements>
+<element type='BIAS' name='BIAS001' coords='64 120 144 168'>
+<field name='ni' value='1'/>
+<field name='bias' value='0'/>
+</element>
+<element type='SUM' name='SUM001' coords='152 32 184 64'>
+<field name='n' value='1'/>
+<field name='sn' value=''/>
+<field name='sw' value='1.0'/>
+<field name='ss' value='-1.0'/>
+<field name='se' value=''/>
+</element>
+<element type='DGAIN' name='XAgain' coords='208 24 256 72'>
+<field name='n' value='1'/>
+<field name='k' value='1.0'/>
+</element>
+<element type='TABL1D' name='XATAB' coords='288 24 368 72'>
+<field name='nind' value='2'/>
+<field name='indpvar' value='[0 100]'/>
+<field name='n' value='1'/>
+<field name='table' value='[-20 30]'/>
+<field name='extrapf' value='0'/>
+</element>
+<element type='DGAIN' name='D2R' coords='400 24 479 72'>
+<field name='n' value='1'/>
+<field name='k' value='0.01745'/>
+</element>
+</elements>
+<connectors>
+<input name='T001' label='XPTOT' coords='32 32 96 64'/>
+<output name='T002' label='CSW004' coords='539 32 613 64'/>
+</connectors>
+<superblocks>
+</superblocks>
+<connections>
+<connection src='T001' tgt='SUM001' points='97 48  152 48'/>
+<connection src='BIAS001' tgt='SUM001' points='144 144  168 144  168 64'/>
+<connection src='SUM001' tgt='XAgain' points='184 48  208 48'/>
+<connection src='XAgain' tgt='XATAB' points='256 48  288 48'/>
+<connection src='XATAB' tgt='D2R' points='368 48  400 48'/>
+<connection src='D2R' tgt='T002' points='479 48  539 48'/>
+</connections>
+</page>
+</superblock>
+</superblocks>
+<connections>
+<connection src='XaTrim' tgt='SUM001' points='103 48  168 48'/>
+<connection src='Xa' tgt='SUM001' points='103 96  184 96  184 64'/>
+<connection src='SUM001' tgt='Lateral' tgtcon='T001' points='200 48  272 48'/>
+<connection src='XbTrim' tgt='SUM003' points='103 200  168 200'/>
+<connection src='Xb' tgt='SUM003' points='103 248  184 248  184 216'/>
+<connection src='SUM003' tgt='Longitudinal' tgtcon='T001' points='200 200  272 200'/>
+<connection src='XcTrim' tgt='SUM005' points='103 360  168 360'/>
+<connection src='Xc' tgt='SUM005' points='103 408  184 408  184 376'/>
+<connection src='SUM005' tgt='Collective' tgtcon='T001' points='200 360  272 360'/>
+<connection src='XpTrim' tgt='SUM010' points='103 520  168 520'/>
+<connection src='Xp' tgt='SUM010' points='103 568  184 568  184 536'/>
+<connection src='SUM010' tgt='Pedal' tgtcon='T001' points='200 520  272 520'/>
+<connection src='Lateral' srccon='T002' tgt='CSW001' points='336 48  432 80'/>
+<connection src='directSP1' tgt='CSW001' points='352 104  400 104'/>
+<connection src='CSW001' tgt='skokpoprz' points='464 104  480 104'/>
+<connection src='a1s1in' tgt='CSW001' points='352 144  432 128'/>
+<connection src='CSW003' tgt='skokpodl' points='464 256  480 256'/>
+<connection src='b1s1in' tgt='CSW003' points='352 296  432 280'/>
+<connection src='directSP2' tgt='CSW003' points='352 256  400 256'/>
+<connection src='Longitudinal' srccon='T002' tgt='CSW003' points='336 200  432 232'/>
+<connection src='CSW002' tgt='skokogwirnika' points='464 408  480 408'/>
+<connection src='Collective' srccon='T002' tgt='CSW002' points='336 360  432 384'/>
+<connection src='directSP3' tgt='CSW002' points='352 416  400 408'/>
+<connection src='theta1in' tgt='CSW002' points='352 456  432 432'/>
+<connection src='CSW004' tgt='skokogsmigla' points='464 576  480 576'/>
+<connection src='Pedal' srccon='T002' tgt='CSW004' points='336 520  432 552'/>
+<connection src='directSP4' tgt='CSW004' points='352 576  400 576'/>
+<connection src='theta2in' tgt='CSW004' points='352 616  432 600'/>
+</connections>
+</page>
+<interface>
+<definitions key='outputs'>
+<definition lhs='world_data_b1s1' rhs='world_model_control_skokpodl_y' desc='Ctrl, Lng cyclic angle [rad]'/>
+<definition lhs='world_data_a1s1' rhs='world_model_control_skokpoprz_y' desc='Ctrl, Lat cyclic angle[rad]'/>
+<definition lhs='world_data_theta1' rhs='world_model_control_skokogwirnika_y' desc='Ctr., main rotoor collective angle [rad]'/>
+<definition lhs='world_data_theta2' rhs='world_model_control_skokogsmigla_y' desc='Ctrl., Tail rotor collective angle [rad]'/>
+</definitions>
+<definitions key='extInputs'>
+<definition lhs='world_model_control_xbtrim_u' rhs='world_model_control_data_xbtrm' desc='XB Trim [percent]'/>
+<definition lhs='world_model_control_xatrim_u' rhs='world_model_control_data_xatrm' desc='Xa Trim [percent]'/>
+<definition lhs='world_model_control_xptrim_u' rhs='world_model_control_data_xptrm' desc='XP Trim [percent]'/>
+<definition lhs='world_model_control_xctrim_u' rhs='world_model_control_data_xctrm' desc='XC Trim [percent]'/>
+<definition lhs='world_model_control_xa_u' rhs='world_model_control_data_xa' desc='XA perturbation [percent]'/>
+<definition lhs='world_model_control_xb_u' rhs='world_model_control_data_xb' desc='XB perturbation [percent]'/>
+<definition lhs='world_model_control_xp_u' rhs='world_model_control_data_xp' desc='XP perturbation [percent]'/>
+<definition lhs='world_model_control_xc_u' rhs='world_model_control_data_xc' desc='XC perturbation [percent]'/>
+</definitions>
+<definitions key='extOutputs'>
+<definition lhs='world_model_control_cpg_xaout_b1s1' rhs='world_model_control_skokpodl_y' desc='Ctrl., Lng cyclic angle [rad]'/>
+<definition lhs='world_model_control_cpg_xaout_a1s1' rhs='world_model_control_skokpoprz_y' desc='Ctrl., Lat cyclic angle [rad]'/>
+<definition lhs='world_model_control_cpg_xaout_theta1' rhs='world_model_control_skokogwirnika_y' desc='Ctr., Main rotor collective angle [rad]'/>
+<definition lhs='world_model_control_cpg_xaout_theta2' rhs='world_model_control_skokogsmigla_y' desc='Ctr., tail rotor collective angle [rad]'/>
+</definitions>
+<definitions key='initialization'>
+<definition lhs='world_model_control_data_xb' rhs='0' desc='xb pertubration [percent]'/>
+<definition lhs='world_model_control_data_xa' rhs='0' desc='xa perturbation [percent]'/>
+<definition lhs='world_model_control_data_xp' rhs='0' desc='xp perturbation [percent]'/>
+<definition lhs='world_model_control_data_xc' rhs='0' desc='xc perturbation [percent]'/>
+<definition lhs='world_model_control_data_userin' rhs='[0 0 0 0 0 0 0 0 0 0]' desc='User defined inputs'/>
+<definition lhs='world_model_control_data_xatrm' rhs='50' desc='Initial lat stick [%]'/>
+<definition lhs='world_model_control_data_xbtrm' rhs='50' desc='Initial lng stick [%]'/>
+<definition lhs='world_model_control_data_xctrm' rhs='50' desc='Initial coll stick [%]'/>
+<definition lhs='world_model_control_data_xptrm' rhs='50' desc='Initial pedal [%]'/>
+<definition lhs='world_model_control_data_directsp' rhs='0' desc='Flag to assign swashplate angles directly [0/1]'/>
+<definition lhs='world_model_control_cpg_in_b1s1' rhs='0' desc='Connection for assigning B1S1 directly using AP [deg]'/>
+<definition lhs='world_model_control_cpg_in_a1s1' rhs='0' desc='Connection for assigning A1S1 directly using AP [deg]'/>
+<definition lhs='world_model_control_cpg_in_theta1' rhs='0' desc='Connection for assigning THETA1 directly using AP [deg]'/>
+<definition lhs='world_model_control_cpg_in_theta2' rhs='0' desc='Connection for assigning THETA2 directly using AP [deg]'/>
+</definitions>
+</interface>
+</csge>

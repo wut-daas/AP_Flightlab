@@ -1,0 +1,176 @@
+//
+// Based on wut-sw4.configure file generated from wut-sw4.icd version 1.0.0
+//
+
+describe("ICD-Version: archer_grabowski version 1.0.0")
+describe("ICD-Inputs: @CONTROLIN @ATMOS @TERRAININ")
+describe("ICD-Outputs: @BODYMOTION @POWER @INSTRUMENTDISP @CONTROLDEFLECT @ROTOR @MISCOUT")
+
+
+//////////////////////////////////////////////////////////////////////
+pushg(world);
+group IO "External interfaces"
+
+//////////////////////////////////////////////////////////////////////
+// Configuration and Initial Conditions
+
+group AIRCRAFTIC "Initial conditions (rw)"
+    POSXIC =& world_model_airframe_cpg_xastates_posxi "X initial condition of a/c cg in inertial frame [ft]";
+    POSYIC =& world_model_airframe_cpg_xastates_posyi "Y initial condition of a/c cg in inertial frame [ft]";
+    POSZIC =& world_model_airframe_cpg_xastates_poszi "Z initial condition of a/c cg in inertial frame [ft]";
+    SPEEDIC =& world_model_airframe_cpg_xastates_vxb "Initial x speed body frame [ft/sec]";
+    PSIIC =& world_model_airframe_cpg_xastates_psi "Initial heading [rad]";
+varlist @AIRCRAFTIC = POSXIC,POSYIC,POSZIC,SPEEDIC,PSIIC
+fcmdump(@AIRCRAFTIC);
+parentg;
+fcmdump(AIRCRAFTIC);
+
+//////////////////////////////////////////////////////////////////////
+// Inputs to FDEM
+
+group CONTROLIN "Pilot inputs (input)"
+    //XBTOT =& world_model_control_data_xbtrm "Longitudinal cyclic (0%:forward; 100%:aft) [%]";
+    //XATOT =& world_model_control_data_xatrm "Lateral cyclic (0%:left; 100%:right) [%]";
+    //XCTOT =& world_model_control_data_xctrm "Collective position (0%:down; 100%:up) [%]";
+    //XPTOT =& world_model_control_data_xptrm "Pedal position (0%:left; 100%:right) [%]";
+    XBTOT =& world_model_control_cpg_in_b1s1 "Direct longitudinal cyclic (+nose up) [rad]";
+    XATOT =& world_model_control_cpg_in_a1s1 "Direct lateral cyclic (+right) [rad]";
+    XCTOT =& world_model_control_cpg_in_theta1 "Direct collective (+up) [rad]";
+    XPTOT =& world_model_control_cpg_in_theta2 "Direct tail collective (+right) [rad]";
+    DIRECT =& world_model_control_data_directsp "Switch for direct control [0/1]";
+varlist @CONTROLIN = XBTOT,XATOT,XCTOT,XPTOT,DIRECT
+fcmdump(@CONTROLIN);
+parentg;
+fcmdump(CONTROLIN);
+
+
+group ATMOS "Atmospheric conditions (input)"
+    PRESSL =& world_model_cpg_in_psl "Sea level barometric pressure [lbf/ft^2]";
+    TEMPSL =& world_model_cpg_in_tsl "Sea level atmospheric temperature [degR]";
+    WINDX =& world_model_cpg_in_windx "Wind vector, X component (+ from north) [ft/sec]";
+    WINDY =& world_model_cpg_in_windy "Wind vector, Y component (+ from east) [ft/sec]";
+    WINDZ =& world_model_cpg_in_windz "Wind vector, Z component (+ from below) [ft/sec]";
+varlist @ATMOS = PRESSL,TEMPSL,WINDX,WINDY,WINDZ
+fcmdump(@ATMOS);
+parentg;
+fcmdump(ATMOS);
+
+
+group TERRAININ "Ground/Terrain information (input)"
+    TPOSX =& world_model_cpg_in_posxgrnd "Terrain reference point, X coordinate (+N) [ft]";
+    TPOSY =& world_model_cpg_in_posygrnd "Terrain reference point, Y coordinate (+E) [ft]";
+    TPOSZ =& world_model_cpg_in_poszgrnd "Terrain reference point, Z coordinate (+D) [ft]";
+    TNORMX =& world_model_cpg_in_normxref "Terrain surface normal, X component";
+    TNORMY =& world_model_cpg_in_normyref "Terrain surface normal, Y component";
+    TNORMZ =& world_model_cpg_in_normzref "Terrain surface normal, Z component";
+varlist @TERRAININ = TPOSX,TPOSY,TPOSZ,TNORMX,TNORMY,TNORMZ
+fcmdump(@TERRAININ);
+parentg;
+fcmdump(TERRAININ);
+
+//////////////////////////////////////////////////////////////////////
+// Outputs from FDEM
+
+group BODYMOTION "Equations of motion (output)"
+    POSXI =& world_model_airframe_cpg_xaout_posxi "Aircraft position, X coordinate (+N) [ft]";
+    POSYI =& world_model_airframe_cpg_xaout_posyi "Aircraft position, Y coordinate (+E) [ft]";
+    POSZI =& world_model_airframe_cpg_xaout_poszi "Aircraft position, Z coordinate (+D) [ft]";
+    PHI =& world_model_airframe_cpg_xaout_phi "Roll attitude (+right wing down) [rad]";
+    THETA =& world_model_airframe_cpg_xaout_theta "Pitch attitude (+nose up) [rad]";
+    PSI =& world_model_airframe_cpg_xaout_psi "Heading (0=North, +East) [rad]";
+    VXI =& world_model_airframe_cpg_xaout_vxi "Inertial velocity, X axis (+N) [ft/sec]";
+    VYI =& world_model_airframe_cpg_xaout_vyi "Inertial velocity, Y axis (+E) [ft/sec]";
+    VZI =& world_model_airframe_cpg_xaout_vzi "Inertial velocity, Z axis (+D) [ft/sec]";
+    VXB =& world_model_airframe_cpg_xaout_vxb "Body axis velocity, X axis (+forward) [ft/sec]";
+    VYB =& world_model_airframe_cpg_xaout_vyb "Body axis velocity, Y axis (+right) [ft/sec]";
+    VZB =& world_model_airframe_cpg_xaout_vzb "Body axis velocity, Z axis (+down) [ft/sec]";
+    VXBD =& world_model_airframe_cpg_xaout_vxbd "Body axis velocity derivative, X axis (u dot) [ft/sec^2]";
+    VYBD =& world_model_airframe_cpg_xaout_vybd "Body axis velocity derivative, Y axis (v dot) [ft/sec^2]";
+    VZBD =& world_model_airframe_cpg_xaout_vzbd "Body axis velocity derivative, z axis (w dot) [ft/sec^2]";
+    PHID =& world_model_airframe_cpg_xaout_phid "Roll rate [rad/sec]";
+    THETAD =& world_model_airframe_cpg_xaout_thetad "Pitch rate [rad/sec]";
+    PSID =& world_model_airframe_cpg_xaout_psid "Yaw rate [rad/sec]";
+    P =& world_model_airframe_cpg_xaout_p "Angular velocity, body axis, X component [rad/sec]";
+    Q =& world_model_airframe_cpg_xaout_q "Angular velocity, body axis, Y component [rad/sec]";
+    R =& world_model_airframe_cpg_xaout_r "Angular velocity, body axis, Z component [rad/sec]";
+    PD =& world_model_airframe_cpg_xaout_pd "Angular acceleration, body axis, X component [rad/sec^2]";
+    QD =& world_model_airframe_cpg_xaout_qd "Angular acceleration, body axis, Y component [rad/sec^2]";
+    RD =& world_model_airframe_cpg_xaout_rd "Angular acceleration, body axis, Z component [rad/sec^2]";
+varlist @BODYMOTION = POSXI,POSYI,POSZI,PHI,THETA,PSI,VXI,VYI,VZI,VXB,VYB,VZB,VXBD,VYBD,VZBD,PHID,THETAD,PSID,P,Q,R,PD,QD,RD
+fcmdump(@BODYMOTION);
+parentg;
+fcmdump(BODYMOTION);
+
+
+group POWER "Ideal engine parameters (output)"
+    RPM1 =& world_model_propulsion_cpg_xaout_omega1 "Rotor1 Omega [rad/sec]";
+    RPM2 =& world_model_propulsion_cpg_xaout_omega2 "Rotor2 Omega [rad/sec]";
+    SHPRTR1 =& world_model_propulsion_cpg_xaout_shprtr1 "Power required for rotor1 [hp]";
+    SHPRTR2 =& world_model_propulsion_cpg_xaout_shprtr2 "Power required for rotor2 [hp]";
+    SHPTOTAL =& world_model_propulsion_cpg_xaout_shptotal "Total power required [hp]";
+varlist @POWER = RPM1,RPM2,SHPRTR1,SHPRTR2,SHPTOTAL
+fcmdump(@POWER);
+parentg;
+fcmdump(POWER);
+
+
+group INSTRUMENTDISP "Instrument display (output)"
+    QDYN =& world_model_airframe_cpg_xaout_qdyn "Dynamic pressure [slug/ft/sec^2]";
+    PAMB =& world_model_cpg_xaout_pamb "Ambient pressure [lbf/in^2]";
+    OAT =& world_model_cpg_xaout_tamb "Outside air temperature [degC]";
+    TAS =& world_model_airframe_cpg_xaout_tas "True airspeed (total) [ft/sec]";
+    IAS =& world_model_airframe_cpg_xaout_ias "Indicated airspeed (total) [ft/sec]";
+    IASX =& world_model_airframe_cpg_xaout_iasx "Indicated airspeed (X-axis only) [ft/sec]";
+    BETA =& world_model_airframe_cpg_xaout_beta "Sideslip angle (+right) [rad]";
+    ALPHA =& world_model_airframe_cpg_xaout_alpha "Angle of attack (+up) [rad]";
+    VGRND =& world_model_airframe_cpg_xaout_vgrnd "Ground speed [knots]";
+    VCLIMB =& world_model_airframe_cpg_xaout_vclimb "Climb rate [ft/sec]";
+    ALTAGL =& world_model_airframe_cpg_xaout_radarhat "Altitude AGL [ft]";
+    HP =& world_model_cpg_xaout_hp "Pressure altitude [ft]";
+varlist @INSTRUMENTDISP = QDYN,PAMB,OAT,TAS,IAS,IASX,BETA,ALPHA,VGRND,VCLIMB,ALTAGL,HP
+fcmdump(@INSTRUMENTDISP);
+parentg;
+fcmdump(INSTRUMENTDISP);
+
+
+group CONTROLDEFLECT "Control deflections (output)"
+    THETA1 =& world_model_rotor1_rotor_cpg_xaout_theta0 "Main rotor swashplate collective [rad]";
+    THETA2 =& world_model_rotor2_rotor_cpg_xaout_theta0 "Tail rotor swashplate collective [rad]";
+    B1S1 =& world_model_rotor1_rotor_cpg_xaout_b1s "Main rotor swashplate longitudinal cyclic [rad]";
+    A1S1 =& world_model_rotor1_rotor_cpg_xaout_a1s "Main rotor swashplate lateral cyclic [rad]";
+varlist @CONTROLDEFLECT = THETA1,THETA2,B1S1,A1S1
+fcmdump(@CONTROLDEFLECT);
+parentg;
+fcmdump(CONTROLDEFLECT);
+
+
+group ROTOR "Main rotor (output)"
+    OMEGA1 =& world_model_rotor1_rotor_cpg_xaout_omega "Main rotor speed [rad/sec]";
+    BETA01 =& world_model_rotor1_rotor_cpg_xaout_a0f "Coning angle of rotor [rad]";
+    BETAC1 =& world_model_rotor1_rotor_cpg_xaout_a1f "TPP cyclic cosine tilt of rotor [+aft] [rad]";
+    BETAS1 =& world_model_rotor1_rotor_cpg_xaout_b1f "TPP cyclic sine tilt of rotor [+right] [rad]";
+varlist @ROTOR = OMEGA1,BETA01,BETAC1,BETAS1
+fcmdump(@ROTOR);
+parentg;
+fcmdump(ROTOR);
+
+
+group MISCOUT "Miscallenous outputs by mzasuwa (output)"
+    XBTOTOUT =& world_model_control_data_xbtrm "Longitudinal cyclic (0%:forward; 100%:aft) [%]";
+    XATOTOUT =& world_model_control_data_xatrm "Lateral cyclic (0%:left; 100%:right) [%]";
+    XCTOTOUT =& world_model_control_data_xctrm "Collective position (0%:down; 100%:up) [%]";
+    XPTOTOUT =& world_model_control_data_xptrm "Pedal position (0%:left; 100%:right) [%]";
+    SIMTIME =& world_model_cpg_xaout_simtime "Simulation time [sec]";
+varlist @MISCOUT = XBTOTOUT,XATOTOUT,XCTOTOUT,XPTOTOUT,SIMTIME
+fcmdump(@MISCOUT);
+parentg;
+fcmdump(MISCOUT);
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+popg;
+
+
+//*EOF*

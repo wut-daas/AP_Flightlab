@@ -1,0 +1,14 @@
+//-----------------------------------------------------------
+//  File: archer_c002.epilog
+//-----------------------------------------------------------
+//
+// Outputs for model interface:
+world_data_b1s1 =& world_model_control_skokpodl_y ..
+      "Ctrl, Lng cyclic angle [rad]";
+world_data_a1s1 =& world_model_control_skokpoprz_y ..
+      "Ctrl, Lat cyclic angle[rad]";
+world_data_theta1 =& world_model_control_skokogwirnika_y ..
+      "Ctr., main rotoor collective angle [rad]";
+world_data_theta2 =& world_model_control_skokogsmigla_y ..
+      "Ctrl., Tail rotor collective angle [rad]";
+// Inputs for model interface:

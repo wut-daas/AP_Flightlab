@@ -1,0 +1,60 @@
+//IC
+
+world_model_airframe_cpg_testcond_veq = 0/data_K2F*data_meter2ft;  // flight speed given in [m/s]
+
+//veq = 0 m/s, alt=10m
+world_model_control_cpg_testcond_xatrm = 49.9147;
+world_model_control_cpg_testcond_xbtrm = 50.0799;
+world_model_control_cpg_testcond_xctrm = 47.8866;
+world_model_control_cpg_testcond_xptrm = 71.5963;
+world_model_airframe_cpg_testcond_phiic = 3.4035*data_d2r;
+world_model_airframe_cpg_testcond_thetaic = -0.0298*data_d2r;
+
+//veq = 10 m/s, alt=10m
+// world_model_control_cpg_testcond_xatrm = 52.966;
+// world_model_control_cpg_testcond_xbtrm = 43.478;
+// world_model_control_cpg_testcond_xctrm = 40.163;
+// world_model_control_cpg_testcond_xptrm = 68.279;
+// world_model_airframe_cpg_testcond_phiic 	= 2.132*data_d2r;
+// world_model_airframe_cpg_testcond_thetaic 	= -0.827*data_d2r;
+
+//veq = 20 m/s, alt=10m
+// world_model_control_cpg_testcond_xatrm = 51.6957;
+// world_model_control_cpg_testcond_xbtrm = 35.566;
+// world_model_control_cpg_testcond_xctrm = 43.6458;
+// world_model_control_cpg_testcond_xptrm = 67.1331;
+// world_model_airframe_cpg_testcond_phiic 	= 2.605*data_d2r;
+// world_model_airframe_cpg_testcond_thetaic 	= -3.166*data_d2r;
+
+// rest of IC
+world_model_propulsion_cpg_testcond_omegaic = 1000/60*2*data_pi;  // initial main rotor angular speed [RPM]
+world_model_cpg_configpar_vweight = 7.23*2.20462260;	//vehicle weight [kg]
+world_model_airframe_cpg_testcond_iswheelh = -1;	//flag - landing gear height above ground
+world_model_airframe_cpg_testcond_wheelhic = 30*data_meter2ft; //landing gear height above gorund [m]
+
+
+// parametry trymowania
+group wut
+	clear
+	trimtolscale = 1.;
+parentg
+
+// Trim parameters
+world_analysis_trimtest_par_TRIMLIMITFAC 	= 1; 
+world_analysis_trimtest_par_multipletrim 	= 3;
+world_analysis_trimtest_par_trimg0		= 0.2;
+world_analysis_trimtest_trimvarptb_xatrm 	= 0.5;
+world_analysis_trimtest_trimvarptb_xbtrm 	= 0.5;
+world_analysis_trimtest_trimvarptb_xctrm 	= 0.5;
+world_analysis_trimtest_trimvarptb_xptrm 	= 0.5;
+world_analysis_trimtest_trimvarptb_phi 		= 0.01;
+world_analysis_trimtest_trimvarptb_theta 	= 0.01;
+world_analysis_trimtest_trimtol_vxbd 		= 0.04*wut_trimtolscale;
+world_analysis_trimtest_trimtol_vybd 		= 0.04*wut_trimtolscale;
+world_analysis_trimtest_trimtol_vzbd 		= 0.04*wut_trimtolscale;
+world_analysis_trimtest_trimtol_pd 		= 0.01*wut_trimtolscale;
+world_analysis_trimtest_trimtol_qd 		= 0.01*wut_trimtolscale;
+world_analysis_trimtest_trimtol_rd		= 0.01*wut_trimtolscale;
+world_analysis_trimtest_trimtol_omegad 		= 0.3*wut_trimtolscale;
+
+disp("wczytano ustawienia")

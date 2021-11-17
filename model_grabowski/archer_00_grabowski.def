@@ -1,0 +1,995 @@
+// Generated Tue, 12 October 2021, 21:37 from archer_00_grabowski.fwm
+describe("Model-Id: archer_00_grabowski");
+describe("Model-Created: 16 Jan 2018");
+describe("Model-Lastmodified: 12 Oct 2021");
+
+// ==================================================
+path([]);
+clearm;
+goto world;
+
+exec("$FL_DIR/flme/scripts/modstartup.exc",1);
+path("$FL_DIR/flme/data");
+path("$FL_LOCAL_DB");
+
+// === data =========================================
+
+
+// Rotorcraft Model (rotorcraft data)
+goto world; group model; group data "Simulation solution parameters";
+
+// Solution Parameters (solutionpar data)
+goto world_model_data;
+  DTOPTION     = 0              ;
+  MULTIDT      = 0              ;
+  ISHHTSOLVE   = 0              ;
+  ISNLAESOLVEOP = 0              ;
+  EPS          = 0.01          	"Newton-Raphson convergence tolerance" ;
+  MAXITER      = 5             	"Maximum Newton-Raphson iterations" ;
+  NAZ          = 180           	"Number of rotor azimuth step/rev" ;
+
+// Environment (environatmos data)
+goto world_model; group environ; group data "Critical altitude for temperature gradient for standard, hot, tropical, polar and cold days";
+  GAMMA        = 1.4           	"Specific heat ratio" ;
+  GASCN        = 1716.2        	"Gas constant [ft-lbf/slug/degR]" ;
+  LATIC        = 37.6 * 0.01745329251994333	"Initial latitude [rad]" ;
+
+// Altitudes for temperature gradient (atmostabcralt data)
+goto world_model_environ_data;
+	loadtab("$FL_DIR/flme/data/altcritical.tab");
+
+// Standard day atmosphere table (atmostabstd data)
+goto world_model_environ_data; group stdday "Atmosphere table";
+	loadtab("$FL_DIR/flme/data/atmstdday.tab");
+
+// Hot day atmosphere table (atmostabstd data)
+goto world_model_environ_data; group hotday "Atmosphere table";
+	loadtab("$FL_DIR/flme/data/atmhotday.tab");
+
+// Tropical day atmosphere table (atmostabstd data)
+goto world_model_environ_data; group tropday "Atmosphere table";
+	loadtab("$FL_DIR/flme/data/atmtropday.tab");
+
+// Polar day atmosphere table (atmostabstd data)
+goto world_model_environ_data; group polarday "Atmosphere table";
+	loadtab("$FL_DIR/flme/data/atmpolday.tab");
+
+// Cold day atmosphere table (atmostabstd data)
+goto world_model_environ_data; group coldday "Atmosphere table";
+	loadtab("$FL_DIR/flme/data/atmcoldday.tab");
+
+// Rotor1 (rotor1 data)
+goto world_model; group rotor1; group rotor; group data "Three-State dynamic wake interference";
+
+// Blade Element (berotor data)
+goto world_model_rotor1_rotor_data;
+  ROTORINDEX   = 1              ;
+  CLOCKWISE    = 1              ;
+  LOADPATH     = 0              ;
+  EMOTOR       = 0              ;
+  ICINGEFF     = 0              ;
+  EULERHUB     = [0.0; 180.0; 0.0] * 0.01745329251994333 ..
+		"Hub orientation in Euler angles [rad]" ;
+  ROTORLOC     = [0; 0; 0] * 0.00328084	"Rotor hub/mast location [ft]" ;
+  NBLADES      = 2             	"Number of rotor blades" ;
+  BTL          = 0.97          	"Blade tip loss factor" ;
+  TILTAXIS     = 2             	"Axis about which rotor shaft tilts" ;
+  OMEGANOM     = 1000 * 0.10471975511965999 ..
+		"Rotor nominal speed [rad/sec]" ;
+  RMR          = 888 * 0.00328084	"Rotor radius [ft]" ;
+  PHASE        = 0 * 0.01745329251994333	"Swashplate phase angle [rad]" ;
+
+// Blade Structure (bestructure data)
+goto world_model_rotor1_rotor_data;
+
+// Articulated (bearticulated data)
+goto world_model_rotor1_rotor_data;
+  ISBEELASTIC  = 0              ;
+  SCPOPTION    = 0              ;
+  ISFLAPHINGE  = 0              ;
+  ISLAGHINGE   = 0              ;
+  LAGDAMPER    = 0              ;
+  FLAPSTOPOPTION = 0              ;
+  LAGSTOPOPTION = 0              ;
+  ISIBC        = 0              ;
+  NSEGM        = 6             	"Number of structural segments" ;
+  TRANSYLEN    = 0.0           	"Torque offset [ft]" ;
+  CONEANG      = 0.0 * 0.01745329251994333	"Rotor precone [rad]" ;
+  CONEOF       = 0.0           	"Precone offset [ft]" ;
+  FEATHOF      = 27 * 0.00328084	"Feathering hinge offset [ft]" ;
+  LAGKK        = 0              ..
+		"Lag damper spring stiffness [ft-lbf/rad]" ;
+  LAGCC        = 200000.0       ..
+		"Lag damper damping coefficient [ft-lbf-sec/rad]" ;
+  LAGANG0      = 0.0 * 0.01745329251994333 ..
+		"Lag spring undeformed angle [rad]" ;
+  MASTLEN      = 0.0           	"Rotor mast length [ft]" ;
+
+// Blade property (bladeprop data)
+goto world_model_rotor1_rotor_data;
+	loadtab("tables/bladeprop_vario.tab");
+
+// Airloads (airloads data)
+goto world_model_rotor1_rotor_data;
+
+// Quasi-Steady (quasisteady data)
+goto world_model_rotor1_rotor_data;
+  ACPOPTION    = 1              ;
+  ATABOPTION   = 1              ;
+  ISROTSTALL   = 0              ;
+  ISWLMODEL    = 0              ;
+  ISSMOOTHAIRFOIL = 1              ;
+  AFOILBOUNDARY = [0.0; 1.0]    	"Airfoil boundary nodes" ;
+
+// NACA0015 CD+20% (airfoiltab data)
+goto world_model_rotor1_rotor_data; group data1 "Airfoil table with nonuniform independent arguments";
+	loadtab("tables/NACA0015 cd+20%.tab");
+
+// Aero segment nodes (aeroxnode data)
+goto world_model_rotor1_rotor_data;
+	loadtab("tables/aeronodes_mr.tab");
+
+// Induced Velocity (inducedvelocity data)
+goto world_model_rotor1_rotor_data;
+
+// Peters-He Six State Inflow (sixstateinflow data)
+goto world_model_rotor1_rotor_data;
+  GRDEFFOPT    = 0              ;
+  ISDELTALS    = 0              ;
+  DISTORTWAKE  = 0              ;
+  ISKAPPA      = 0              ;
+
+// Rotor Interference (rtrintf data)
+goto world_model_rotor1_rotor_data;
+
+// 3-State Interference (rtr3stateintf data)
+goto world_model_rotor1_rotor_data;
+  RTRINTFXYZ   = 0              ;
+  RTRINTFRTR   = 1              ;
+  RTRINTFSURF  = 0              ;
+  RTRINTFFUSE  = 3              ;
+  RTRINTFFUSEPANEL = 0              ;
+  RTRINTFWING  = 0              ;
+  RTRINTFSHPDK = 0              ;
+  RTRINTFGRND  = 0              ;
+  RTRINTFAUXBODY = 0              ;
+  RTRINTFSLUNGLOAD = 0              ;
+  RTRINTFMOREWING = 0              ;
+  WAKECONTRACT = 0              ;
+  VELDECAY     = 1              ;
+  WCHIOPTION   = 0              ;
+  RTRINTFRTRINDEX = 2             	"Rotor interference index" ;
+  NSIMPS       = 8             	"Number of integration discretization" ;
+  WDECAY0      = 6             	"Wake length for uniform state" ;
+  WDECAY       = 2             	"Wake length for other states" ;
+  DSIGUL       = 0.05          	"Singularity clearance distance" ;
+  ETA0         = 0.1           	"Velocity decay for uniform state" ;
+  ETA1         = 0.2           	"Velocity decay for other states" ;
+
+// Rotor2 (rotor2 data)
+goto world_model; group rotor2; group rotor; group data "Peters/He finite state induced flow model";
+
+// Blade Element (berotor data)
+goto world_model_rotor2_rotor_data;
+  ROTORINDEX   = 2              ;
+  CLOCKWISE    = 1              ;
+  LOADPATH     = 0              ;
+  EMOTOR       = 0              ;
+  ICINGEFF     = 0              ;
+  EULERHUB     = [0; 0; 90.0] * 0.01745329251994333 ..
+		"Hub orientation in Euler angles [rad]" ;
+  ROTORLOC     = [1039.5; -98.05; -128.91] * 0.00328084 ..
+		"Rotor hub/mast location [ft]" ;
+  NBLADES      = 2             	"Number of rotor blades" ;
+  BTL          = 0.97          	"Blade tip loss factor" ;
+  TILTAXIS     = 2             	"Axis about which rotor shaft tilts" ;
+  OMEGANOM     = 7200 * 0.10471975511965999 ..
+		"Rotor nominal speed [rad/sec]" ;
+  RMR          = 140.4 * 0.00328084	"Rotor radius [ft]" ;
+  PHASE        = 0 * 0.01745329251994333	"Swashplate phase angle [rad]" ;
+
+// Blade Structure (bestructure data)
+goto world_model_rotor2_rotor_data;
+
+// Articulated (bearticulated data)
+goto world_model_rotor2_rotor_data;
+  ISBEELASTIC  = 0              ;
+  SCPOPTION    = 0              ;
+  ISFLAPHINGE  = 0              ;
+  ISLAGHINGE   = 0              ;
+  LAGDAMPER    = 0              ;
+  FLAPSTOPOPTION = 0              ;
+  LAGSTOPOPTION = 0              ;
+  ISIBC        = 0              ;
+  NSEGM        = 6             	"Number of structural segments" ;
+  TRANSYLEN    = 0.0           	"Torque offset [ft]" ;
+  CONEANG      = 0.0 * 0.01745329251994333	"Rotor precone [rad]" ;
+  CONEOF       = 0.0           	"Precone offset [ft]" ;
+  FEATHOF      = 8 * 0.00328084	"Feathering hinge offset [ft]" ;
+  LAGKK        = 0              ..
+		"Lag damper spring stiffness [ft-lbf/rad]" ;
+  LAGCC        = 20000.0        ..
+		"Lag damper damping coefficient [ft-lbf-sec/rad]" ;
+  LAGANG0      = 0.0 * 0.01745329251994333 ..
+		"Lag spring undeformed angle [rad]" ;
+  MASTLEN      = 0.0           	"Rotor mast length [ft]" ;
+
+// Blade property (bladeprop data)
+goto world_model_rotor2_rotor_data;
+	loadtab("tables/bladeprop_tail_rotor.tab");
+
+// Airloads (airloads data)
+goto world_model_rotor2_rotor_data;
+
+// Quasi-Steady (quasisteady data)
+goto world_model_rotor2_rotor_data;
+  ACPOPTION    = 1              ;
+  ATABOPTION   = 1              ;
+  ISROTSTALL   = 0              ;
+  ISWLMODEL    = 0              ;
+  ISSMOOTHAIRFOIL = 1              ;
+  AFOILBOUNDARY = [0.0; 1.0]    	"Airfoil boundary nodes" ;
+
+// NACA23012 (airfoiltab data)
+goto world_model_rotor2_rotor_data; group data1 "Airfoil table with nonuniform independent arguments";
+	loadtab("tables/naca23012.tab");
+
+// Aero segment nodes (aeroxnode data)
+goto world_model_rotor2_rotor_data;
+	loadtab("./tables/aeronodes_tr.tab");
+
+// Induced Velocity (inducedvelocity data)
+goto world_model_rotor2_rotor_data;
+
+// Peters-He Finite State (finitestate data)
+goto world_model_rotor2_rotor_data;
+  GRDEFFOPT    = 0              ;
+  ISDELTALS    = 0              ;
+  DISTORTWAKE  = 0              ;
+  ISKAPPA      = 0              ;
+  NHARDW       = 1             	"Number of inflow harmonics" ;
+  NRADDW       = 1             	"Highest power of radial variation" ;
+
+// Airframe (airframe data)
+goto world_model; group airframe; group data "Pilot station ";
+  MULTISURFREF = 0              ;
+
+// Fuselage (fuselage data)
+goto world_model_airframe_data;
+
+// Rigid Fuselage (Nonlinear 6-DOFs) (rigidfuselage data)
+goto world_model_airframe_data;
+  MASSFLAG     = 1              ;
+  TOTCGLOC     = [0; 0; -150.16] * 0.00328084	"Vehicle c.g. [ft]" ;
+  TOTVMASS     = 7.23 * 0.06852177723185	"Total vehicle mass [slug]" ;
+  TOTIXX       = 0.026215 * 0.7375623189213595 ..
+		"Total roll moment of vehicle inertia [slug-ft^2]" ;
+  TOTIYY       = 0.741964 * 0.7375623189213595 ..
+		"Total pitch moment of vehicle inertia [slug-ft^2]" ;
+  TOTIZZ       = 0.731699 * 0.7375623189213595 ..
+		"Total yaw moment of vehicle inertia [slug-ft^2]" ;
+  TOTIXY       = 0.0106599 * 0.7375623189213595 ..
+		"Total X-Y product of vehicle inertia [slug-ft^2]" ;
+  TOTIXZ       = 0.0079553 * 0.7375623189213595 ..
+		"Total X-Z product of vehicle inertia [slug-ft^2]" ;
+  TOTIYZ       = 0.000035498 * 0.7375623189213595 ..
+		"Total Y-Z product of vehicle inertia [slug-ft^2]" ;
+
+// Empirical Fuselage Airloads (fuselageaero data)
+goto world_model_airframe_data;
+  FSBLWLFUSEAE = [0; 0; -150.16] * 0.00328084 ..
+		"Airloads measurement point [ft]" ;
+
+// Empirical Airloads (aefuselagetab2d data)
+goto world_model_airframe_data;
+  FUSEAEOPTION = 2              ;
+  MULTIFUSEACPS = 0              ;
+  LCHARACTER   = 1 * 3.28084   	"Characteristic dimension [ft]" ;
+  AEREFAREA    = 1 * 10.7639111056	"Reference area [ft^2]" ;
+  AEREFLEN     = 1 * 3.28084   	"Reference length [ft]" ;
+
+// Nonuniform airload table (wind frame) (bodywindaerotab data)
+goto world_model_airframe_data;
+	loadtab("tables/archer_cfd_001.tab");
+
+// Pilot Station (pilot data)
+goto world_model_airframe_data;
+  ISNAVAID     = 0              ;
+  FSBLWLPILOT  = [0.0; 0.0; 0.0]	"Pilot eye position [ft]" ;
+  FSBLWLVELSEN = [0.0; 0.0; 0.0]	"Airspeed sensor position [ft]" ;
+  EULERSPDSENSOR = [0.0; 0.0; 0.0] * 0.01745329251994333 ..
+		"Airspeed sensor orientation [rad]" ;
+  FSBLWLRADAR  = [0.0; 0.0; 0.0] * 3.28084	"Altitude radar location [ft]" ;
+
+// Airframe sens1 (airframesensor data)
+goto world_model_airframe_data; group data1 "Nonlinear tire properties";
+  SENSORINDEX  = 1              ;
+  FSBLWLSENSOR = [125; 29; -108] * 0.00328084	"Sensor position [ft]" ;
+
+// Left Front (hydralandgear data)
+goto world_model_airframe_data_data1;
+  LGEARINDEX   = 1              ;
+  ISWOW        = 1              ;
+  STRUTTIREMODEL = 1              ;
+  CASTORWHEEL  = 0              ;
+  SECURING     = 0              ;
+  FSBLWLLGEAR  = [-0.143; 0.120; -0.320] * 3.28084 ..
+		"Landing gear location [ft]" ;
+  EULERLGEAR   = [0; 0; 0] * 0.01745329251994333 ..
+		"Landing gear orientation in Euler angles [rad]" ;
+  WOWINDEX     = 1             	"Landing gear index" ;
+  BRAKE        = 1.0           	"Brake pedal deflection" ;
+  MAXLOAD      = -100 * 0.22480898761334275 ..
+		"Maximum gear reaction load [lbf]" ;
+  MUSIDE       = [-0.53; -0.27]	"Side friction coefficients" ;
+  GEARUDSL     = 0.2 * 3.28084 	"Undeflected landing gear length [ft]" ;
+  GEARMUB      = [-0.07; -0.08]	"Braking friction coefficients" ;
+  GEARMUR      = [-0.023; -0.017]	"Rolling friction coefficients" ;
+  GEARVTRAN    = [0.2; 0.2]    	"Friction transition velocity [ft/sec]" ;
+  GEARWLMAX    = 10 * 0.22480898761334275 ..
+		"Weight on wheel force threshold [lbf]" ;
+  TIRERADIUS   = 0.025 * 3.28084	"Effective tire radius [ft]" ;
+
+// Nonlinear strut property (struttab data)
+goto world_model_airframe_data_data1;
+	loadtab("tables/archer-lgearstruc.tab");
+
+// Nonlinear tire property (tiretab data)
+goto world_model_airframe_data_data1;
+	loadtab("tables/archer-tire.tab");
+
+// Left Rear (hydralandgear data)
+goto world_model_airframe_data; group data2 "Nonlinear tire properties";
+  LGEARINDEX   = 2              ;
+  ISWOW        = 1              ;
+  STRUTTIREMODEL = 1              ;
+  CASTORWHEEL  = 0              ;
+  SECURING     = 0              ;
+  FSBLWLLGEAR  = [0.143; 0.120; -0.320] * 3.28084 ..
+		"Landing gear location [ft]" ;
+  EULERLGEAR   = [0; 0; 0] * 0.01745329251994333 ..
+		"Landing gear orientation in Euler angles [rad]" ;
+  WOWINDEX     = 1             	"Landing gear index" ;
+  BRAKE        = 1.0           	"Brake pedal deflection" ;
+  MAXLOAD      = -100 * 0.22480898761334275 ..
+		"Maximum gear reaction load [lbf]" ;
+  MUSIDE       = [-0.53; -0.27]	"Side friction coefficients" ;
+  GEARUDSL     = 0.2 * 3.28084 	"Undeflected landing gear length [ft]" ;
+  GEARMUB      = [-0.07; -0.08]	"Braking friction coefficients" ;
+  GEARMUR      = [-0.023; -0.017]	"Rolling friction coefficients" ;
+  GEARVTRAN    = [0.2; 0.2]    	"Friction transition velocity [ft/sec]" ;
+  GEARWLMAX    = 10 * 0.22480898761334275 ..
+		"Weight on wheel force threshold [lbf]" ;
+  TIRERADIUS   = 0.025 * 3.28084	"Effective tire radius [ft]" ;
+
+// Nonlinear strut property (struttab data)
+goto world_model_airframe_data_data2;
+	loadtab("tables/archer-lgearstruc.tab");
+
+// Nonlinear tire property (tiretab data)
+goto world_model_airframe_data_data2;
+	loadtab("tables/archer-tire.tab");
+
+// Right Front (hydralandgear data)
+goto world_model_airframe_data; group data3 "Nonlinear tire properties";
+  LGEARINDEX   = 3              ;
+  ISWOW        = 1              ;
+  STRUTTIREMODEL = 1              ;
+  CASTORWHEEL  = 0              ;
+  SECURING     = 0              ;
+  FSBLWLLGEAR  = [-0.143; -0.120; -0.320] * 3.28084 ..
+		"Landing gear location [ft]" ;
+  EULERLGEAR   = [0; 0; 0] * 0.01745329251994333 ..
+		"Landing gear orientation in Euler angles [rad]" ;
+  WOWINDEX     = 1             	"Landing gear index" ;
+  BRAKE        = 1.0           	"Brake pedal deflection" ;
+  MAXLOAD      = -100 * 0.22480898761334275 ..
+		"Maximum gear reaction load [lbf]" ;
+  MUSIDE       = [-0.53; -0.27]	"Side friction coefficients" ;
+  GEARUDSL     = 0.2 * 3.28084 	"Undeflected landing gear length [ft]" ;
+  GEARMUB      = [-0.07; -0.08]	"Braking friction coefficients" ;
+  GEARMUR      = [-0.023; -0.017]	"Rolling friction coefficients" ;
+  GEARVTRAN    = [0.2; 0.2]    	"Friction transition velocity [ft/sec]" ;
+  GEARWLMAX    = 10 * 0.22480898761334275 ..
+		"Weight on wheel force threshold [lbf]" ;
+  TIRERADIUS   = 0.025 * 3.28084	"Effective tire radius [ft]" ;
+
+// Nonlinear strut property (struttab data)
+goto world_model_airframe_data_data3;
+	loadtab("tables/archer-lgearstruc.tab");
+
+// Nonlinear tire property (tiretab data)
+goto world_model_airframe_data_data3;
+	loadtab("tables/archer-tire.tab");
+
+// Right Rear (hydralandgear data)
+goto world_model_airframe_data; group data4 "Nonlinear tire properties";
+  LGEARINDEX   = 4              ;
+  ISWOW        = 1              ;
+  STRUTTIREMODEL = 1              ;
+  CASTORWHEEL  = 0              ;
+  SECURING     = 0              ;
+  FSBLWLLGEAR  = [0.143; -0.120; -0.320] * 3.28084 ..
+		"Landing gear location [ft]" ;
+  EULERLGEAR   = [0; 0; 0] * 0.01745329251994333 ..
+		"Landing gear orientation in Euler angles [rad]" ;
+  WOWINDEX     = 1             	"Landing gear index" ;
+  BRAKE        = 1.0           	"Brake pedal deflection" ;
+  MAXLOAD      = -100 * 0.22480898761334275 ..
+		"Maximum gear reaction load [lbf]" ;
+  MUSIDE       = [-0.53; -0.27]	"Side friction coefficients" ;
+  GEARUDSL     = 0.2 * 3.28084 	"Undeflected landing gear length [ft]" ;
+  GEARMUB      = [-0.07; -0.08]	"Braking friction coefficients" ;
+  GEARMUR      = [-0.023; -0.017]	"Rolling friction coefficients" ;
+  GEARVTRAN    = [0.2; 0.2]    	"Friction transition velocity [ft/sec]" ;
+  GEARWLMAX    = 10 * 0.22480898761334275 ..
+		"Weight on wheel force threshold [lbf]" ;
+  TIRERADIUS   = 0.025 * 3.28084	"Effective tire radius [ft]" ;
+
+// Nonlinear strut property (struttab data)
+goto world_model_airframe_data_data4;
+	loadtab("tables/archer-lgearstruc.tab");
+
+// Nonlinear tire property (tiretab data)
+goto world_model_airframe_data_data4;
+	loadtab("tables/archer-tire.tab");
+
+// Propulsion (propulsion data)
+goto world_model; group propulsion; group data "Ideal engine model with constant rotor speed";
+
+// Ideal Engine (idealeng data)
+goto world_model_propulsion_data;
+  ISPERFORMANCE = 0              ;
+  RPMCONTROL   = 0              ;
+
+// Flight Control (flightcontrol data)
+goto world_model; group control; group data "Flight control model";
+  STANDARDCTRL = 1              ;
+  XBTRMPC0     = 50.0          	"Initial longitudinal stick (percent)" ;
+  XATRMPC0     = 50.0          	"Initial lateral stick (percent)" ;
+  XCTRMPC0     = 45.0          	"Initial collective (percent)" ;
+  XPTRMPC0     = 50            	"Initial pedal (percent)" ;
+  XBRANGE      = [0.0; 5.0]    	"Longitudinal cyclic travel range" ;
+  XARANGE      = [0.0; 5.0]    	"Lateral cyclic travel range" ;
+  XCRANGE      = [0.0; 5.0]    	"Collective travel range" ;
+  XPRANGE      = [0.0; 5.0]    	"Pedal travel range" ;
+  BRRANGE      = [0.0; 1.0]    	"Landing gear brake variation range" ;
+
+// === prolog =======================================
+
+
+// Rotorcraft Model (rotorcraft prolog)
+goto world_model_data;
+
+       isrotorcraft  = 1;
+       exec("rotorcraftdesign.prolog",1)
+    
+	exec("general/rotorcraft.prolog",1)
+
+// Solution Parameters (solutionpar prolog)
+goto world_model_data;
+	exec("solution/solutionpar.prolog",1)
+
+// Environment (environatmos prolog)
+goto world_model_environ_data;
+
+       isenvironatmos   = 1;
+    
+	exec("general/atmosphere.prolog",1)
+
+// Rotor1 (rotor1 prolog)
+goto world_model_rotor1_rotor_data;
+
+       isrotor1       = 1;
+    
+	exec("rotor/rotor1.prolog",1)
+
+// Blade Element (berotor prolog)
+goto world_model_rotor1_rotor_data;
+
+   isberotor =1; 
+   pushg(world_data)
+     hubpfrl1 = zeros(9,1);
+   popg
+   
+	exec("rotor/berotor.prolog",1)
+
+// Articulated (bearticulated prolog)
+goto world_model_rotor1_rotor_data;
+
+       isbearticulated   = 1;
+    
+	exec("rotor/structure/bearticulated.prolog",1)
+
+// Quasi-Steady (quasisteady prolog)
+goto world_model_rotor1_rotor_data;
+
+       isairloads       = 1;
+       isquasisteady    = 1;
+    
+	exec("rotor/aero/quasisteady.prolog",1)
+
+// Peters-He Six State Inflow (sixstateinflow prolog)
+goto world_model_rotor1_rotor_data;
+
+       isinducedvelocity      = 1;
+       issixstateinflow       = 1;
+    
+	exec("rotor/aero/sixstateinflow.prolog",1)
+
+// 3-State Interference (rtr3stateintf prolog)
+goto world_model_rotor1_rotor_data;
+
+       isrtrintf       = 1;
+       isrtr3stateintf = 1;
+    
+	exec("interference/rtrdywintf.prolog",1)
+
+// Rotor2 (rotor2 prolog)
+goto world_model_rotor2_rotor_data;
+
+       isrotor2       = 1;
+    
+	exec("rotor/rotor2.prolog",1)
+
+// Blade Element (berotor prolog)
+goto world_model_rotor2_rotor_data;
+
+   isberotor =1; 
+   pushg(world_data)
+     hubpfrl2 = zeros(9,1);
+   popg
+   
+	exec("rotor/berotor.prolog",1)
+
+// Articulated (bearticulated prolog)
+goto world_model_rotor2_rotor_data;
+
+       isbearticulated   = 1;
+    
+	exec("rotor/structure/bearticulated.prolog",1)
+
+// Quasi-Steady (quasisteady prolog)
+goto world_model_rotor2_rotor_data;
+
+       isairloads       = 1;
+       isquasisteady    = 1;
+    
+	exec("rotor/aero/quasisteady.prolog",1)
+
+// Peters-He Finite State (finitestate prolog)
+goto world_model_rotor2_rotor_data;
+
+       isinducedvelocity      = 1;
+       isfinitestate   = 1; 
+    
+	exec("rotor/aero/finitestate.prolog",1)
+
+// Airframe (airframe prolog)
+goto world_model_airframe_data;
+
+       isairframe  = 1;
+    
+	exec("airframe/airframe.prolog",1)
+
+// Rigid Fuselage (Nonlinear 6-DOFs) (rigidfuselage prolog)
+goto world_model_airframe_data;
+
+       isfuselage      = 1;
+       isrigidfuselage = 1; 
+    
+	exec("airframe/rigidfuselage.prolog",1)
+
+// Empirical Airloads (aefuselagetab2d prolog)
+goto world_model_airframe_data;
+
+         isaefuselagetab2d = 1; 
+         isfuselageaero    = 1;
+  
+	exec("airframe/aefusetab2d.prolog",1)
+
+// Pilot Station (pilot prolog)
+goto world_model_airframe_data;
+
+       ispilot      = 1;
+    
+	exec("airframe/pilot.prolog",1)
+
+// Airframe sens1 (airframesensor prolog)
+goto world_model_airframe_data_data1;
+
+      pushg(world_model)
+        group airframe
+            group sensor1
+              sensorindex = 1; 
+            parentg
+            group data
+              isairframesensor = 1; 
+              sensorindex = 1; 
+            parentg
+        parentg
+      popg
+              isairframesensor = 1; 
+      pushg(world_data)
+        pfrlsens1 = zeros(9,1);
+        pfrasens1 = zeros(9,1);
+      popg
+      world_model_airframe_data_issensor = 1; 
+   
+	exec("airframe/airframesensor.prolog",1)
+
+// Left Front (hydralandgear prolog)
+goto world_model_airframe_data_data1;
+
+      pushg(world_model)
+        group airframe
+            group landgear1
+              lgearindex = 1; 
+            parentg
+        parentg
+      popg
+      ishydralandgear = 1;
+      world_model_airframe_data_islandinggear   = 1; 
+   
+	exec("airframe/hydralandgear.prolog",1)
+
+// Left Rear (hydralandgear prolog)
+goto world_model_airframe_data_data2;
+
+      pushg(world_model)
+        group airframe
+            group landgear2
+              lgearindex = 2; 
+            parentg
+        parentg
+      popg
+      ishydralandgear = 1;
+      world_model_airframe_data_islandinggear   = 1; 
+   
+	exec("airframe/hydralandgear.prolog",1)
+
+// Right Front (hydralandgear prolog)
+goto world_model_airframe_data_data3;
+
+      pushg(world_model)
+        group airframe
+            group landgear3
+              lgearindex = 3; 
+            parentg
+        parentg
+      popg
+      ishydralandgear = 1;
+      world_model_airframe_data_islandinggear   = 1; 
+   
+	exec("airframe/hydralandgear.prolog",1)
+
+// Right Rear (hydralandgear prolog)
+goto world_model_airframe_data_data4;
+
+      pushg(world_model)
+        group airframe
+            group landgear4
+              lgearindex = 4; 
+            parentg
+        parentg
+      popg
+      ishydralandgear = 1;
+      world_model_airframe_data_islandinggear   = 1; 
+   
+	exec("airframe/hydralandgear.prolog",1)
+
+// Ideal Engine (idealeng prolog)
+goto world_model_propulsion_data;
+
+     ISPROPULSION = 1;
+     ISIDEAL      = 1;
+   
+	exec("propulsion/idealeng.prolog",1)
+
+// Flight Control (flightcontrol prolog)
+goto world_model_control_data;
+
+       isflightcontrol  = 1;
+       if (control_data_standardctrl ==1) 
+          exec("control/controlinterface.prolog",1)
+       end
+    
+	exec("fcs/archer_grabowski.prolog",1)
+
+// === exc ==========================================
+
+
+// Rotorcraft Model (rotorcraft exc)
+goto world_model;
+	exec("general/rotorcraft.exc",1)
+
+// Environment (environatmos exc)
+goto world_model_environ;
+	exec("general/atmosphere.exc",1)
+
+// Blade Element (berotor exc)
+goto world_model_rotor1_rotor;
+	exec("rotor/berotor.exc",1)
+
+// Articulated (bearticulated exc)
+goto world_model_rotor1_rotor;
+	exec("rotor/structure/bearticulated.exc",1)
+
+// Quasi-Steady (quasisteady exc)
+goto world_model_rotor1_rotor;
+	exec("rotor/aero/quasisteady.exc",1)
+
+// Peters-He Six State Inflow (sixstateinflow exc)
+goto world_model_rotor1_rotor;
+	exec("rotor/aero/dywake.exc",1)
+
+// 3-State Interference (rtr3stateintf exc)
+goto world_model_rotor1_rotor;
+	exec("interference/rtrdywintf.exc",1)
+
+// Blade Element (berotor exc)
+goto world_model_rotor2_rotor;
+	exec("rotor/berotor.exc",1)
+
+// Articulated (bearticulated exc)
+goto world_model_rotor2_rotor;
+	exec("rotor/structure/bearticulated.exc",1)
+
+// Quasi-Steady (quasisteady exc)
+goto world_model_rotor2_rotor;
+	exec("rotor/aero/quasisteady.exc",1)
+
+// Peters-He Finite State (finitestate exc)
+goto world_model_rotor2_rotor;
+	exec("rotor/aero/dywake.exc",1)
+
+// Airframe (airframe exc)
+goto world_model_airframe;
+	exec("airframe/airframe.exc",1)
+
+// Rigid Fuselage (Nonlinear 6-DOFs) (rigidfuselage exc)
+goto world_model_airframe;
+	exec("airframe/rigidfuselage.exc",1)
+
+// Empirical Airloads (aefuselagetab2d exc)
+goto world_model_airframe;
+	exec("airframe/aefusetab2d.exc",1)
+
+// Pilot Station (pilot exc)
+goto world_model_airframe;
+	exec("airframe/pilot.exc",1)
+
+// Airframe sens1 (airframesensor exc)
+goto world_model_airframe; group sensor1;
+	exec("airframe/airframesensor.exc",1)
+
+// Left Front (hydralandgear exc)
+goto world_model_airframe; group landgear1;
+	exec("airframe/hydralandgear.exc",1)
+
+// Left Rear (hydralandgear exc)
+goto world_model_airframe; group landgear2;
+	exec("airframe/hydralandgear.exc",1)
+
+// Right Front (hydralandgear exc)
+goto world_model_airframe; group landgear3;
+	exec("airframe/hydralandgear.exc",1)
+
+// Right Rear (hydralandgear exc)
+goto world_model_airframe; group landgear4;
+	exec("airframe/hydralandgear.exc",1)
+
+// Ideal Engine (idealeng exc)
+goto world_model_propulsion;
+	exec("propulsion/idealeng.exc",1)
+
+// Flight Control (flightcontrol exc)
+goto world_model_control;
+
+       if (control_data_standardctrl ==1) 
+          exec("control/controlinterface.exc",1)
+       end
+    
+	exec("fcs/archer_grabowski.exc",1)
+
+init;
+
+
+// === epilog =======================================
+
+
+// Rotorcraft Model (rotorcraft epilog)
+goto world_model;
+	exec("general/rotorcraft.epilog",1)
+
+// Environment (environatmos epilog)
+goto world_model_environ;
+	exec("general/atmosphere.epilog",1)
+
+// Blade Element (berotor epilog)
+goto world_model_rotor1_rotor;
+	exec("rotor/berotor.epilog",1)
+
+// Peters-He Six State Inflow (sixstateinflow epilog)
+goto world_model_rotor1_rotor;
+	exec("rotor/aero/dywake.epilog",1)
+
+// 3-State Interference (rtr3stateintf epilog)
+goto world_model_rotor1_rotor;
+	exec("interference/rtrdywintf.epilog",1)
+
+// Blade Element (berotor epilog)
+goto world_model_rotor2_rotor;
+	exec("rotor/berotor.epilog",1)
+
+// Peters-He Finite State (finitestate epilog)
+goto world_model_rotor2_rotor;
+	exec("rotor/aero/dywake.epilog",1)
+
+// Airframe (airframe epilog)
+goto world_model_airframe;
+	exec("airframe/airframe.epilog",1)
+
+// Rigid Fuselage (Nonlinear 6-DOFs) (rigidfuselage epilog)
+goto world_model_airframe;
+	exec("airframe/rigidfuselage.epilog",1)
+
+// Empirical Airloads (aefuselagetab2d epilog)
+goto world_model_airframe;
+	exec("airframe/aefusetab2d.epilog",1)
+
+// Pilot Station (pilot epilog)
+goto world_model_airframe;
+	exec("airframe/pilot.epilog",1)
+
+// Airframe sens1 (airframesensor epilog)
+goto world_model_airframe_sensor1;
+	exec("airframe/airframesensor.epilog",1)
+
+// Left Front (hydralandgear epilog)
+goto world_model_airframe_landgear1;
+	exec("airframe/hydralandgear.epilog",1)
+
+// Left Rear (hydralandgear epilog)
+goto world_model_airframe_landgear2;
+	exec("airframe/hydralandgear.epilog",1)
+
+// Right Front (hydralandgear epilog)
+goto world_model_airframe_landgear3;
+	exec("airframe/hydralandgear.epilog",1)
+
+// Right Rear (hydralandgear epilog)
+goto world_model_airframe_landgear4;
+	exec("airframe/hydralandgear.epilog",1)
+
+// Ideal Engine (idealeng epilog)
+goto world_model_propulsion;
+	exec("propulsion/idealeng.epilog",1)
+
+// Flight Control (flightcontrol epilog)
+goto world_model_control;
+
+       if (control_data_standardctrl ==1) 
+          exec("control/controlinterface.epilog",1)
+       else
+          exec("control/controluserio.epilog",1)
+       end
+    
+	exec("fcs/archer_grabowski.epilog",1)
+
+init;
+
+
+// === configure ====================================
+
+
+// Rotorcraft Model (rotorcraft configure)
+goto world_model;
+	exec("general/rotorcraft.configure",1)
+
+// Environment (environatmos configure)
+goto world_model_environ;
+	exec("general/atmosphere.configure",1)
+
+// Blade Element (berotor configure)
+goto world_model_rotor1_rotor;
+	exec("rotor/berotor.configure",1)
+
+// Articulated (bearticulated configure)
+goto world_model_rotor1_rotor;
+	exec("rotor/structure/bearticulated.configure",1)
+
+// Quasi-Steady (quasisteady configure)
+goto world_model_rotor1_rotor;
+	exec("rotor/aero/quasisteady.configure",1)
+
+// Peters-He Six State Inflow (sixstateinflow configure)
+goto world_model_rotor1_rotor;
+	exec("rotor/aero/sixstateinflow.configure",1)
+
+// 3-State Interference (rtr3stateintf configure)
+goto world_model_rotor1_rotor;
+	exec("interference/rtrdywintf.configure",1)
+
+// Blade Element (berotor configure)
+goto world_model_rotor2_rotor;
+	exec("rotor/berotor.configure",1)
+
+// Articulated (bearticulated configure)
+goto world_model_rotor2_rotor;
+	exec("rotor/structure/bearticulated.configure",1)
+
+// Quasi-Steady (quasisteady configure)
+goto world_model_rotor2_rotor;
+	exec("rotor/aero/quasisteady.configure",1)
+
+// Peters-He Finite State (finitestate configure)
+goto world_model_rotor2_rotor;
+	exec("rotor/aero/dywake.configure",1)
+
+// Airframe (airframe configure)
+goto world_model_airframe;
+	exec("airframe/airframe.configure",1)
+
+// Rigid Fuselage (Nonlinear 6-DOFs) (rigidfuselage configure)
+goto world_model_airframe;
+	exec("airframe/rigidfuselage.configure",1)
+
+// Empirical Airloads (aefuselagetab2d configure)
+goto world_model_airframe;
+	exec("airframe/aefusetab2d.configure",1)
+
+// Pilot Station (pilot configure)
+goto world_model_airframe;
+	exec("airframe/pilot.configure",1)
+
+// Left Front (hydralandgear configure)
+goto world_model_airframe_landgear1;
+	exec("airframe/hydralandgear.configure",1)
+
+// Left Rear (hydralandgear configure)
+goto world_model_airframe_landgear2;
+	exec("airframe/hydralandgear.configure",1)
+
+// Right Front (hydralandgear configure)
+goto world_model_airframe_landgear3;
+	exec("airframe/hydralandgear.configure",1)
+
+// Right Rear (hydralandgear configure)
+goto world_model_airframe_landgear4;
+	exec("airframe/hydralandgear.configure",1)
+
+// Ideal Engine (idealeng configure)
+goto world_model_propulsion;
+	exec("propulsion/idealeng.configure",1)
+
+// Flight Control (flightcontrol configure)
+goto world_model_control;
+
+       if (control_data_standardctrl ==1) 
+          exec("control/controlinterface.configure",1)
+       else
+          exec("control/controluserio.configure",1) 
+       end
+    
+	exec("fcs/archer_grabowski.configure",1)
+
+// === solution =====================================
+
+
+// Rotorcraft Model (rotorcraft solution)
+goto world_model;
+	exec("solution/rotorcraft_slv.exc",1)
+
+// Rotorcraft Model (rotorcraft cycle)
+goto world_model;
+	exec("solution/rotorcraft_cyc_op.exc",1)
+
+// Rotorcraft Model (rotorcraft init)
+goto world_model;
+	exec("rotorcraft_init.exc",1)
+
+// === initialize ===================================
+init;
+
+//*EOF*
