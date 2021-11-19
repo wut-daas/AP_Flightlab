@@ -124,16 +124,16 @@ with open(timestr, 'w') as outfile:
         raise NameError('Err in frame count')
       # Controller has reset, reset physics also
       #FIXME
-      sock_FL.sendto(struct.pack('<ii18d', 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), (args.ip, 7100) )
-      print('Controller reset')   
+      #sock_FL.sendto(struct.pack('<ii18d', 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), (args.ip, 7100) )
+      #print('Controller reset')   
     ## For now lest have this is turned of
     # elif frame_count == last_SITL_frame: 
-      try:
-        sock_FL.sendto(coerce, (args.ip, 7100) )
-      except:
-        sock_FL.sendto(struct.pack('<ii18d', 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), (args.ip, 7100) )
-      print('Duplicate input frame')
-      continue
+      #try:
+      #  sock_FL.sendto(coerce, (args.ip, 7100) )
+      #except:
+      #  sock_FL.sendto(struct.pack('<ii18d', 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), (args.ip, 7100) )
+      #print('Duplicate input frame')
+      #continue
     elif frame_count != last_SITL_frame + 1 and connected:
       print('Missed {0} input frames'.format(frame_count - last_SITL_frame - 1))
     last_SITL_frame = frame_count
@@ -174,6 +174,7 @@ with open(timestr, 'w') as outfile:
 
     ## ! ## FIXME
     xa = 100.0 - xa
+    xb = 100.0 - xb
 
     if mode == 'init':
       coerce = struct.pack('ii16d', 1, 0, xbtrim, xatrim, xctrim, xptrim, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
@@ -226,7 +227,7 @@ with open(timestr, 'w') as outfile:
     accel = ([FT * x for x in state_decoded[14:17]]) #body axis m/sec2 "NED" +forward + right +down
     tim = state_decoded[55] #sec
     pos = ([FT * x for x in state_decoded[2:5]]) #NED m
-    euler = state_decoded[5:8] #rad
+    euler = state_decoded[5:8] #rad phi theta psi
     vel = ([FT * x for x in state_decoded[8:11]]) #m/s NED
     deflect = state_decoded[43:47]
 
@@ -259,6 +260,14 @@ with open(timestr, 'w') as outfile:
     sock_AP.sendto(bytes(JSON_string,"ascii"), address_AP)
 
     #Saving to CSV file #TODO pwm[4] for xd control
+
+    #'t,frame,'\
+    #      'xb,xa,xc,xp,xd,'\
+    #      'windx,windy,windz,'\
+    #      'pwm1,pwm2,pwm3,pwm4,pwm5,'\
+    #      'p,q,r,accx,accy,accz,x,y,z,roll,pitch,yaw,vx,vy,vz,'\
+    #      'theta1,theta2,b1s1,a1s1\n' 30 columns
+
     if frame_count % 20 == 0 or frame_count <= 10:
       outfile.write(f'{tim},{frame_count},{angles[1]},{angles[2]},{angles[0]},{angles[3]},{xd},'\
         f'{windx},{windy},{windz},'\
@@ -268,6 +277,8 @@ with open(timestr, 'w') as outfile:
         f'{vel[0]},{vel[1]},{vel[2]},{deflect[0]},{deflect[1]},{deflect[2]},{deflect[3]},\n')
       #last_print2 = state_decoded[55] #FIXME bylo bez decoded!
 
-    if frame_count % 5000 == 0:
-      print(JSON_string)
+    print(frame_rate_hz, end="\r")
+
+    #if frame_count % 5000 == 0:
+      #print(JSON_string)
       #last_print = state_decoded[55] #FIXME bylo bez decoded!

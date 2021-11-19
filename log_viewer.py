@@ -162,7 +162,7 @@ for ax in axs.flat:
 if args.save:
     plt.savefig(save_path + '/control.png')
 
-'''fig, axs = plt.subplots(4)
+fig, axs = plt.subplots(4)
 fig.set_figheight(10)
 fig.set_figwidth(10)
 fig.suptitle('Sygnały sterowania [pwm]')
@@ -179,7 +179,7 @@ axs[3].plot(df.t, df.pwm4)
 axs[3].set(ylabel='Tail', xlabel='Czas [s]')
 
 if args.save:
-    plt.savefig(save_path + '/pwm.png')'''
+    plt.savefig(save_path + '/pwm.png')
 
 fig, axs = plt.subplots(2, 2)
 fig.set_figheight(15)
@@ -195,5 +195,8 @@ axs[1, 1].set_title('Ped')
 
 for ax in axs.flat:
     ax.set(xlabel='Czas [s]', ylabel='Kąty łopat [deg]')
+
+if args.save:
+    plt.savefig(save_path + '/deflect.png')
 
 # %%
