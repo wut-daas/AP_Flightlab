@@ -276,8 +276,8 @@ with open(timestr, 'w') as outfile:
         f'{pos[0]},{pos[1]},{pos[2]},{euler[0]},{euler[1]},{euler[2]},'\
         f'{vel[0]},{vel[1]},{vel[2]},{deflect[0]},{deflect[1]},{deflect[2]},{deflect[3]},\n')
       #last_print2 = state_decoded[55] #FIXME bylo bez decoded!
-
-    print(frame_rate_hz, end="\r")
+    if frame_count % 40 == 0:
+      print(frame_rate_hz, end="\r")
 
     #if frame_count % 5000 == 0:
       #print(JSON_string)
