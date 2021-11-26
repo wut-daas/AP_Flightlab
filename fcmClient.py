@@ -52,7 +52,7 @@ xptrim = 46
 direct = 0.0
 
 parser = argparse.ArgumentParser(description="AP-FL Connector")
-parser.add_argument("--ip", default='172.22.2.112', help="fcmserver ip")
+parser.add_argument("--ip", default='10.21.0.81', help="fcmserver ip") #172.22.2.112
 parser.add_argument('--config', '-c', dest='config', \
   help='Config .json file, default archer_new.json', \
   default=os.path.join(os.path.dirname(__file__), 'archer_new.json'))
@@ -85,12 +85,10 @@ assert not os.path.isfile(timestr) #check if log file already exists
 
 
 with open(timestr, 'w') as outfile:
-  line = 't,frame,'\
-          'xb,xa,xc,xp,xd,'\
-          'windx,windy,windz,'\
-          'pwm1,pwm2,pwm3,pwm4,pwm5,'\
+  line = 't,frame,xb,xa,xc,xp,'\
+          'pwm1,pwm2,pwm3,pwm4,'\
           'p,q,r,accx,accy,accz,x,y,z,roll,pitch,yaw,vx,vy,vz,'\
-          'theta1,theta2,b1s1,a1s1\n' # 30 columns
+          'theta1,theta2,b1s1,a1s1\n' # 25 columns # deleted xd,windx,windy,windz,pwm5,
   outfile.write(line)
   while True:
 
@@ -156,7 +154,7 @@ with open(timestr, 'w') as outfile:
     #TODO wind
 
     #TODO push prop
-    xd = 0.0
+    #xd = 0.0
     
     #Send control to FL
 
@@ -173,8 +171,8 @@ with open(timestr, 'w') as outfile:
     xp = clamp(xp, 0.0, 100.0)
 
     ## ! ## FIXME
-    xa = 100.0 - xa
-    xb = 100.0 - xb
+    #xa = 100.0 - xa
+    #xb = 100.0 - xb
 
     if mode == 'init':
       coerce = struct.pack('ii16d', 1, 0, xbtrim, xatrim, xctrim, xptrim, direct, 2116.2, 518.67, windx, windy, windz, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0)
@@ -269,15 +267,14 @@ with open(timestr, 'w') as outfile:
     #      'theta1,theta2,b1s1,a1s1\n' 30 columns
 
     if frame_count % 20 == 0 or frame_count <= 10:
-      outfile.write(f'{tim},{frame_count},{angles[1]},{angles[2]},{angles[0]},{angles[3]},{xd},'\
-        f'{windx},{windy},{windz},'\
-        f'{pwm[0]},{pwm[1]},{pwm[2]},{pwm[3]},{xd},'\
+      outfile.write(f'{tim},{frame_count},{angles[1]},{angles[2]},{angles[0]},{angles[3]},'\
+        f'{pwm[0]},{pwm[1]},{pwm[2]},{pwm[3]},'\
         f'{gyro[0]},{gyro[1]},{gyro[2]},{accel[0]},{accel[1]},{accel[2]},'\
         f'{pos[0]},{pos[1]},{pos[2]},{euler[0]},{euler[1]},{euler[2]},'\
         f'{vel[0]},{vel[1]},{vel[2]},{deflect[0]},{deflect[1]},{deflect[2]},{deflect[3]},\n')
       #last_print2 = state_decoded[55] #FIXME bylo bez decoded!
-    if frame_count % 40 == 0:
-      print(frame_rate_hz, end="\r")
+    if frame_count % 50 == 0:
+      print(frame_rate_hz)
 
     #if frame_count % 5000 == 0:
       #print(JSON_string)
