@@ -2,4 +2,6 @@ sim_vehicle.py -f heli --map --console --add-param-file archer.parm --model json
 
 graph SERVO_OUTPUT_RAW.servo1_raw SERVO_OUTPUT_RAW.servo2_raw SERVO_OUTPUT_RAW.servo3_raw SERVO_OUTPUT_RAW.servo4_raw
 
+graph RAW_IMU.xacc RAW_IMU.yacc RAW_IMU.zacc
+
 sim_vehicle.py -f json:<my:ip:address> -b bin/arducopter-heli --map --console --add-param-file <my_heli_params>.parm

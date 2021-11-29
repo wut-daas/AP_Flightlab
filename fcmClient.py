@@ -52,7 +52,7 @@ xptrim = 46
 direct = 0.0
 
 parser = argparse.ArgumentParser(description="AP-FL Connector")
-parser.add_argument("--ip", default='10.21.0.81', help="fcmserver ip") #172.22.2.112
+parser.add_argument("--ip", default='10.21.0.81', help="fcmserver ip") #172.22.2.112, 10.21.0.81
 parser.add_argument('--config', '-c', dest='config', \
   help='Config .json file, default archer_new.json', \
   default=os.path.join(os.path.dirname(__file__), 'archer_new.json'))
@@ -88,7 +88,7 @@ with open(timestr, 'w') as outfile:
   line = 't,frame,xb,xa,xc,xp,'\
           'pwm1,pwm2,pwm3,pwm4,'\
           'p,q,r,accx,accy,accz,x,y,z,roll,pitch,yaw,vx,vy,vz,'\
-          'theta1,theta2,b1s1,a1s1\n' # 25 columns # deleted xd,windx,windy,windz,pwm5,
+          'theta1,theta2,b1s1,a1s1,pwr1,pwr2,pwrsum\n' #28 col with pwr # 25 columns # deleted xd,windx,windy,windz,pwm5,
   outfile.write(line)
   while True:
 
@@ -228,6 +228,7 @@ with open(timestr, 'w') as outfile:
     euler = state_decoded[5:8] #rad phi theta psi
     vel = ([FT * x for x in state_decoded[8:11]]) #m/s NED
     deflect = state_decoded[43:47]
+    pwr = state_decoded[28:31] #hp main, tail, total
 
     #add gravity vector to accel
     accel[0] = accel[0] - np.sin(euler[1]) * G
@@ -271,7 +272,8 @@ with open(timestr, 'w') as outfile:
         f'{pwm[0]},{pwm[1]},{pwm[2]},{pwm[3]},'\
         f'{gyro[0]},{gyro[1]},{gyro[2]},{accel[0]},{accel[1]},{accel[2]},'\
         f'{pos[0]},{pos[1]},{pos[2]},{euler[0]},{euler[1]},{euler[2]},'\
-        f'{vel[0]},{vel[1]},{vel[2]},{deflect[0]},{deflect[1]},{deflect[2]},{deflect[3]},\n')
+        f'{vel[0]},{vel[1]},{vel[2]},{deflect[0]},{deflect[1]},{deflect[2]},{deflect[3]},'\
+        f'{pwr[0]},{pwr[1]},{pwr[2]},\n')
       #last_print2 = state_decoded[55] #FIXME bylo bez decoded!
     if frame_count % 50 == 0:
       print(frame_rate_hz)
