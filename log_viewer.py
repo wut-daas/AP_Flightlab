@@ -36,7 +36,7 @@ parser = argparse.ArgumentParser(description="Logging options")
 parser.add_argument('--path', default=default_path, help='full path, def /results/logs/*newest*')
 parser.add_argument('--save', dest='save', action='store_true')
 parser.add_argument('--no-save', dest='save', action='store_false')
-parser.set_defaults(save=False)
+parser.set_defaults(save=True)
 #args = parser.parse_args()
 args, unknown = parser.parse_known_args()
 
@@ -198,5 +198,25 @@ for ax in axs.flat:
 
 if args.save:
     plt.savefig(save_path + '/deflect.png')
+
+fig, axs = plt.subplots(3)
+fig.set_figheight(5)
+fig.set_figwidth(10)
+fig.suptitle('Pobierana moc [hp]')
+axs[0].plot(df.t, df.pwr1)
+axs[0].set(ylabel='main')
+axs[1].plot(df.t, df.pwr2)
+axs[1].set(ylabel='tail')
+axs[2].plot(df.t, df.pwrsum)
+axs[2].set(ylabel='suma')
+
+for ax in axs.flat:
+    ax.set(xlabel='Czas [s]')
+
+for ax in axs.flat:
+    ax.label_outer()
+
+if args.save:
+    plt.savefig(save_path + '/power.png')
 
 # %%

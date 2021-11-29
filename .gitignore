@@ -8,8 +8,8 @@ fcmClient (copy).py
 
 # Logs from fcmClient and fcmServer
 *.csv
-*.log
-results/
+# *.log
+# results/
 
 # Testing scripts
 testangles.py
